@@ -27,6 +27,13 @@
 *.out
 *.app
 
-# Vim swap files
+# Vim files
 *.swp
+*.vim
+
+# Automatic dependency files
+*.d
+
+# Visual Studio files
+*.idb
 

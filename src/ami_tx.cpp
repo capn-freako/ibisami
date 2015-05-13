@@ -1,0 +1,27 @@
+// ami_tx.cpp - implementation of AmiTx class
+//
+// Original author: David Banas
+// Original date:   May 7, 2015
+//
+// Copyright (c) 2015 David Banas; all rights reserved World wide.
+
+#include <string>
+#include "include/ami_tx.h"
+
+// Process the channel impulse response.
+void AmiTx::proc_imp() {
+    // Set up the preemphasis filter, if appropriate.
+    if (have_preemph_) {
+        std::vector<double> den {1.0};
+        filter_ = new DigitalFilter(tap_weights_, den);
+        if (!filter_) {
+            std::ostringstream err;
+            err << "AmiTx::init() could not allocate a DigitalFilter with "
+            << num_taps_ << " taps having first weight: " << tap_weights_[0] << "\n";
+            std::string err_str = err.str();
+            throw std::runtime_error(err_str);
+        }
+        filter_->apply(impulse_matrix_, number_of_rows_);
+    }
+}
+
