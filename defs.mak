@@ -17,18 +17,10 @@ rebuild:
 	@$(MAKE) clean
 	@$(MAKE) all
 
-# Microsoft Visual C++ installation base directories.
-# If you did not install MSVC to the default location, or if you're using a
-# version other than 2013, you'll need to edit these.
-MSVC_BASE       := /cygdrive/c/Program Files (x86)/Microsoft Visual Studio 12.0/VC
-MSVC_BASE_DOS   := C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC
-MS_SDK_BASE     := /cygdrive/c/Program Files/Microsoft SDKs/Windows/v7.1
-MS_SDK_BASE_DOS := C:\Program Files\Microsoft SDKs\Windows\v7.1
-
 # Machine dependent definitions
 MACHINE ?= X86
 ifeq ($(MACHINE), X86)
-    SUFFIX := amd64_x86
+    SUFFIX := x86
 else
     ifeq ($(MACHINE), AMD64)
         SUFFIX := amd64
