@@ -12,7 +12,7 @@
 void AmiTx::proc_imp() {
     // Set up the preemphasis filter, if appropriate.
     if (have_preemph_) {
-        std::vector<double> den {1.0};
+        std::vector<double> den; den.clear(); den.push_back(1.0);
         filter_ = new DigitalFilter(tap_weights_, den);
         if (!filter_) {
             std::ostringstream err;

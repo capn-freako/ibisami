@@ -26,7 +26,7 @@ class MyTx : public AmiTx {
             sample_interval, bit_time, AMI_parameters_in);
 
         // Grab our parameters and configure things accordingly.
-        std::vector<std::string> node_names = {};
+        std::vector<std::string> node_names; node_names.clear();
         int taps[4], tap_units;
         node_names.push_back("tx_tap_units");
         tap_units = get_param_int(node_names, 27);
