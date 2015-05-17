@@ -19,11 +19,20 @@ endif
 # Bring in common definitions.
 include $(IBISAMI_ROOT)/defs.mak
 
-# Default Target
-# (This is the static library that device specific DLL/SO builds will link against.)
-all: $(IBISAMI_LIB)
+# Targets
+.PHONY: all x32 x64 targs
+all: x32 x64
 
-# Remaining Targets
+x32:
+	@echo "Building 32-bit ibisami library..."
+	MACHINE=X86 $(MAKE) targs
+
+x64:
+	@echo "Building 64-bit ibisami library..."
+	MACHINE=AMD64 $(MAKE) targs
+
+targs: $(IBISAMI_LIB)
+
 $(IBISAMI_LIB): $(OBJS)
 	@echo "Building $@..."
 	$(RUN_CMD) $(LIB) $(LIBFLAGS) $^

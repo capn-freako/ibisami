@@ -16,7 +16,6 @@ IBISAMI_ROOT ?= ""
 ifeq ($(IBISAMI_ROOT), "")
     $(error You must define environment variable IBISAMI_ROOT.)
 endif
-
 include $(IBISAMI_ROOT)/defs.mak
 
 # Handle Windows vs. Linux target naming differences.
@@ -27,7 +26,18 @@ else
 endif
 
 # Targets
-all: $(TARGS)
+.PHONY: all tx32 tx64 targs
+all: tx32 tx64
+
+tx32:
+	@echo "Building 32-bit Tx model..."
+	MACHINE=X86 MODS='example_tx' $(MAKE) targs
+
+tx64:
+	@echo "Building 64-bit Tx model..."
+	MACHINE=AMD64 MODS='example_tx' $(MAKE) targs
+
+targs: $(TARGS)
 
 LIB_OBJS = $(LIB_MODS:%="$(IBISAMI_ROOT_DOS)\\%_$(SUFFIX).obj")
 $(TARGS): $(OBJS)

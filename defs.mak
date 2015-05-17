@@ -23,7 +23,7 @@ ifeq ($(MACHINE), X86)
     SUFFIX := x86
 else
     ifeq ($(MACHINE), AMD64)
-        SUFFIX := amd64
+        SUFFIX := x86_amd64
     else
         $(error Unrecognized machine type: $(MACHINE))
     endif
@@ -56,7 +56,7 @@ ifeq ($(OS), Windows_NT)
     CXXFLAGS = $(CFLAGS)
     LDLIBS := kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib \
 	      oleaut32.lib uuid.lib odbc32.lib dbccp32.lib
-    IBISAMI_LIB := ibisami.lib
+    IBISAMI_LIB := ibisami_$(SUFFIX).lib
 else
     ifeq ($(OS), Linux)
         OBJS = $(MODS:%=%_$(SUFFIX).o)
@@ -82,7 +82,7 @@ else
             LDFLAGS += -s -static-libgcc -static-libstdc++
         endif
         CXXFLAGS := $(CFLAGS)
-        IBISAMI_LIB := libibisami.a
+        IBISAMI_LIB := libibisami_$(SUFFIX).a
     else
         $(error Unsupported OS: $(OS))
     endif
