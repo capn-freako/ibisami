@@ -64,5 +64,5 @@ class MyTx : public AmiTx {
     }
 } my_tx;
 
-extern AMIModel *ami_model = &my_tx;
+AMIModel *ami_model = &my_tx;
 

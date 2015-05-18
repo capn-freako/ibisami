@@ -21,8 +21,10 @@ include $(IBISAMI_ROOT)/defs.mak
 # Handle Windows vs. Linux target naming differences.
 ifeq ($(OS), Windows_NT)
     TARGS := $(MODS:%=%_$(SUFFIX).dll)
+    LIB_OBJS = $(LIB_MODS:%="$(IBISAMI_ROOT_DOS)\\%_$(SUFFIX).obj")
 else
     TARGS := $(MODS:%=%_$(SUFFIX).so)
+    LIB_OBJS = $(LIB_MODS:%="$(IBISAMI_ROOT)/%_$(SUFFIX).o")
 endif
 
 # Targets
@@ -39,7 +41,6 @@ tx64:
 
 targs: $(TARGS)
 
-LIB_OBJS = $(LIB_MODS:%="$(IBISAMI_ROOT_DOS)\\%_$(SUFFIX).obj")
 $(TARGS): $(OBJS)
 	@echo "Building $@..."
 #	$(RUN_CMD) $(LD) $(LDFLAGS) "$(IBISAMI_ROOT_DOS)\$(IBISAMI_LIB)" "$(IBISAMI_ROOT_DOS)\$(IBISAMI_LIB:%.lib=%.exp)" $^

@@ -10,7 +10,6 @@
 #ifndef INCLUDE_AMIMODEL_H_
 #define INCLUDE_AMIMODEL_H_
 
-#include <boost/phoenix.hpp>
 #include <boost/spirit/include/qi.hpp>
 #include <boost/spirit/include/qi_omit.hpp>
 #include <boost/spirit/include/phoenix_core.hpp>

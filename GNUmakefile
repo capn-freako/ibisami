@@ -34,6 +34,7 @@ x64:
 targs: $(IBISAMI_LIB)
 
 $(IBISAMI_LIB): $(OBJS)
-	@echo "Building $@..."
-	$(RUN_CMD) $(LIB) $(LIBFLAGS) $^
+	@echo "Built $(OBJS)."
+#	@echo "Building $@..."
+#	$(RUN_CMD) $(LIB) $(LIBFLAGS) $^
 
