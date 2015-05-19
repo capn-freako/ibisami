@@ -22,9 +22,11 @@ include $(IBISAMI_ROOT)/defs.mak
 ifeq ($(OS), Windows_NT)
     TARGS := $(MODS:%=%_$(SUFFIX).dll)
     LIB_OBJS = $(LIB_MODS:%="$(IBISAMI_ROOT_DOS)\\%_$(SUFFIX).obj")
+    LIB_DEPS = $(LIB_MODS:%=$(IBISAMI_ROOT)/%_$(SUFFIX).obj)
 else
     TARGS := $(MODS:%=%_$(SUFFIX).so)
     LIB_OBJS = $(LIB_MODS:%=$(IBISAMI_ROOT)/%_$(SUFFIX).o)
+    LIB_DEPS = $(LIB_MODS:%=$(IBISAMI_ROOT)/%_$(SUFFIX).o)
 endif
 
 # Targets
@@ -41,8 +43,8 @@ tx64:
 
 targs: $(TARGS)
 
-$(TARGS): $(OBJS) $(LIB_OBJS)
+$(TARGS): $(OBJS) $(LIB_DEPS)
 	@echo "Building $@..."
 #	$(RUN_CMD) $(LD) $(LDFLAGS) "$(IBISAMI_ROOT_DOS)\$(IBISAMI_LIB)" "$(IBISAMI_ROOT_DOS)\$(IBISAMI_LIB:%.lib=%.exp)" $^
-	$(RUN_CMD) $(LD) $(LDFLAGS) $^
+	$(RUN_CMD) $(LD) $(LDFLAGS) $(OBJS) $(LIB_OBJS)
 
