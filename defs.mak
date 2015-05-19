@@ -11,7 +11,7 @@ all:
 
 clean:
 	@echo "Cleaning up previous build..."
-	-rm *.o *.obj *.exp *.lib *.manifest *.dll *.so *.exe 2>/dev/null
+	-rm *.o *.obj *.lib *.manifest *.so *.exe 2>/dev/null
 
 rebuild:
 	@$(MAKE) clean
@@ -58,34 +58,39 @@ ifeq ($(OS), Windows_NT)
 	      oleaut32.lib uuid.lib odbc32.lib dbccp32.lib
     IBISAMI_LIB := ibisami_$(SUFFIX).lib
 else
-    ifeq ($(OS), Linux)
-        OBJS = $(MODS:%=%_$(SUFFIX).o)
-        RUN_CMD =
-        BIN := /usr/bin
-        CC := gcc
-        CXX := g++
-        LIB := $(CXX)
-        LD := $(CXX)
-        CFLAGS := -c -fPIC -std=gnu++11 -I. -I"$(IBISAMI_ROOT)" 
-        LDFLAGS = -o $@ -shared
-        ifeq ($(MACHINE), X86)
-            LDFLAGS += -m32
-            CFLAGS += -m32
-        else
-            LDFLAGS += -m64
-            CFLAGS += -m64
-        endif
-        ifdef DEBUG
-            CFLAGS += -g
-            LDFLAGS += -g
-        else
-            LDFLAGS += -s -static-libgcc -static-libstdc++ $(@:%_$(SUFFIX).so=%.exp)
-        endif
-        CXXFLAGS := $(CFLAGS)
-        IBISAMI_LIB := libibisami_$(SUFFIX).a
+    OBJS = $(MODS:%=%_$(SUFFIX).o)
+    RUN_CMD =
+    BIN := /usr/bin
+    CC := gcc
+    CXX := g++
+    LIB := $(CXX)
+    LD := $(CXX)
+    CFLAGS := -c -fPIC -std=gnu++11 -I. -I"$(IBISAMI_ROOT)" -I"$(BOOST_ROOT)"
+    LDFLAGS = -o $@ -shared
+    ifeq ($(MACHINE), X86)
+        LDFLAGS += -m32
+        CFLAGS += -m32
     else
-        $(error Unsupported OS: $(OS))
+        LDFLAGS += -m64
+        CFLAGS += -m64
     endif
+    ifdef DEBUG
+        CFLAGS += -g
+        LDFLAGS += -g
+    else
+        UNAME_S := $(shell uname -s)
+        ifeq ($(UNAME_S), Linux)
+            LDFLAGS += -s -static-libgcc -static-libstdc++ $(@:%_$(SUFFIX).so=%.exp)
+        else
+            ifeq ($(UNAME_S), Darwin)
+                LDFLAGS += -static-libstdc++ $(@:%_$(SUFFIX).so=%.exp)
+            else
+                $(error Unsupported OS: $(UNAME_S))
+            endif
+        endif
+    endif
+    CXXFLAGS := $(CFLAGS)
+    IBISAMI_LIB := libibisami_$(SUFFIX).a
 endif
 
 # Default rules

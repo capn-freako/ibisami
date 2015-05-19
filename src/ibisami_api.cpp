@@ -116,7 +116,6 @@ DLL_EXPORT long AMI_Close(
         void * AMI_memory
      ) {
     AmiPointers *self = (AmiPointers *)AMI_memory;
-    delete self->model;
     delete self->msg;
     delete self->params;
     delete self;
