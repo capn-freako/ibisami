@@ -1,0 +1,52 @@
+/*! \mainpage Developer Documentation for the *ibisami* Project
+*
+* **Note: This is NOT the user's guide! For help getting started, please,
+* visit the *Getting Started* page of the Wiki, here:  
+* https://github.com/capn-freako/ibisami/wiki/Getting-Started**
+*
+* **Note: This documentation was generated, using
+*         [Doxygen](http://www.stack.nl/~dimitri/doxygen/index.html).**
+*
+* ## Introduction
+*
+* *ibisami* is a public domain package of C++ code, and associated support
+* files, intended to provide a common public code base for the generic
+* portion of an IBIS-AMI model.
+*
+* The ibisami code base is hosted by GitHub and is available, here:  
+* https://github.com/capn-freako/ibisami
+*
+* The original commit was posted by [David Banas](mailto:capn.freako@gmail.com)
+* on April 29, 2015.
+*
+* The code is released under the BSD3 license, specifically, in order to
+* avoid any concerns of "virality". That is, it is intended that this code
+* be usable by all, and that no one making modifications to it is under any
+* obligation to share those modifications with anyone for any reason. This
+* holds, regardless of whether or not those modifications are used for
+* commercial purposes.
+*
+* MAKING IMPROVEMENTS TO THIS CODE, USING THOSE IMPROVEMENTS FOR COMMERCIAL
+* PURPOSES, AND KEEPING THOSE IMPROVEMENTS ENTIRELY TO YOURSELF IS TOTALLY ACCEPTABLE.
+*
+* (Of course, we hope you'll share with us, but if you don't that's our
+* problem, not yours. ;-) )
+*
+* ## Contributing to ibisami development
+*
+* If you would like to help out in maintaining/improving this code:  
+*   - That is great! Thank you!
+*   - Please, fork your own version of the GitHub repository, ON GITHUB.  
+*     [Instructions](https://help.github.com/articles/fork-a-repo/)
+*   - Please, DO NOT clone my *ibisami* repository to your working machine.  
+*     (You won't be able to push your improvements up to my GitHub repository, if you do this.)
+*   - When you have something you'd like me to include, send me a *pull request*.  
+*     [Instructions](https://help.github.com/articles/creating-a-pull-request/)  
+*     I will pull your changes into a separate branch, which I keep expressly for this purpose,
+*     test your code, and, if all goes well, incorporate your changes into a new
+*     release of *ibisami* without delay.
+*
+* **Note: It may seem a little clunky to do things this way, but it makes collaborative
+*         project management MUCH easier. Thanks, in advance, for your cooperation.**
+*/
+

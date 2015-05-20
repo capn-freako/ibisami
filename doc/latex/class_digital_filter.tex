@@ -1,0 +1,138 @@
+\hypertarget{class_digital_filter}{}\section{Digital\+Filter Class Reference}
+\label{class_digital_filter}\index{Digital\+Filter@{Digital\+Filter}}
+
+
+A generic digital filter implementation, using \char`\"{}\+Direct Form 2\char`\"{} processing.  
+
+
+
+
+{\ttfamily \#include $<$digital\+\_\+filter.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_digital_filter_aa3d504c14a3dd71c0a8384e03fb9a3b8}{Digital\+Filter} (const std\+::vector$<$ double $>$ \&num, const std\+::vector$<$ double $>$ \&den)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_digital_filter_a6d4f521ddcfaa2bfabc302cb590cc9e1}{$\sim$\+Digital\+Filter} ()
+\item 
+void \hyperlink{class_digital_filter_ab9e95357beb9cca85546dfa6714a0fb2}{apply} (double $\ast$sig, const long len)
+\begin{DoxyCompactList}\small\item\em Filter application. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_digital_filter_abf0263de2d7837bdc002615d3d7ca365}{num\+\_\+}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_digital_filter_aff805e69237ae6c450221f0d4c253bf9}{den\+\_\+}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_digital_filter_a0fe7f91edef50acb1d8fb68957b71129}{state\+\_\+}
+\item 
+int \hyperlink{class_digital_filter_ad9099f4f1da3f23988591b9e733861d7}{num\+\_\+taps\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A generic digital filter implementation, using \char`\"{}\+Direct Form 2\char`\"{} processing. 
+
+Definition at line 18 of file digital\+\_\+filter.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_digital_filter_aa3d504c14a3dd71c0a8384e03fb9a3b8}{}\index{Digital\+Filter@{Digital\+Filter}!Digital\+Filter@{Digital\+Filter}}
+\index{Digital\+Filter@{Digital\+Filter}!Digital\+Filter@{Digital\+Filter}}
+\subsubsection[{Digital\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}Digital\+Filter\+::\+Digital\+Filter (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ double $>$ \&}]{num, }
+\item[{const std\+::vector$<$ double $>$ \&}]{den}
+\end{DoxyParamCaption}
+)}\label{class_digital_filter_aa3d504c14a3dd71c0a8384e03fb9a3b8}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & A vector of doubles forming the numerator of the filter response. \\
+\hline
+{\em den} & A vector of doubles forming the denominator of the filter response. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 18 of file digital\+\_\+filter.\+cpp.
+
+\hypertarget{class_digital_filter_a6d4f521ddcfaa2bfabc302cb590cc9e1}{}\index{Digital\+Filter@{Digital\+Filter}!````~Digital\+Filter@{$\sim$\+Digital\+Filter}}
+\index{````~Digital\+Filter@{$\sim$\+Digital\+Filter}!Digital\+Filter@{Digital\+Filter}}
+\subsubsection[{$\sim$\+Digital\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}virtual Digital\+Filter\+::$\sim$\+Digital\+Filter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{class_digital_filter_a6d4f521ddcfaa2bfabc302cb590cc9e1}
+
+
+Definition at line 22 of file digital\+\_\+filter.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_digital_filter_ab9e95357beb9cca85546dfa6714a0fb2}{}\index{Digital\+Filter@{Digital\+Filter}!apply@{apply}}
+\index{apply@{apply}!Digital\+Filter@{Digital\+Filter}}
+\subsubsection[{apply}]{\setlength{\rightskip}{0pt plus 5cm}void Digital\+Filter\+::apply (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{sig, }
+\item[{const long}]{len}
+\end{DoxyParamCaption}
+)}\label{class_digital_filter_ab9e95357beb9cca85546dfa6714a0fb2}
+
+
+Filter application. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sig} & A pointer to the vector of doubles to be processed. \\
+\hline
+{\em len} & The number of samples to process. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 49 of file digital\+\_\+filter.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_digital_filter_aff805e69237ae6c450221f0d4c253bf9}{}\index{Digital\+Filter@{Digital\+Filter}!den\+\_\+@{den\+\_\+}}
+\index{den\+\_\+@{den\+\_\+}!Digital\+Filter@{Digital\+Filter}}
+\subsubsection[{den\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ Digital\+Filter\+::den\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_digital_filter_aff805e69237ae6c450221f0d4c253bf9}
+
+
+Definition at line 26 of file digital\+\_\+filter.\+h.
+
+\hypertarget{class_digital_filter_abf0263de2d7837bdc002615d3d7ca365}{}\index{Digital\+Filter@{Digital\+Filter}!num\+\_\+@{num\+\_\+}}
+\index{num\+\_\+@{num\+\_\+}!Digital\+Filter@{Digital\+Filter}}
+\subsubsection[{num\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ Digital\+Filter\+::num\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_digital_filter_abf0263de2d7837bdc002615d3d7ca365}
+
+
+Definition at line 26 of file digital\+\_\+filter.\+h.
+
+\hypertarget{class_digital_filter_ad9099f4f1da3f23988591b9e733861d7}{}\index{Digital\+Filter@{Digital\+Filter}!num\+\_\+taps\+\_\+@{num\+\_\+taps\+\_\+}}
+\index{num\+\_\+taps\+\_\+@{num\+\_\+taps\+\_\+}!Digital\+Filter@{Digital\+Filter}}
+\subsubsection[{num\+\_\+taps\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int Digital\+Filter\+::num\+\_\+taps\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_digital_filter_ad9099f4f1da3f23988591b9e733861d7}
+
+
+Definition at line 27 of file digital\+\_\+filter.\+h.
+
+\hypertarget{class_digital_filter_a0fe7f91edef50acb1d8fb68957b71129}{}\index{Digital\+Filter@{Digital\+Filter}!state\+\_\+@{state\+\_\+}}
+\index{state\+\_\+@{state\+\_\+}!Digital\+Filter@{Digital\+Filter}}
+\subsubsection[{state\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ Digital\+Filter\+::state\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_digital_filter_a0fe7f91edef50acb1d8fb68957b71129}
+
+
+Definition at line 26 of file digital\+\_\+filter.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+ibisami/include/\hyperlink{digital__filter_8h}{digital\+\_\+filter.\+h}\item 
+ibisami/src/\hyperlink{digital__filter_8cpp}{digital\+\_\+filter.\+cpp}\end{DoxyCompactItemize}

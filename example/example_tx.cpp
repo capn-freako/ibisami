@@ -1,9 +1,11 @@
-// example_tx.cpp - Example of using ibisami to build a Tx model.
-//
-// Original author: David Banas
-// Original date:   May 8, 2015
-//
-// Copyright (c) 2015 David Banas; all rights reserved World wide.
+/** \file example_tx.cpp
+ *  \brief Example of using ibisami to build a Tx model.
+ *
+ * Original author: David Banas <br>
+ * Original date:   May 8, 2015
+ *
+ * Copyright (c) 2015 David Banas; all rights reserved World wide.
+ */
 
 #define TAP_SCALE 0.047
 
@@ -11,6 +13,7 @@
 #include <vector>
 #include "include/ami_tx.h"
 
+/// An example device specific Tx model implementation.
 class MyTx : public AmiTx {
     typedef AmiTx inherited;
 
@@ -64,5 +67,5 @@ class MyTx : public AmiTx {
     }
 } my_tx;
 
-AMIModel *ami_model = &my_tx;
+AMIModel *ami_model = &my_tx;  ///< The pointer required by the API implementation.
 

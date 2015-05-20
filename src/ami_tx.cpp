@@ -1,14 +1,16 @@
-// ami_tx.cpp - implementation of AmiTx class
-//
-// Original author: David Banas
-// Original date:   May 7, 2015
-//
-// Copyright (c) 2015 David Banas; all rights reserved World wide.
+/** \file ami_tx.cpp
+ *  \brief Implementation of AmiTx class.
+ *
+ * Original author: David Banas <br>
+ * Original date:   May 7, 2015
+ *
+ * Copyright (c) 2015 David Banas; all rights reserved World wide.
+ */
 
 #include <string>
 #include "include/ami_tx.h"
 
-// Process the channel impulse response.
+/// Process the channel impulse response.
 void AmiTx::proc_imp() {
     // Set up the preemphasis filter, if appropriate.
     if (have_preemph_) {

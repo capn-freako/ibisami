@@ -1,0 +1,82 @@
+\hypertarget{amimodel_8h}{}\section{ibisami/include/amimodel.h File Reference}
+\label{amimodel_8h}\index{ibisami/include/amimodel.\+h@{ibisami/include/amimodel.\+h}}
+
+
+Interface to \hyperlink{class_a_m_i_model}{A\+M\+I\+Model} class.  
+
+
+{\ttfamily \#include $<$boost/spirit/include/qi.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/spirit/include/qi\+\_\+omit.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/spirit/include/phoenix\+\_\+core.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/spirit/include/phoenix\+\_\+fusion.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/spirit/include/phoenix\+\_\+operator.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/spirit/include/phoenix\+\_\+stl.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/variant.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/fusion/include/adapt\+\_\+struct.\+hpp$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$utility$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structibisami_1_1_param_tree}{ibisami\+::\+Param\+Tree}
+\begin{DoxyCompactList}\small\item\em The parameter tree definition. \end{DoxyCompactList}\item 
+struct \hyperlink{structibisami_1_1_value}{ibisami\+::\+Value}
+\begin{DoxyCompactList}\small\item\em Used to access a {\itshape leaf} node. \end{DoxyCompactList}\item 
+struct \hyperlink{structibisami_1_1_node}{ibisami\+::\+Node}
+\begin{DoxyCompactList}\small\item\em Used to access a {\itshape branch} node. \end{DoxyCompactList}\item 
+class \hyperlink{class_a_m_i_model}{A\+M\+I\+Model}
+\begin{DoxyCompactList}\small\item\em Abstract class providing the base functionality required by all I\+B\+I\+S-\/\+A\+M\+I models. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespaceibisami}{ibisami}
+\begin{DoxyCompactList}\small\item\em Used to protect several complex custom types from potential name collisions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef boost\+::variant$<$ boost\+::recursive\+\_\+wrapper$<$ Param\+Tree $>$, std\+::string $>$ \hyperlink{namespaceibisami_a56481565abb44593a678738f57c04109}{ibisami\+::\+Param\+Node}
+\item 
+typedef std\+::pair$<$ bool, std\+::string $>$ \hyperlink{amimodel_8h_a5fbe8bcd249e7070ded2dadafa23ec1f}{Parse\+Res}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{amimodel_8h_a3b6210648aa742440c6393c5c5ff64b3}{B\+O\+O\+S\+T\+\_\+\+F\+U\+S\+I\+O\+N\+\_\+\+A\+D\+A\+P\+T\+\_\+\+S\+T\+R\+U\+C\+T} (\hyperlink{structibisami_1_1_param_tree}{ibisami\+::\+Param\+Tree},(std\+::string, name)(std\+::vector$<$ \hyperlink{namespaceibisami_a56481565abb44593a678738f57c04109}{ibisami\+::\+Param\+Node} $>$, children)) namespace ibisami
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface to \hyperlink{class_a_m_i_model}{A\+M\+I\+Model} class. 
+
+Original author\+: David Banas ~\newline
+ Original date\+: May 1, 2015
+
+Copyright (c) 2015 David Banas; all rights reserved World wide.
+
+This abstract class provides the common base for all A\+M\+I models. 
+
+\subsection{Typedef Documentation}
+\hypertarget{amimodel_8h_a5fbe8bcd249e7070ded2dadafa23ec1f}{}\index{amimodel.\+h@{amimodel.\+h}!Parse\+Res@{Parse\+Res}}
+\index{Parse\+Res@{Parse\+Res}!amimodel.\+h@{amimodel.\+h}}
+\subsubsection[{Parse\+Res}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::pair$<$bool, std\+::string$>$ {\bf Parse\+Res}}\label{amimodel_8h_a5fbe8bcd249e7070ded2dadafa23ec1f}
+
+
+Definition at line 116 of file amimodel.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{amimodel_8h_a3b6210648aa742440c6393c5c5ff64b3}{}\index{amimodel.\+h@{amimodel.\+h}!B\+O\+O\+S\+T\+\_\+\+F\+U\+S\+I\+O\+N\+\_\+\+A\+D\+A\+P\+T\+\_\+\+S\+T\+R\+U\+C\+T@{B\+O\+O\+S\+T\+\_\+\+F\+U\+S\+I\+O\+N\+\_\+\+A\+D\+A\+P\+T\+\_\+\+S\+T\+R\+U\+C\+T}}
+\index{B\+O\+O\+S\+T\+\_\+\+F\+U\+S\+I\+O\+N\+\_\+\+A\+D\+A\+P\+T\+\_\+\+S\+T\+R\+U\+C\+T@{B\+O\+O\+S\+T\+\_\+\+F\+U\+S\+I\+O\+N\+\_\+\+A\+D\+A\+P\+T\+\_\+\+S\+T\+R\+U\+C\+T}!amimodel.\+h@{amimodel.\+h}}
+\subsubsection[{B\+O\+O\+S\+T\+\_\+\+F\+U\+S\+I\+O\+N\+\_\+\+A\+D\+A\+P\+T\+\_\+\+S\+T\+R\+U\+C\+T}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+O\+S\+T\+\_\+\+F\+U\+S\+I\+O\+N\+\_\+\+A\+D\+A\+P\+T\+\_\+\+S\+T\+R\+U\+C\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf ibisami\+::\+Param\+Tree}}]{, }
+\item[{(std\+::string, name)(std\+::vector$<$ {\bf ibisami\+::\+Param\+Node} $>$, children)}]{}
+\end{DoxyParamCaption}
+)}\label{amimodel_8h_a3b6210648aa742440c6393c5c5ff64b3}
+
+
+Definition at line 74 of file amimodel.\+h.
+

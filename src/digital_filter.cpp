@@ -1,14 +1,20 @@
-// digital_filter.cpp - implementation of DigitalFilter class
-//
-// Original author: David Banas
-// Original date:   May 7, 2015
-//
-// Copyright (c) 2015 David Banas; all rights reserved World wide.
+/** \file digital_filter.cpp
+ *  \brief Implementation of DigitalFilter class.
+ *
+ * Original author: David Banas <br>
+ * Original date:   May 7, 2015
+ *
+ * Copyright (c) 2015 David Banas; all rights reserved World wide.
+ */
 
 #include <vector>
 #include "include/digital_filter.h"
 
-// Constructor
+/// Constructor
+/**
+ * \param num A vector of doubles forming the numerator of the filter response.
+ * \param den A vector of doubles forming the denominator of the filter response.
+ */
 DigitalFilter::DigitalFilter(const std::vector<double>& num,
                              const std::vector<double>& den) {
     // Our "apply" function assumes den_[0] (i.e. - a0) = 1,
@@ -35,7 +41,11 @@ DigitalFilter::DigitalFilter(const std::vector<double>& num,
     num_taps_ = len;
 }
 
-// Filter application
+/// Filter application
+/**
+ * \param sig A pointer to the vector of doubles to be processed.
+ * \param len The number of samples to process.
+ */
 void DigitalFilter::apply(double *sig, const long len) {
     double accum;
 

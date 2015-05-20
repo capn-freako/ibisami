@@ -1,17 +1,20 @@
-// digital_filter.h - interface to DigitalFilter class
-//
-// Original author: David Banas
-// Original date:   May 7, 2015
-//
-// Copyright (c) 2015 David Banas; all rights reserved World wide.
-//
-// This class provides a generic digital filter.
+/** \file digital_filter.h
+ *  \brief Interface to DigitalFilter class.
+ *
+ * Original author: David Banas <br>
+ * Original date:   May 7, 2015
+ *
+ * Copyright (c) 2015 David Banas; all rights reserved World wide.
+ *
+ * This class provides a generic digital filter.
+ */
 
 #ifndef INCLUDE_DIGITAL_FILTER_H_
 #define INCLUDE_DIGITAL_FILTER_H_
 
 #include <vector>
 
+/// A generic digital filter implementation, using "Direct Form 2" processing.
 class DigitalFilter {
  public:
     DigitalFilter(const std::vector<double>& num,

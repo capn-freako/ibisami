@@ -1,0 +1,134 @@
+\hypertarget{class_ami_tx}{}\section{Ami\+Tx Class Reference}
+\label{class_ami_tx}\index{Ami\+Tx@{Ami\+Tx}}
+
+
+A generic I\+B\+I\+S-\/\+A\+M\+I Tx model implementation.  
+
+
+
+
+{\ttfamily \#include $<$ami\+\_\+tx.\+h$>$}
+
+Inheritance diagram for Ami\+Tx\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_ami_tx}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{class_ami_tx_a0a30ee85116e1f2ba7c4a8876c0b7b8e}{$\sim$\+Ami\+Tx} ()
+\item 
+void \hyperlink{class_ami_tx_a94649674c8e8442c1d5434d509165594}{proc\+\_\+imp} () override
+\begin{DoxyCompactList}\small\item\em Process the channel impulse response. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_digital_filter}{Digital\+Filter} $\ast$ \hyperlink{class_ami_tx_a1eb407f2a0aa1010c5d381c172f8425d}{filter\+\_\+}
+\begin{DoxyCompactList}\small\item\em Used for pre-\/emphasis. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ami_tx_a8e07817524a3626aaa432bcbe7cad30f}{have\+\_\+preemph\+\_\+}
+\begin{DoxyCompactList}\small\item\em True, if I have a pre-\/emphasis filter. \end{DoxyCompactList}\item 
+int \hyperlink{class_ami_tx_a166891685483a94632bbcd4e2afebf88}{num\+\_\+taps\+\_\+}
+\begin{DoxyCompactList}\small\item\em Number of taps in my pre-\/emphasis filter. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \hyperlink{class_ami_tx_ab4878fcf087a793ca120ab1e30cabed5}{tap\+\_\+weights\+\_\+}
+\begin{DoxyCompactList}\small\item\em Tap weights for pre-\/emphasis filter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A generic I\+B\+I\+S-\/\+A\+M\+I Tx model implementation. 
+
+This abstract class provides generic Tx model capability. Device specific Tx models should derive from this class. 
+
+Definition at line 23 of file ami\+\_\+tx.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_ami_tx_a0a30ee85116e1f2ba7c4a8876c0b7b8e}{}\index{Ami\+Tx@{Ami\+Tx}!````~Ami\+Tx@{$\sim$\+Ami\+Tx}}
+\index{````~Ami\+Tx@{$\sim$\+Ami\+Tx}!Ami\+Tx@{Ami\+Tx}}
+\subsubsection[{$\sim$\+Ami\+Tx}]{\setlength{\rightskip}{0pt plus 5cm}virtual Ami\+Tx\+::$\sim$\+Ami\+Tx (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{class_ami_tx_a0a30ee85116e1f2ba7c4a8876c0b7b8e}
+
+
+Definition at line 26 of file ami\+\_\+tx.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_ami_tx_a94649674c8e8442c1d5434d509165594}{}\index{Ami\+Tx@{Ami\+Tx}!proc\+\_\+imp@{proc\+\_\+imp}}
+\index{proc\+\_\+imp@{proc\+\_\+imp}!Ami\+Tx@{Ami\+Tx}}
+\subsubsection[{proc\+\_\+imp}]{\setlength{\rightskip}{0pt plus 5cm}void Ami\+Tx\+::proc\+\_\+imp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\label{class_ami_tx_a94649674c8e8442c1d5434d509165594}
+
+
+Process the channel impulse response. 
+
+
+
+Implements \hyperlink{class_a_m_i_model_a52d1f23607e7f12fa1ab61d809231c11}{A\+M\+I\+Model}.
+
+
+
+Definition at line 14 of file ami\+\_\+tx.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_ami_tx_a1eb407f2a0aa1010c5d381c172f8425d}{}\index{Ami\+Tx@{Ami\+Tx}!filter\+\_\+@{filter\+\_\+}}
+\index{filter\+\_\+@{filter\+\_\+}!Ami\+Tx@{Ami\+Tx}}
+\subsubsection[{filter\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Digital\+Filter}$\ast$ Ami\+Tx\+::filter\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_ami_tx_a1eb407f2a0aa1010c5d381c172f8425d}
+
+
+Used for pre-\/emphasis. 
+
+
+
+Definition at line 30 of file ami\+\_\+tx.\+h.
+
+\hypertarget{class_ami_tx_a8e07817524a3626aaa432bcbe7cad30f}{}\index{Ami\+Tx@{Ami\+Tx}!have\+\_\+preemph\+\_\+@{have\+\_\+preemph\+\_\+}}
+\index{have\+\_\+preemph\+\_\+@{have\+\_\+preemph\+\_\+}!Ami\+Tx@{Ami\+Tx}}
+\subsubsection[{have\+\_\+preemph\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}bool Ami\+Tx\+::have\+\_\+preemph\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_ami_tx_a8e07817524a3626aaa432bcbe7cad30f}
+
+
+True, if I have a pre-\/emphasis filter. 
+
+
+
+Definition at line 31 of file ami\+\_\+tx.\+h.
+
+\hypertarget{class_ami_tx_a166891685483a94632bbcd4e2afebf88}{}\index{Ami\+Tx@{Ami\+Tx}!num\+\_\+taps\+\_\+@{num\+\_\+taps\+\_\+}}
+\index{num\+\_\+taps\+\_\+@{num\+\_\+taps\+\_\+}!Ami\+Tx@{Ami\+Tx}}
+\subsubsection[{num\+\_\+taps\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int Ami\+Tx\+::num\+\_\+taps\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_ami_tx_a166891685483a94632bbcd4e2afebf88}
+
+
+Number of taps in my pre-\/emphasis filter. 
+
+
+
+Definition at line 32 of file ami\+\_\+tx.\+h.
+
+\hypertarget{class_ami_tx_ab4878fcf087a793ca120ab1e30cabed5}{}\index{Ami\+Tx@{Ami\+Tx}!tap\+\_\+weights\+\_\+@{tap\+\_\+weights\+\_\+}}
+\index{tap\+\_\+weights\+\_\+@{tap\+\_\+weights\+\_\+}!Ami\+Tx@{Ami\+Tx}}
+\subsubsection[{tap\+\_\+weights\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ Ami\+Tx\+::tap\+\_\+weights\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_ami_tx_ab4878fcf087a793ca120ab1e30cabed5}
+
+
+Tap weights for pre-\/emphasis filter. 
+
+
+
+Definition at line 33 of file ami\+\_\+tx.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+ibisami/include/\hyperlink{ami__tx_8h}{ami\+\_\+tx.\+h}\item 
+ibisami/src/\hyperlink{ami__tx_8cpp}{ami\+\_\+tx.\+cpp}\end{DoxyCompactItemize}

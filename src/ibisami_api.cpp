@@ -1,23 +1,25 @@
-// ibisami_api.cpp
-//
-// Original author: David Banas
-// Original date:   April 29, 2015
-//
-// Copyright (c) 2015 David Banas; all rights reserved World wide.
-//
-// Provides the API (application programming interface) to the
-// *.SO (shared object) or *.DLL (dynamically linked library) file.
-//
-// Note: The required API for a IBIS-AMI model is defined by the IBIS
-//       standard, which is available here: http://www.eda.org/ibis/
+/** \file ibisami_api.cpp
+*   \brief Provides IBIS-AMI API and necessary bootstrapping.
+*
+* Original author: David Banas <br>
+* Original date:   April 29, 2015
+*
+* Copyright (c) 2015 David Banas; all rights reserved World wide.
+*
+* Provides the API (application programming interface) to the
+* *.SO (shared object) or *.DLL (dynamically linked library) file.
+*
+* Note: The required API for a IBIS-AMI model is defined by the IBIS
+*       standard, which is available here: http://www.eda.org/ibis/
+*/
 
 #include <stdexcept>
 #include <string>
 #include "include/amimodel.h"
 
-extern AMIModel *ami_model;  // Defined in our device-specific source code file.
+extern AMIModel *ami_model;  ///< Defined in our device-specific source code file.
 
-// Holds the pointers, which we pass back to the AMI_Init() caller.
+/// Holds the pointers, which we pass back to the AMI_Init() caller.
 struct AmiPointers {
     AMIModel *model;
     char     *msg;
