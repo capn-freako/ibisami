@@ -1,0 +1,10 @@
+VERSION {
+    DEFAULT {
+        global:
+            AMI_Init;
+            AMI_Close;
+        local:
+            *;
+    };
+}
+

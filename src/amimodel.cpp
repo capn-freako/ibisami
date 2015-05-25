@@ -21,6 +21,9 @@ void AMIModel::init(double *impulse_matrix, const long number_of_rows,
     aggressors_ = aggressors;
     sample_interval_ = sample_interval;
     bit_time_ = bit_time;
+    msg_ = "Input parameter string: " + AMI_parameters_in + "\n";
+    param_tree_.name = "";
+    param_tree_.children.clear();
     ParseRes res = parse_params(AMI_parameters_in);
     if (!res.first)
         throw std::runtime_error(res.second);
@@ -73,6 +76,45 @@ long AMIModel::get_param_int(const std::vector<std::string>& node_names,
     } else {
         std::ostringstream err;
         err << "AMIModel::get_param_int() could not scan an integer from '"
+        << param_val_str << "', while fetching parameter: ";
+        std::string err_str = err.str();
+        for (std::string node_name : node_names)
+            err_str += node_name + ".";
+        err_str += "\n";
+        throw std::runtime_error(err_str);
+    }
+}
+
+/// Returns the floating point value of a particular Float parameter.
+/**
+* Inputs:
+*  - node_names: A vector of strings containing the AMI parameter tree node
+*                names required to traverse our way to the parameter of
+*                interest. The root name should not be included.
+*
+*  - default_val: The value to return, if the parameter is not found in the tree.
+*
+* Returns:
+*  - the requested parameter's floating point value, if the parameter was found and
+*    a double was able to be scanned from its value string.
+*  - 'default_val', if the parameter was not found in the tree.
+*
+* Throws:
+*  - std::runtime_error, if the parameter was found and a double could not
+*    be scanned from its value string.
+*/
+double AMIModel::get_param_float(const std::vector<std::string>& node_names,
+                               double default_val) const {
+    std::string param_val_str = get_param(node_names);
+    if (param_val_str == "")
+        return default_val;
+    double res;
+    int scans = sscanf(param_val_str.c_str(), "%lg", &res);
+    if (scans == 1) {
+        return res;
+    } else {
+        std::ostringstream err;
+        err << "AMIModel::get_param_float() could not scan a double from '"
         << param_val_str << "', while fetching parameter: ";
         std::string err_str = err.str();
         for (std::string node_name : node_names)

@@ -37,6 +37,8 @@ std\+::string \hyperlink{class_a_m_i_model_a62437e97ce61c76f4b9af78144385416}{ge
 \begin{DoxyCompactList}\small\item\em Get the string value of a parameter. \end{DoxyCompactList}\item 
 long \hyperlink{class_a_m_i_model_a55b68d8a68be34f672d53968484225e1}{get\+\_\+param\+\_\+int} (const std\+::vector$<$ std\+::string $>$ \&node\+\_\+names, long default\+\_\+val) const 
 \begin{DoxyCompactList}\small\item\em Get the value of an integer parameter. \end{DoxyCompactList}\item 
+double \hyperlink{class_a_m_i_model_a2c2413b8658ec23c211cb993dc680fae}{get\+\_\+param\+\_\+float} (const std\+::vector$<$ std\+::string $>$ \&node\+\_\+names, double default\+\_\+val) const 
+\begin{DoxyCompactList}\small\item\em Get the value of a floating point parameter. \end{DoxyCompactList}\item 
 void \hyperlink{class_a_m_i_model_a1e8cbd58a09b712dcf76a12f439bce30}{log} (std\+::string \hyperlink{class_a_m_i_model_ae65d47400fd3736682c229dab31392ad}{msg})
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
@@ -112,7 +114,40 @@ Returns\+:
 \item empty string, otherwise. 
 \end{DoxyItemize}
 
-Definition at line 96 of file amimodel.\+cpp.
+Definition at line 138 of file amimodel.\+cpp.
+
+\hypertarget{class_a_m_i_model_a2c2413b8658ec23c211cb993dc680fae}{}\index{A\+M\+I\+Model@{A\+M\+I\+Model}!get\+\_\+param\+\_\+float@{get\+\_\+param\+\_\+float}}
+\index{get\+\_\+param\+\_\+float@{get\+\_\+param\+\_\+float}!A\+M\+I\+Model@{A\+M\+I\+Model}}
+\subsubsection[{get\+\_\+param\+\_\+float}]{\setlength{\rightskip}{0pt plus 5cm}double A\+M\+I\+Model\+::get\+\_\+param\+\_\+float (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ std\+::string $>$ \&}]{node\+\_\+names, }
+\item[{double}]{default\+\_\+val}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_a_m_i_model_a2c2413b8658ec23c211cb993dc680fae}
+
+
+Get the value of a floating point parameter. 
+
+Returns the floating point value of a particular Float parameter.
+
+Inputs\+:
+\begin{DoxyItemize}
+\item node\+\_\+names\+: A vector of strings containing the A\+M\+I parameter tree node names required to traverse our way to the parameter of interest. The root name should not be included.
+\item default\+\_\+val\+: The value to return, if the parameter is not found in the tree.
+\end{DoxyItemize}
+
+Returns\+:
+\begin{DoxyItemize}
+\item the requested parameter\textquotesingle{}s floating point value, if the parameter was found and a double was able to be scanned from its value string.
+\item \textquotesingle{}default\+\_\+val\textquotesingle{}, if the parameter was not found in the tree.
+\end{DoxyItemize}
+
+Throws\+:
+\begin{DoxyItemize}
+\item std\+::runtime\+\_\+error, if the parameter was found and a double could not be scanned from its value string. 
+\end{DoxyItemize}
+
+Definition at line 106 of file amimodel.\+cpp.
 
 \hypertarget{class_a_m_i_model_a55b68d8a68be34f672d53968484225e1}{}\index{A\+M\+I\+Model@{A\+M\+I\+Model}!get\+\_\+param\+\_\+int@{get\+\_\+param\+\_\+int}}
 \index{get\+\_\+param\+\_\+int@{get\+\_\+param\+\_\+int}!A\+M\+I\+Model@{A\+M\+I\+Model}}
@@ -145,7 +180,7 @@ Throws\+:
 \item std\+::runtime\+\_\+error, if the parameter was found and an integer could not be scanned from its value string. 
 \end{DoxyItemize}
 
-Definition at line 64 of file amimodel.\+cpp.
+Definition at line 67 of file amimodel.\+cpp.
 
 \hypertarget{class_a_m_i_model_a8f45652e216686d0efa8db7e9dc0e915}{}\index{A\+M\+I\+Model@{A\+M\+I\+Model}!init@{init}}
 \index{init@{init}!A\+M\+I\+Model@{A\+M\+I\+Model}}
@@ -165,7 +200,7 @@ Initialize the model.
 
 
 
-Reimplemented in \hyperlink{class_my_tx_a4166bdab63c2366409998b2e606f55d2}{My\+Tx}.
+Reimplemented in \hyperlink{class_my_rx_a3e517d6be1e6a475bd97ae75b2bd0afc}{My\+Rx}, and \hyperlink{class_my_tx_a4166bdab63c2366409998b2e606f55d2}{My\+Tx}.
 
 
 
@@ -180,7 +215,7 @@ Definition at line 16 of file amimodel.\+cpp.
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}\label{class_a_m_i_model_a1e8cbd58a09b712dcf76a12f439bce30}
 
 
-Definition at line 133 of file amimodel.\+h.
+Definition at line 134 of file amimodel.\+h.
 
 \hypertarget{class_a_m_i_model_ae65d47400fd3736682c229dab31392ad}{}\index{A\+M\+I\+Model@{A\+M\+I\+Model}!msg@{msg}}
 \index{msg@{msg}!A\+M\+I\+Model@{A\+M\+I\+Model}}
@@ -225,7 +260,7 @@ Parse the incoming A\+M\+I parameter string.
 
 
 
-Definition at line 30 of file amimodel.\+cpp.
+Definition at line 33 of file amimodel.\+cpp.
 
 \hypertarget{class_a_m_i_model_a52d1f23607e7f12fa1ab61d809231c11}{}\index{A\+M\+I\+Model@{A\+M\+I\+Model}!proc\+\_\+imp@{proc\+\_\+imp}}
 \index{proc\+\_\+imp@{proc\+\_\+imp}!A\+M\+I\+Model@{A\+M\+I\+Model}}
@@ -240,7 +275,7 @@ Process the incoming impulse response.
 
 
 
-Implemented in \hyperlink{class_ami_tx_a94649674c8e8442c1d5434d509165594}{Ami\+Tx}.
+Implemented in \hyperlink{class_ami_rx_a74a1a6c1ac9a46634cb0d0ab56b83c4e}{Ami\+Rx}, and \hyperlink{class_ami_tx_a94649674c8e8442c1d5434d509165594}{Ami\+Tx}.
 
 
 
@@ -250,81 +285,81 @@ Implemented in \hyperlink{class_ami_tx_a94649674c8e8442c1d5434d509165594}{Ami\+T
 \subsubsection[{aggressors\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}long A\+M\+I\+Model\+::aggressors\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_a_m_i_model_aab3a042b2459b4b838cb61bf92a50d03}
 
 
-Definition at line 137 of file amimodel.\+h.
+Definition at line 138 of file amimodel.\+h.
 
 \hypertarget{class_a_m_i_model_ad0b6751b3b3a69fb8951fde0fcdf4f27}{}\index{A\+M\+I\+Model@{A\+M\+I\+Model}!bit\+\_\+time\+\_\+@{bit\+\_\+time\+\_\+}}
 \index{bit\+\_\+time\+\_\+@{bit\+\_\+time\+\_\+}!A\+M\+I\+Model@{A\+M\+I\+Model}}
 \subsubsection[{bit\+\_\+time\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}double A\+M\+I\+Model\+::bit\+\_\+time\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_a_m_i_model_ad0b6751b3b3a69fb8951fde0fcdf4f27}
 
 
-Definition at line 136 of file amimodel.\+h.
+Definition at line 137 of file amimodel.\+h.
 
 \hypertarget{class_a_m_i_model_a9b1c44767e4e81c4dfcff9bc23907b6c}{}\index{A\+M\+I\+Model@{A\+M\+I\+Model}!clog\+\_\+@{clog\+\_\+}}
 \index{clog\+\_\+@{clog\+\_\+}!A\+M\+I\+Model@{A\+M\+I\+Model}}
 \subsubsection[{clog\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ofstream A\+M\+I\+Model\+::clog\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_a_m_i_model_a9b1c44767e4e81c4dfcff9bc23907b6c}
 
 
-Definition at line 139 of file amimodel.\+h.
+Definition at line 140 of file amimodel.\+h.
 
 \hypertarget{class_a_m_i_model_a26c35bff12c048655bdbd8663a2f0f58}{}\index{A\+M\+I\+Model@{A\+M\+I\+Model}!impulse\+\_\+matrix\+\_\+@{impulse\+\_\+matrix\+\_\+}}
 \index{impulse\+\_\+matrix\+\_\+@{impulse\+\_\+matrix\+\_\+}!A\+M\+I\+Model@{A\+M\+I\+Model}}
 \subsubsection[{impulse\+\_\+matrix\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}double $\ast$ A\+M\+I\+Model\+::impulse\+\_\+matrix\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_a_m_i_model_a26c35bff12c048655bdbd8663a2f0f58}
 
 
-Definition at line 136 of file amimodel.\+h.
+Definition at line 137 of file amimodel.\+h.
 
 \hypertarget{class_a_m_i_model_ae701c08f6c4b0d962df4a2f2dcb6196b}{}\index{A\+M\+I\+Model@{A\+M\+I\+Model}!log\+\_\+@{log\+\_\+}}
 \index{log\+\_\+@{log\+\_\+}!A\+M\+I\+Model@{A\+M\+I\+Model}}
 \subsubsection[{log\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}bool A\+M\+I\+Model\+::log\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_a_m_i_model_ae701c08f6c4b0d962df4a2f2dcb6196b}
 
 
-Definition at line 140 of file amimodel.\+h.
+Definition at line 141 of file amimodel.\+h.
 
 \hypertarget{class_a_m_i_model_acc9d4703088b0a69f649c84a1e134cfd}{}\index{A\+M\+I\+Model@{A\+M\+I\+Model}!msg\+\_\+@{msg\+\_\+}}
 \index{msg\+\_\+@{msg\+\_\+}!A\+M\+I\+Model@{A\+M\+I\+Model}}
 \subsubsection[{msg\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string A\+M\+I\+Model\+::msg\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_a_m_i_model_acc9d4703088b0a69f649c84a1e134cfd}
 
 
-Definition at line 135 of file amimodel.\+h.
+Definition at line 136 of file amimodel.\+h.
 
 \hypertarget{class_a_m_i_model_a42e00992da9baf93d81d1d9fcd32d8e6}{}\index{A\+M\+I\+Model@{A\+M\+I\+Model}!name\+\_\+@{name\+\_\+}}
 \index{name\+\_\+@{name\+\_\+}!A\+M\+I\+Model@{A\+M\+I\+Model}}
 \subsubsection[{name\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string A\+M\+I\+Model\+::name\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_a_m_i_model_a42e00992da9baf93d81d1d9fcd32d8e6}
 
 
-Definition at line 135 of file amimodel.\+h.
+Definition at line 136 of file amimodel.\+h.
 
 \hypertarget{class_a_m_i_model_aaaf94b76a519e60318e1874bb190e9a8}{}\index{A\+M\+I\+Model@{A\+M\+I\+Model}!number\+\_\+of\+\_\+rows\+\_\+@{number\+\_\+of\+\_\+rows\+\_\+}}
 \index{number\+\_\+of\+\_\+rows\+\_\+@{number\+\_\+of\+\_\+rows\+\_\+}!A\+M\+I\+Model@{A\+M\+I\+Model}}
 \subsubsection[{number\+\_\+of\+\_\+rows\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}long A\+M\+I\+Model\+::number\+\_\+of\+\_\+rows\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_a_m_i_model_aaaf94b76a519e60318e1874bb190e9a8}
 
 
-Definition at line 137 of file amimodel.\+h.
+Definition at line 138 of file amimodel.\+h.
 
 \hypertarget{class_a_m_i_model_ab7aeef08245acc654271341cdf0139f9}{}\index{A\+M\+I\+Model@{A\+M\+I\+Model}!param\+\_\+str\+\_\+@{param\+\_\+str\+\_\+}}
 \index{param\+\_\+str\+\_\+@{param\+\_\+str\+\_\+}!A\+M\+I\+Model@{A\+M\+I\+Model}}
 \subsubsection[{param\+\_\+str\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string A\+M\+I\+Model\+::param\+\_\+str\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_a_m_i_model_ab7aeef08245acc654271341cdf0139f9}
 
 
-Definition at line 135 of file amimodel.\+h.
+Definition at line 136 of file amimodel.\+h.
 
 \hypertarget{class_a_m_i_model_a4da53456e13a1224f2bb47396ab0ecbd}{}\index{A\+M\+I\+Model@{A\+M\+I\+Model}!param\+\_\+tree\+\_\+@{param\+\_\+tree\+\_\+}}
 \index{param\+\_\+tree\+\_\+@{param\+\_\+tree\+\_\+}!A\+M\+I\+Model@{A\+M\+I\+Model}}
 \subsubsection[{param\+\_\+tree\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ibisami\+::\+Param\+Tree} A\+M\+I\+Model\+::param\+\_\+tree\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_a_m_i_model_a4da53456e13a1224f2bb47396ab0ecbd}
 
 
-Definition at line 138 of file amimodel.\+h.
+Definition at line 139 of file amimodel.\+h.
 
 \hypertarget{class_a_m_i_model_a4d4c286b04668c22f2e3f315715a6d5b}{}\index{A\+M\+I\+Model@{A\+M\+I\+Model}!sample\+\_\+interval\+\_\+@{sample\+\_\+interval\+\_\+}}
 \index{sample\+\_\+interval\+\_\+@{sample\+\_\+interval\+\_\+}!A\+M\+I\+Model@{A\+M\+I\+Model}}
 \subsubsection[{sample\+\_\+interval\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}double A\+M\+I\+Model\+::sample\+\_\+interval\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_a_m_i_model_a4d4c286b04668c22f2e3f315715a6d5b}
 
 
-Definition at line 136 of file amimodel.\+h.
+Definition at line 137 of file amimodel.\+h.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-ibisami/include/\hyperlink{amimodel_8h}{amimodel.\+h}\item 
-ibisami/src/\hyperlink{amimodel_8cpp}{amimodel.\+cpp}\end{DoxyCompactItemize}
+include/\hyperlink{amimodel_8h}{amimodel.\+h}\item 
+src/\hyperlink{amimodel_8cpp}{amimodel.\+cpp}\end{DoxyCompactItemize}

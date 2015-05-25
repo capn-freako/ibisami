@@ -1,0 +1,143 @@
+\hypertarget{class_ami_rx}{}\section{Ami\+Rx Class Reference}
+\label{class_ami_rx}\index{Ami\+Rx@{Ami\+Rx}}
+
+
+A generic I\+B\+I\+S-\/\+A\+M\+I Rx model implementation.  
+
+
+
+
+{\ttfamily \#include $<$ami\+\_\+rx.\+h$>$}
+
+Inheritance diagram for Ami\+Rx\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_ami_rx}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{class_ami_rx_a93d8a169660a911021566682e02da75f}{$\sim$\+Ami\+Rx} ()
+\item 
+void \hyperlink{class_ami_rx_a74a1a6c1ac9a46634cb0d0ab56b83c4e}{proc\+\_\+imp} () override
+\begin{DoxyCompactList}\small\item\em Process the channel impulse response. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_digital_filter}{Digital\+Filter} $\ast$ \hyperlink{class_ami_rx_aa3e0caabcdfa0c97620a0d17cf6b559f}{filter\+\_\+}
+\begin{DoxyCompactList}\small\item\em Used for C\+T\+L\+E. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ami_rx_ae2840175da78615711e175b9f5019087}{have\+\_\+ctle\+\_\+}
+\begin{DoxyCompactList}\small\item\em True, if I have a C\+T\+L\+E filter. \end{DoxyCompactList}\item 
+int \hyperlink{class_ami_rx_a3e41b1552492931a0da2ada55d894f82}{num\+\_\+taps\+\_\+}
+\begin{DoxyCompactList}\small\item\em Number of taps in my pre-\/emphasis filter. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \hyperlink{class_ami_rx_aae9534ddd94ec489921ee1ebb534e38b}{num\+\_\+}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_ami_rx_a9409edcb278ad096873c32df764f8939}{den\+\_\+}
+\begin{DoxyCompactList}\small\item\em Numerator/denominator of frequency response. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A generic I\+B\+I\+S-\/\+A\+M\+I Rx model implementation. 
+
+This abstract class provides generic Rx model capability. Device specific Rx models should derive from this class. 
+
+Definition at line 23 of file ami\+\_\+rx.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_ami_rx_a93d8a169660a911021566682e02da75f}{}\index{Ami\+Rx@{Ami\+Rx}!````~Ami\+Rx@{$\sim$\+Ami\+Rx}}
+\index{````~Ami\+Rx@{$\sim$\+Ami\+Rx}!Ami\+Rx@{Ami\+Rx}}
+\subsubsection[{$\sim$\+Ami\+Rx}]{\setlength{\rightskip}{0pt plus 5cm}virtual Ami\+Rx\+::$\sim$\+Ami\+Rx (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{class_ami_rx_a93d8a169660a911021566682e02da75f}
+
+
+Definition at line 26 of file ami\+\_\+rx.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_ami_rx_a74a1a6c1ac9a46634cb0d0ab56b83c4e}{}\index{Ami\+Rx@{Ami\+Rx}!proc\+\_\+imp@{proc\+\_\+imp}}
+\index{proc\+\_\+imp@{proc\+\_\+imp}!Ami\+Rx@{Ami\+Rx}}
+\subsubsection[{proc\+\_\+imp}]{\setlength{\rightskip}{0pt plus 5cm}void Ami\+Rx\+::proc\+\_\+imp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\label{class_ami_rx_a74a1a6c1ac9a46634cb0d0ab56b83c4e}
+
+
+Process the channel impulse response. 
+
+
+
+Implements \hyperlink{class_a_m_i_model_a52d1f23607e7f12fa1ab61d809231c11}{A\+M\+I\+Model}.
+
+
+
+Definition at line 14 of file ami\+\_\+rx.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_ami_rx_a9409edcb278ad096873c32df764f8939}{}\index{Ami\+Rx@{Ami\+Rx}!den\+\_\+@{den\+\_\+}}
+\index{den\+\_\+@{den\+\_\+}!Ami\+Rx@{Ami\+Rx}}
+\subsubsection[{den\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ Ami\+Rx\+::den\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_ami_rx_a9409edcb278ad096873c32df764f8939}
+
+
+Numerator/denominator of frequency response. 
+
+
+
+Definition at line 33 of file ami\+\_\+rx.\+h.
+
+\hypertarget{class_ami_rx_aa3e0caabcdfa0c97620a0d17cf6b559f}{}\index{Ami\+Rx@{Ami\+Rx}!filter\+\_\+@{filter\+\_\+}}
+\index{filter\+\_\+@{filter\+\_\+}!Ami\+Rx@{Ami\+Rx}}
+\subsubsection[{filter\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Digital\+Filter}$\ast$ Ami\+Rx\+::filter\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_ami_rx_aa3e0caabcdfa0c97620a0d17cf6b559f}
+
+
+Used for C\+T\+L\+E. 
+
+
+
+Definition at line 30 of file ami\+\_\+rx.\+h.
+
+\hypertarget{class_ami_rx_ae2840175da78615711e175b9f5019087}{}\index{Ami\+Rx@{Ami\+Rx}!have\+\_\+ctle\+\_\+@{have\+\_\+ctle\+\_\+}}
+\index{have\+\_\+ctle\+\_\+@{have\+\_\+ctle\+\_\+}!Ami\+Rx@{Ami\+Rx}}
+\subsubsection[{have\+\_\+ctle\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}bool Ami\+Rx\+::have\+\_\+ctle\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_ami_rx_ae2840175da78615711e175b9f5019087}
+
+
+True, if I have a C\+T\+L\+E filter. 
+
+
+
+Definition at line 31 of file ami\+\_\+rx.\+h.
+
+\hypertarget{class_ami_rx_aae9534ddd94ec489921ee1ebb534e38b}{}\index{Ami\+Rx@{Ami\+Rx}!num\+\_\+@{num\+\_\+}}
+\index{num\+\_\+@{num\+\_\+}!Ami\+Rx@{Ami\+Rx}}
+\subsubsection[{num\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ Ami\+Rx\+::num\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_ami_rx_aae9534ddd94ec489921ee1ebb534e38b}
+
+
+Definition at line 33 of file ami\+\_\+rx.\+h.
+
+\hypertarget{class_ami_rx_a3e41b1552492931a0da2ada55d894f82}{}\index{Ami\+Rx@{Ami\+Rx}!num\+\_\+taps\+\_\+@{num\+\_\+taps\+\_\+}}
+\index{num\+\_\+taps\+\_\+@{num\+\_\+taps\+\_\+}!Ami\+Rx@{Ami\+Rx}}
+\subsubsection[{num\+\_\+taps\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int Ami\+Rx\+::num\+\_\+taps\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_ami_rx_a3e41b1552492931a0da2ada55d894f82}
+
+
+Number of taps in my pre-\/emphasis filter. 
+
+
+
+Definition at line 32 of file ami\+\_\+rx.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{ami__rx_8h}{ami\+\_\+rx.\+h}\item 
+src/\hyperlink{ami__rx_8cpp}{ami\+\_\+rx.\+cpp}\end{DoxyCompactItemize}

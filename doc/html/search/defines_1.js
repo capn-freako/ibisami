@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tap_5fscale',['TAP_SCALE',['../example__tx_8cpp.html#af1850df0d59f876e56124608d292faad',1,'example_tx.cpp']]]
+  ['dll_5fexport',['DLL_EXPORT',['../ibisami__api_8cpp.html#a1ca888bd091694c05472e1b91df1a97b',1,'ibisami_api.cpp']]]
 ];

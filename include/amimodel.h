@@ -130,6 +130,7 @@ class AMIModel {
     ParseRes parse_params(const std::string& AMI_parameters_in);  ///< Parse the incoming AMI parameter string.
     std::string get_param(const std::vector<std::string>& node_names) const;  ///< Get the string value of a parameter.
     long get_param_int(const std::vector<std::string>& node_names, long default_val) const;  ///< Get the value of an integer parameter.
+    double get_param_float(const std::vector<std::string>& node_names, double default_val) const;  ///< Get the value of a floating point parameter.
     void log(std::string msg) {if(log_ && clog_) {clog_ << msg << "\n";
         flush(clog_);}}
     std::string msg_, param_str_, name_;

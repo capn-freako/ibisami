@@ -8,8 +8,7 @@
 SRCDIR := .
 INCDIR := .
 INCS := 
-MODS := example_tx
-LIB_MODS := ibisami_api amimodel ami_tx digital_filter
+LIB_MODS := ibisami_api amimodel ami_tx ami_rx digital_filter
 
 # Check for proper IBISAMI_ROOT definition.
 IBISAMI_ROOT ?= ""
@@ -30,8 +29,8 @@ else
 endif
 
 # Targets
-.PHONY: all tx32 tx64 targs
-all: tx32 tx64
+.PHONY: all tx32 tx64 rx32 rx64 targs
+all: tx32 tx64 rx32 rx64
 
 tx32:
 	@echo "Building 32-bit Tx model..."
@@ -40,6 +39,14 @@ tx32:
 tx64:
 	@echo "Building 64-bit Tx model..."
 	MACHINE=AMD64 MODS='example_tx' $(MAKE) targs
+
+rx32:
+	@echo "Building 32-bit Rx model..."
+	MACHINE=X86 MODS='example_rx' $(MAKE) targs
+
+rx64:
+	@echo "Building 64-bit Rx model..."
+	MACHINE=AMD64 MODS='example_rx' $(MAKE) targs
 
 targs: $(TARGS)
 
