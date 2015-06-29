@@ -37,7 +37,19 @@ extern "C" {
 #define DLL_EXPORT
 #endif
 
-// Initialization and impulse response processing. (Required)
+/// IBIS-AMI model initialization and impulse response processing. (Required)
+/**
+ * \param impulse_matrix A matrix of doubles containing, at least, the impulse response to be processed (i.e. - the victim), in place.
+ * \param number_of_rows The length of all impulse responses provided (victim and aggressors).
+ * \param aggressors The number of aggressors included in impulse_matrix.
+ * \param sample_interval The time interval between adjacent elements of the vectors contained in impulse_matrix.
+ * \param bit_time The unit interval.
+ * \param AMI_parameters_in A pointer to a char array containing the input AMI parameter string.
+ * \param AMI_parameters_out A handle to be updated with the pointer to the output AMI parameter string.
+ * \param AMI_memory_handle A handle to be updated with the pointer to the model memory structure.
+ * \param msg A handle to be updated with the pointer to the message being returned by the model.
+ * \return '1' for success, '0' for failure.
+ */
 DLL_EXPORT long AMI_Init(
         double * impulse_matrix,
         long     number_of_rows,
@@ -113,7 +125,11 @@ DLL_EXPORT long AMI_GetWave(
 }
 #endif
 
-// Clean-up. (Required)
+/// Clean-up. (Required)
+/**
+ * \param AMI_memory A pointer to the model memory structure.
+ * \return '1'
+ */
 DLL_EXPORT long AMI_Close(
         void * AMI_memory
      ) {

@@ -6,9 +6,9 @@
 # Copyright (c) 2015 David Banas; all rights reserved World wide.
 
 SRCDIR := .
-INCDIR := .
-INCS := 
-LIB_MODS := ibisami_api amimodel ami_tx ami_rx digital_filter
+INCDIR := ../include
+#INCS := 
+LIB_MODS := ibisami_api amimodel ami_tx ami_rx digital_filter fir_filter dfe util
 
 # Check for proper IBISAMI_ROOT definition.
 IBISAMI_ROOT ?= ""
@@ -42,11 +42,11 @@ tx64:
 
 rx32:
 	@echo "Building 32-bit Rx model..."
-	MACHINE=X86 MODS='example_rx' $(MAKE) targs
+	MACHINE=X86 MODS='example_rx' INCS='amimodel.h ami_rx.h digital_filter.h fir_filter.h dfe.h' $(MAKE) targs
 
 rx64:
 	@echo "Building 64-bit Rx model..."
-	MACHINE=AMD64 MODS='example_rx' $(MAKE) targs
+	MACHINE=AMD64 MODS='example_rx' INCS='amimodel.h ami_rx.h digital_filter.h fir_filter.h dfe.h' $(MAKE) targs
 
 targs: $(TARGS)
 

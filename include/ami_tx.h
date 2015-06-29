@@ -25,6 +25,7 @@ class AmiTx : public AMIModel {
  public:
     virtual ~AmiTx() {delete filter_;}
     void proc_imp() override;
+    bool proc_sig(double *sig, long len, double *clock_times) override;
 
  protected:
     DigitalFilter *filter_;  ///< Used for pre-emphasis.

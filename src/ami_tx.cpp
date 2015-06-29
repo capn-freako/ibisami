@@ -27,3 +27,8 @@ void AmiTx::proc_imp() {
     }
 }
 
+bool AmiTx::proc_sig(double *sig, long len, double *clock_times) {
+    filter_->apply(sig, len);
+    return true;
+}
+

@@ -12,16 +12,29 @@
 #include <vector>
 #include "include/amimodel.h"
 
+#define EPS_REL 0.0001
+
+std::ostringstream debug_stream;
+
 //! Initialize the model.
 void AMIModel::init(double *impulse_matrix, const long number_of_rows,
     const long aggressors, const double sample_interval,
     const double bit_time, const std::string& AMI_parameters_in) {
+    debug_stream.str("");
     impulse_matrix_ = impulse_matrix;
     number_of_rows_ = number_of_rows;
     aggressors_ = aggressors;
     sample_interval_ = sample_interval;
     bit_time_ = bit_time;
+    samples_per_bit_ = long(bit_time / sample_interval + 0.5);
     msg_ = "Input parameter string: " + AMI_parameters_in + "\n";
+    if (abs(samples_per_bit_ * sample_interval - bit_time) > (bit_time * EPS_REL))
+        msg_ += "WARN: Non-integral number of samples per bit detected!\n";
+    gen_data_cnt_ = 0;
+    shift_reg_[0] = 1;
+    for (auto i = 1; i < PRBS_LEN; i++)
+        shift_reg_[i] = 0;
+    gen_data_last_ = -1.0;
     param_tree_.name = "";
     param_tree_.children.clear();
     ParseRes res = parse_params(AMI_parameters_in);
@@ -168,5 +181,29 @@ std::string AMIModel::get_leaf(const ibisami::ParamTree& param_tree,
         }
     }
     return "";
+}
+
+/// Generate random binary oversampled data.
+/**
+ * \param res_vec A pointer to an array of doubles to be overwritten.
+ * (It is assumed that, at least, number_of_rows_ elements have been allocated.)
+ *
+ * The default implementation uses PRBS-7, [7,6].
+ */
+void AMIModel::gen_data(double *res_vec) {
+    unsigned long samples_written = 0;
+    while (samples_written++ < number_of_rows_) {
+        if (!(gen_data_cnt_++ % samples_per_bit_)) {
+            int feedback = (shift_reg_[PRBS_LEN - 1] + shift_reg_[PRBS_LEN - 2]) % 2;
+            for (auto i = PRBS_LEN - 1; i > 0; i--)
+                shift_reg_[i] = shift_reg_[i - 1];
+            shift_reg_[0] = feedback;
+            if (shift_reg_[PRBS_LEN - 1])
+                gen_data_last_ = 1.0;
+            else
+                gen_data_last_ = -1.0;
+        }
+        *res_vec++ = gen_data_last_;
+    }
 }
 
