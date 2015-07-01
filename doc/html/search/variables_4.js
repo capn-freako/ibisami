@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['filter_5f',['filter_',['../class_ami_rx.html#aa3e0caabcdfa0c97620a0d17cf6b559f',1,'AmiRx::filter_()'],['../class_ami_tx.html#a1eb407f2a0aa1010c5d381c172f8425d',1,'AmiTx::filter_()']]]
+  ['edge_5fsample_5f',['edge_sample_',['../class_d_f_e.html#a67ee30ee356638ea41589e47adf74b02',1,'DFE']]],
+  ['err_5fgain_5f',['err_gain_',['../class_d_f_e.html#a124c61874816baa299e8f212772ef1be',1,'DFE']]]
 ];

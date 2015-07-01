@@ -13,7 +13,7 @@ var searchData=
   ['amimodel_2ecpp',['amimodel.cpp',['../amimodel_8cpp.html',1,'']]],
   ['amimodel_2eh',['amimodel.h',['../amimodel_8h.html',1,'']]],
   ['amipointers',['AmiPointers',['../struct_ami_pointers.html',1,'']]],
-  ['amirx',['AmiRx',['../class_ami_rx.html',1,'']]],
+  ['amirx',['AmiRx',['../class_ami_rx.html',1,'AmiRx'],['../class_ami_rx.html#a025faccfe2a5c56888da32370050b46e',1,'AmiRx::AmiRx()']]],
   ['amitx',['AmiTx',['../class_ami_tx.html',1,'']]],
-  ['apply',['apply',['../class_digital_filter.html#ab9e95357beb9cca85546dfa6714a0fb2',1,'DigitalFilter']]]
+  ['apply',['apply',['../class_d_f_e.html#a699c915b3b85b1b8c7f6c4dde2276f3b',1,'DFE::apply()'],['../class_digital_filter.html#ab9e95357beb9cca85546dfa6714a0fb2',1,'DigitalFilter::apply()'],['../class_f_i_r_filter.html#a5f79d32e1ebec3ffc79f623fb4cd4061',1,'FIRFilter::apply()']]]
 ];

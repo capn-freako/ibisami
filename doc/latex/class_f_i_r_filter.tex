@@ -1,0 +1,193 @@
+\hypertarget{class_f_i_r_filter}{}\section{F\+I\+R\+Filter Class Reference}
+\label{class_f_i_r_filter}\index{F\+I\+R\+Filter@{F\+I\+R\+Filter}}
+
+
+A F\+I\+R (finite impulse response) filter implementation, with optional over-\/sampling.  
+
+
+
+
+{\ttfamily \#include $<$fir\+\_\+filter.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_f_i_r_filter_a74231f691b8cb9a51eb159d324891a06}{F\+I\+R\+Filter} (const std\+::vector$<$ double $>$ \&weights, int oversample\+\_\+factor=1)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_f_i_r_filter_a00e4c24c3e9ee081cf69f5e7b38b743e}{$\sim$\+F\+I\+R\+Filter} ()
+\item 
+void \hyperlink{class_f_i_r_filter_a5f79d32e1ebec3ffc79f623fb4cd4061}{apply} (double $\ast$sig, const long len)
+\begin{DoxyCompactList}\small\item\em Filter application. \end{DoxyCompactList}\item 
+double \hyperlink{class_f_i_r_filter_a8c04ad8d144f3edbe769ae069cb54ecc}{step} (double x)
+\begin{DoxyCompactList}\small\item\em Filter single stepping. \end{DoxyCompactList}\item 
+void \hyperlink{class_f_i_r_filter_afa7d746246050f6af4e8958d46763a9f}{set\+\_\+weights} (const std\+::vector$<$ double $>$ \&new\+\_\+weights)
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_f_i_r_filter_ab15b9d936df370fbb4d3d3e84f08c27d}{get\+\_\+weights} ()
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_f_i_r_filter_ab3e87fa9bb550d3eb109227b8345a4ee}{get\+\_\+values} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_f_i_r_filter_a46bf99ae4424b44d144e7af652e93847}{weights\+\_\+}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_f_i_r_filter_ab3084e783d752a4595dc580b555c04e1}{delay\+\_\+chain\+\_\+}
+\item 
+int \hyperlink{class_f_i_r_filter_aeafbfb79d318c87385f37b906d214a2f}{oversample\+\_\+factor\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A F\+I\+R (finite impulse response) filter implementation, with optional over-\/sampling. 
+
+Definition at line 18 of file fir\+\_\+filter.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_f_i_r_filter_a74231f691b8cb9a51eb159d324891a06}{}\index{F\+I\+R\+Filter@{F\+I\+R\+Filter}!F\+I\+R\+Filter@{F\+I\+R\+Filter}}
+\index{F\+I\+R\+Filter@{F\+I\+R\+Filter}!F\+I\+R\+Filter@{F\+I\+R\+Filter}}
+\subsubsection[{F\+I\+R\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+R\+Filter\+::\+F\+I\+R\+Filter (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ double $>$ \&}]{weights, }
+\item[{int}]{oversample\+\_\+factor = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_f_i_r_filter_a74231f691b8cb9a51eb159d324891a06}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em weights} & A vector of doubles containing the desired filter tap weights. \\
+\hline
+{\em oversample\+\_\+factor} & An integer giving the number of signal vector elements per weight. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 19 of file fir\+\_\+filter.\+cpp.
+
+\hypertarget{class_f_i_r_filter_a00e4c24c3e9ee081cf69f5e7b38b743e}{}\index{F\+I\+R\+Filter@{F\+I\+R\+Filter}!````~F\+I\+R\+Filter@{$\sim$\+F\+I\+R\+Filter}}
+\index{````~F\+I\+R\+Filter@{$\sim$\+F\+I\+R\+Filter}!F\+I\+R\+Filter@{F\+I\+R\+Filter}}
+\subsubsection[{$\sim$\+F\+I\+R\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}virtual F\+I\+R\+Filter\+::$\sim$\+F\+I\+R\+Filter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{class_f_i_r_filter_a00e4c24c3e9ee081cf69f5e7b38b743e}
+
+
+Definition at line 21 of file fir\+\_\+filter.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_f_i_r_filter_a5f79d32e1ebec3ffc79f623fb4cd4061}{}\index{F\+I\+R\+Filter@{F\+I\+R\+Filter}!apply@{apply}}
+\index{apply@{apply}!F\+I\+R\+Filter@{F\+I\+R\+Filter}}
+\subsubsection[{apply}]{\setlength{\rightskip}{0pt plus 5cm}void F\+I\+R\+Filter\+::apply (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{sig, }
+\item[{const long}]{len}
+\end{DoxyParamCaption}
+)}\label{class_f_i_r_filter_a5f79d32e1ebec3ffc79f623fb4cd4061}
+
+
+Filter application. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sig} & A pointer to the vector of doubles to be processed, in place. \\
+\hline
+{\em len} & The number of samples to process. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 30 of file fir\+\_\+filter.\+cpp.
+
+\hypertarget{class_f_i_r_filter_ab3e87fa9bb550d3eb109227b8345a4ee}{}\index{F\+I\+R\+Filter@{F\+I\+R\+Filter}!get\+\_\+values@{get\+\_\+values}}
+\index{get\+\_\+values@{get\+\_\+values}!F\+I\+R\+Filter@{F\+I\+R\+Filter}}
+\subsubsection[{get\+\_\+values}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ double $>$ F\+I\+R\+Filter\+::get\+\_\+values (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_f_i_r_filter_ab3e87fa9bb550d3eb109227b8345a4ee}
+
+
+Definition at line 63 of file fir\+\_\+filter.\+cpp.
+
+\hypertarget{class_f_i_r_filter_ab15b9d936df370fbb4d3d3e84f08c27d}{}\index{F\+I\+R\+Filter@{F\+I\+R\+Filter}!get\+\_\+weights@{get\+\_\+weights}}
+\index{get\+\_\+weights@{get\+\_\+weights}!F\+I\+R\+Filter@{F\+I\+R\+Filter}}
+\subsubsection[{get\+\_\+weights}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ double $>$ F\+I\+R\+Filter\+::get\+\_\+weights (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_f_i_r_filter_ab15b9d936df370fbb4d3d3e84f08c27d}
+
+
+Definition at line 59 of file fir\+\_\+filter.\+cpp.
+
+\hypertarget{class_f_i_r_filter_afa7d746246050f6af4e8958d46763a9f}{}\index{F\+I\+R\+Filter@{F\+I\+R\+Filter}!set\+\_\+weights@{set\+\_\+weights}}
+\index{set\+\_\+weights@{set\+\_\+weights}!F\+I\+R\+Filter@{F\+I\+R\+Filter}}
+\subsubsection[{set\+\_\+weights}]{\setlength{\rightskip}{0pt plus 5cm}void F\+I\+R\+Filter\+::set\+\_\+weights (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ double $>$ \&}]{new\+\_\+weights}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_f_i_r_filter_afa7d746246050f6af4e8958d46763a9f}
+
+
+Definition at line 24 of file fir\+\_\+filter.\+h.
+
+\hypertarget{class_f_i_r_filter_a8c04ad8d144f3edbe769ae069cb54ecc}{}\index{F\+I\+R\+Filter@{F\+I\+R\+Filter}!step@{step}}
+\index{step@{step}!F\+I\+R\+Filter@{F\+I\+R\+Filter}}
+\subsubsection[{step}]{\setlength{\rightskip}{0pt plus 5cm}double F\+I\+R\+Filter\+::step (
+\begin{DoxyParamCaption}
+\item[{double}]{x}
+\end{DoxyParamCaption}
+)}\label{class_f_i_r_filter_a8c04ad8d144f3edbe769ae069cb54ecc}
+
+
+Filter single stepping. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The input value to use, when stepping the filter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The next output from the filter, after single stepping. 
+\end{DoxyReturn}
+
+
+Definition at line 54 of file fir\+\_\+filter.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_f_i_r_filter_ab3084e783d752a4595dc580b555c04e1}{}\index{F\+I\+R\+Filter@{F\+I\+R\+Filter}!delay\+\_\+chain\+\_\+@{delay\+\_\+chain\+\_\+}}
+\index{delay\+\_\+chain\+\_\+@{delay\+\_\+chain\+\_\+}!F\+I\+R\+Filter@{F\+I\+R\+Filter}}
+\subsubsection[{delay\+\_\+chain\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ F\+I\+R\+Filter\+::delay\+\_\+chain\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_f_i_r_filter_ab3084e783d752a4595dc580b555c04e1}
+
+
+Definition at line 29 of file fir\+\_\+filter.\+h.
+
+\hypertarget{class_f_i_r_filter_aeafbfb79d318c87385f37b906d214a2f}{}\index{F\+I\+R\+Filter@{F\+I\+R\+Filter}!oversample\+\_\+factor\+\_\+@{oversample\+\_\+factor\+\_\+}}
+\index{oversample\+\_\+factor\+\_\+@{oversample\+\_\+factor\+\_\+}!F\+I\+R\+Filter@{F\+I\+R\+Filter}}
+\subsubsection[{oversample\+\_\+factor\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int F\+I\+R\+Filter\+::oversample\+\_\+factor\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_f_i_r_filter_aeafbfb79d318c87385f37b906d214a2f}
+
+
+Definition at line 30 of file fir\+\_\+filter.\+h.
+
+\hypertarget{class_f_i_r_filter_a46bf99ae4424b44d144e7af652e93847}{}\index{F\+I\+R\+Filter@{F\+I\+R\+Filter}!weights\+\_\+@{weights\+\_\+}}
+\index{weights\+\_\+@{weights\+\_\+}!F\+I\+R\+Filter@{F\+I\+R\+Filter}}
+\subsubsection[{weights\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ F\+I\+R\+Filter\+::weights\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}\label{class_f_i_r_filter_a46bf99ae4424b44d144e7af652e93847}
+
+
+Definition at line 29 of file fir\+\_\+filter.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{fir__filter_8h}{fir\+\_\+filter.\+h}\item 
+src/\hyperlink{fir__filter_8cpp}{fir\+\_\+filter.\+cpp}\end{DoxyCompactItemize}

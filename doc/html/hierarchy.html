@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">ibisami
-   &#160;<span id="projectnumber">0.7</span>
+   &#160;<span id="projectnumber">0.8</span>
    </div>
    <div id="projectbrief">Public domain IBIS-AMI model creation infrastructure.</div>
   </td>
@@ -98,18 +98,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr id="row_1_0_0_"><td class="entry"><span style="width:48px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_my_rx.html" target="_self">MyRx</a></td><td class="desc">An example device specific Rx model implementation </td></tr>
 <tr id="row_1_1_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span id="arr_1_1_" class="arrow" onclick="toggleFolder('1_1_')">&#9660;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_ami_tx.html" target="_self">AmiTx</a></td><td class="desc">A generic IBIS-AMI Tx model implementation </td></tr>
 <tr id="row_1_1_0_"><td class="entry"><span style="width:48px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_my_tx.html" target="_self">MyTx</a></td><td class="desc">An example device specific Tx model implementation </td></tr>
-<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="struct_ami_pointers.html" target="_self">AmiPointers</a></td><td class="desc">Holds the pointers, which we pass back to the <a class="el" href="ibisami__api_8cpp.html#a2518d31187e06bed6023ec23657faab9">AMI_Init()</a> caller </td></tr>
-<tr id="row_3_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_digital_filter.html" target="_self">DigitalFilter</a></td><td class="desc">A generic digital filter implementation, using "Direct Form 2" processing </td></tr>
-<tr id="row_4_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structibisami_1_1_param_tree.html" target="_self">ibisami::ParamTree</a></td><td class="desc">The parameter tree definition </td></tr>
-<tr id="row_5_"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_5_" class="arrow" onclick="toggleFolder('5_')">&#9660;</span><span class="icona"><span class="icon">C</span></span><b>static_visitor</b></td><td class="desc"></td></tr>
-<tr id="row_5_0_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structibisami_1_1_node.html" target="_self">ibisami::Node</a></td><td class="desc">Used to access a <em>branch</em> node </td></tr>
-<tr id="row_5_1_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structibisami_1_1_value.html" target="_self">ibisami::Value</a></td><td class="desc">Used to access a <em>leaf</em> node </td></tr>
+<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="struct_ami_pointers.html" target="_self">AmiPointers</a></td><td class="desc">Holds the pointers, which we pass back to the <a class="el" href="ibisami__api_8cpp.html#a2518d31187e06bed6023ec23657faab9" title="IBIS-AMI model initialization and impulse response processing. (Required) ">AMI_Init()</a> caller </td></tr>
+<tr id="row_3_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_d_f_e.html" target="_self">DFE</a></td><td class="desc">A generic <a class="el" href="class_d_f_e.html" title="A generic DFE implementation. ">DFE</a> implementation </td></tr>
+<tr id="row_4_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_digital_filter.html" target="_self">DigitalFilter</a></td><td class="desc">A generic digital filter implementation, using "Direct Form 2" processing </td></tr>
+<tr id="row_5_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_f_i_r_filter.html" target="_self">FIRFilter</a></td><td class="desc">A FIR (finite impulse response) filter implementation, with optional over-sampling </td></tr>
+<tr id="row_6_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structibisami_1_1_param_tree.html" target="_self">ibisami::ParamTree</a></td><td class="desc">The parameter tree definition </td></tr>
+<tr id="row_7_"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_7_" class="arrow" onclick="toggleFolder('7_')">&#9660;</span><span class="icona"><span class="icon">C</span></span><b>static_visitor</b></td><td class="desc"></td></tr>
+<tr id="row_7_0_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structibisami_1_1_node.html" target="_self">ibisami::Node</a></td><td class="desc">Used to access a <em>branch</em> node </td></tr>
+<tr id="row_7_1_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structibisami_1_1_value.html" target="_self">ibisami::Value</a></td><td class="desc">Used to access a <em>leaf</em> node </td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 25 2015 15:10:30 for ibisami by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 1 2015 06:38:06 for ibisami by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value',['Value',['../structibisami_1_1_value.html',1,'ibisami']]]
+  ['paramtree',['ParamTree',['../structibisami_1_1_param_tree.html',1,'ibisami']]]
 ];

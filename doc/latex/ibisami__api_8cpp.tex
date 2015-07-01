@@ -22,9 +22,9 @@ struct \hyperlink{struct_ami_pointers}{Ami\+Pointers}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{ibisami__api_8cpp_a1ca888bd091694c05472e1b91df1a97b}{D\+L\+L\+\_\+\+E\+X\+P\+O\+R\+T} long \hyperlink{ibisami__api_8cpp_a2518d31187e06bed6023ec23657faab9}{A\+M\+I\+\_\+\+Init} (double $\ast$impulse\+\_\+matrix, long number\+\_\+of\+\_\+rows, long aggressors, double sample\+\_\+interval, double bit\+\_\+time, char $\ast$A\+M\+I\+\_\+parameters\+\_\+in, char $\ast$$\ast$A\+M\+I\+\_\+parameters\+\_\+out, void $\ast$$\ast$A\+M\+I\+\_\+memory\+\_\+handle, char $\ast$$\ast$msg)
-\item 
+\begin{DoxyCompactList}\small\item\em I\+B\+I\+S-\/\+A\+M\+I model initialization and impulse response processing. (Required) \end{DoxyCompactList}\item 
 \hyperlink{ibisami__api_8cpp_a1ca888bd091694c05472e1b91df1a97b}{D\+L\+L\+\_\+\+E\+X\+P\+O\+R\+T} long \hyperlink{ibisami__api_8cpp_a5290351461f5a1fdf0e8cf061b306b2a}{A\+M\+I\+\_\+\+Close} (void $\ast$A\+M\+I\+\_\+memory)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Clean-\/up. (Required) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -64,7 +64,19 @@ Definition at line 37 of file ibisami\+\_\+api.\+cpp.
 )}\label{ibisami__api_8cpp_a5290351461f5a1fdf0e8cf061b306b2a}
 
 
-Definition at line 117 of file ibisami\+\_\+api.\+cpp.
+Clean-\/up. (Required) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A\+M\+I\+\_\+memory} & A pointer to the model memory structure. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\textquotesingle{}1\textquotesingle{} 
+\end{DoxyReturn}
+
+
+Definition at line 133 of file ibisami\+\_\+api.\+cpp.
 
 \hypertarget{ibisami__api_8cpp_a2518d31187e06bed6023ec23657faab9}{}\index{ibisami\+\_\+api.\+cpp@{ibisami\+\_\+api.\+cpp}!A\+M\+I\+\_\+\+Init@{A\+M\+I\+\_\+\+Init}}
 \index{A\+M\+I\+\_\+\+Init@{A\+M\+I\+\_\+\+Init}!ibisami\+\_\+api.\+cpp@{ibisami\+\_\+api.\+cpp}}
@@ -83,7 +95,35 @@ Definition at line 117 of file ibisami\+\_\+api.\+cpp.
 )}\label{ibisami__api_8cpp_a2518d31187e06bed6023ec23657faab9}
 
 
-Definition at line 41 of file ibisami\+\_\+api.\+cpp.
+I\+B\+I\+S-\/\+A\+M\+I model initialization and impulse response processing. (Required) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em impulse\+\_\+matrix} & A matrix of doubles containing, at least, the impulse response to be processed (i.\+e. -\/ the victim), in place. \\
+\hline
+{\em number\+\_\+of\+\_\+rows} & The length of all impulse responses provided (victim and aggressors). \\
+\hline
+{\em aggressors} & The number of aggressors included in impulse\+\_\+matrix. \\
+\hline
+{\em sample\+\_\+interval} & The time interval between adjacent elements of the vectors contained in impulse\+\_\+matrix. \\
+\hline
+{\em bit\+\_\+time} & The unit interval. \\
+\hline
+{\em A\+M\+I\+\_\+parameters\+\_\+in} & A pointer to a char array containing the input A\+M\+I parameter string. \\
+\hline
+{\em A\+M\+I\+\_\+parameters\+\_\+out} & A handle to be updated with the pointer to the output A\+M\+I parameter string. \\
+\hline
+{\em A\+M\+I\+\_\+memory\+\_\+handle} & A handle to be updated with the pointer to the model memory structure. \\
+\hline
+{\em msg} & A handle to be updated with the pointer to the message being returned by the model. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\textquotesingle{}1\textquotesingle{} for success, \textquotesingle{}0\textquotesingle{} for failure. 
+\end{DoxyReturn}
+
+
+Definition at line 53 of file ibisami\+\_\+api.\+cpp.
 
 
 
@@ -97,5 +137,5 @@ Defined in our device-\/specific source code file.
 
 Defined in our device-\/specific source code file. 
 
-Definition at line 75 of file example\+\_\+rx.\+cpp.
+Definition at line 144 of file example\+\_\+rx.\+cpp.
 

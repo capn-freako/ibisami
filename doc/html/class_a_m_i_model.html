@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">ibisami
-   &#160;<span id="projectnumber">0.7</span>
+   &#160;<span id="projectnumber">0.8</span>
    </div>
    <div id="projectbrief">Public domain IBIS-AMI model creation infrastructure.</div>
   </td>
@@ -121,8 +121,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a8f45652e216686d0efa8db7e9dc0e915"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the model.  <a href="#a8f45652e216686d0efa8db7e9dc0e915">More...</a><br /></td></tr>
 <tr class="separator:a8f45652e216686d0efa8db7e9dc0e915"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52d1f23607e7f12fa1ab61d809231c11"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#a52d1f23607e7f12fa1ab61d809231c11">proc_imp</a> ()=0</td></tr>
-<tr class="memdesc:a52d1f23607e7f12fa1ab61d809231c11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process the incoming impulse response.  <a href="#a52d1f23607e7f12fa1ab61d809231c11">More...</a><br /></td></tr>
+<tr class="memdesc:a52d1f23607e7f12fa1ab61d809231c11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process an incoming impulse response.  <a href="#a52d1f23607e7f12fa1ab61d809231c11">More...</a><br /></td></tr>
 <tr class="separator:a52d1f23607e7f12fa1ab61d809231c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb1d05835230a1b0e8f6b98002d8f4ef"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#abb1d05835230a1b0e8f6b98002d8f4ef">proc_sig</a> (double *sig, long len, double *clock_times)=0</td></tr>
+<tr class="memdesc:abb1d05835230a1b0e8f6b98002d8f4ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process a signal.  <a href="#abb1d05835230a1b0e8f6b98002d8f4ef">More...</a><br /></td></tr>
+<tr class="separator:abb1d05835230a1b0e8f6b98002d8f4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae65d47400fd3736682c229dab31392ad"><td class="memItemLeft" align="right" valign="top">std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#ae65d47400fd3736682c229dab31392ad">msg</a> ()</td></tr>
 <tr class="memdesc:ae65d47400fd3736682c229dab31392ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the model message.  <a href="#ae65d47400fd3736682c229dab31392ad">More...</a><br /></td></tr>
 <tr class="separator:ae65d47400fd3736682c229dab31392ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,6 +147,9 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a2c2413b8658ec23c211cb993dc680fae"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#a2c2413b8658ec23c211cb993dc680fae">get_param_float</a> (const std::vector&lt; std::string &gt; &amp;node_names, double default_val) const </td></tr>
 <tr class="memdesc:a2c2413b8658ec23c211cb993dc680fae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the value of a floating point parameter.  <a href="#a2c2413b8658ec23c211cb993dc680fae">More...</a><br /></td></tr>
 <tr class="separator:a2c2413b8658ec23c211cb993dc680fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a12d71ed89870b9d6d07fc1370b3c85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#a1a12d71ed89870b9d6d07fc1370b3c85">gen_data</a> (double *res_vec)</td></tr>
+<tr class="memdesc:a1a12d71ed89870b9d6d07fc1370b3c85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate random binary oversampled data.  <a href="#a1a12d71ed89870b9d6d07fc1370b3c85">More...</a><br /></td></tr>
+<tr class="separator:a1a12d71ed89870b9d6d07fc1370b3c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e8cbd58a09b712dcf76a12f439bce30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#a1e8cbd58a09b712dcf76a12f439bce30">log</a> (std::string <a class="el" href="class_a_m_i_model.html#ae65d47400fd3736682c229dab31392ad">msg</a>)</td></tr>
 <tr class="separator:a1e8cbd58a09b712dcf76a12f439bce30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -161,21 +167,29 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:ad0b6751b3b3a69fb8951fde0fcdf4f27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26c35bff12c048655bdbd8663a2f0f58"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#a26c35bff12c048655bdbd8663a2f0f58">impulse_matrix_</a></td></tr>
 <tr class="separator:a26c35bff12c048655bdbd8663a2f0f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9cacd5650a194a6f08552f2748bab7a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#aa9cacd5650a194a6f08552f2748bab7a">gen_data_last_</a></td></tr>
+<tr class="separator:aa9cacd5650a194a6f08552f2748bab7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaaf94b76a519e60318e1874bb190e9a8"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#aaaf94b76a519e60318e1874bb190e9a8">number_of_rows_</a></td></tr>
 <tr class="separator:aaaf94b76a519e60318e1874bb190e9a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab3a042b2459b4b838cb61bf92a50d03"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#aab3a042b2459b4b838cb61bf92a50d03">aggressors_</a></td></tr>
 <tr class="separator:aab3a042b2459b4b838cb61bf92a50d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac664a9c24d4fdc43ab15df7023ab04bc"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#ac664a9c24d4fdc43ab15df7023ab04bc">samples_per_bit_</a></td></tr>
+<tr class="separator:ac664a9c24d4fdc43ab15df7023ab04bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8680b8371b9c476d046ff87d843fbe9"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#ad8680b8371b9c476d046ff87d843fbe9">gen_data_cnt_</a></td></tr>
+<tr class="separator:ad8680b8371b9c476d046ff87d843fbe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4da53456e13a1224f2bb47396ab0ecbd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structibisami_1_1_param_tree.html">ibisami::ParamTree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#a4da53456e13a1224f2bb47396ab0ecbd">param_tree_</a></td></tr>
 <tr class="separator:a4da53456e13a1224f2bb47396ab0ecbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b1c44767e4e81c4dfcff9bc23907b6c"><td class="memItemLeft" align="right" valign="top">std::ofstream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#a9b1c44767e4e81c4dfcff9bc23907b6c">clog_</a></td></tr>
 <tr class="separator:a9b1c44767e4e81c4dfcff9bc23907b6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae701c08f6c4b0d962df4a2f2dcb6196b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#ae701c08f6c4b0d962df4a2f2dcb6196b">log_</a></td></tr>
 <tr class="separator:ae701c08f6c4b0d962df4a2f2dcb6196b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68e4cdd12afbc4eb60dbefa4cce82a61"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#a68e4cdd12afbc4eb60dbefa4cce82a61">shift_reg_</a> [<a class="el" href="amimodel_8h.html#ab851168a21246c759c23a126c192360f">PRBS_LEN</a>]</td></tr>
+<tr class="separator:a68e4cdd12afbc4eb60dbefa4cce82a61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract class providing the base functionality required by all IBIS-AMI models. </p>
 
-<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00119">119</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00121">121</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a6c266bc8306cef0ed802c49c8847e8fc"></a>
 <div class="memitem">
@@ -198,11 +212,46 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00121">121</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00123">123</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a1a12d71ed89870b9d6d07fc1370b3c85"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AMIModel::gen_data </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>res_vec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generate random binary oversampled data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">res_vec</td><td>A pointer to an array of doubles to be overwritten. (It is assumed that, at least, number_of_rows_ elements have been allocated.)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The default implementation uses PRBS-7, [7,6]. </p>
+
+<p>Definition at line <a class="el" href="amimodel_8cpp_source.html#l00193">193</a> of file <a class="el" href="amimodel_8cpp_source.html">amimodel.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a62437e97ce61c76f4b9af78144385416"></a>
 <div class="memitem">
 <div class="memproto">
@@ -235,7 +284,7 @@ Protected Attributes</h2></td></tr>
 <li>empty string, otherwise. </li>
 </ul>
 
-<p>Definition at line <a class="el" href="amimodel_8cpp_source.html#l00138">138</a> of file <a class="el" href="amimodel_8cpp_source.html">amimodel.cpp</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8cpp_source.html#l00151">151</a> of file <a class="el" href="amimodel_8cpp_source.html">amimodel.cpp</a>.</p>
 
 </div>
 </div>
@@ -285,7 +334,7 @@ Protected Attributes</h2></td></tr>
 <li>std::runtime_error, if the parameter was found and a double could not be scanned from its value string. </li>
 </ul>
 
-<p>Definition at line <a class="el" href="amimodel_8cpp_source.html#l00106">106</a> of file <a class="el" href="amimodel_8cpp_source.html">amimodel.cpp</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8cpp_source.html#l00119">119</a> of file <a class="el" href="amimodel_8cpp_source.html">amimodel.cpp</a>.</p>
 
 </div>
 </div>
@@ -335,7 +384,7 @@ Protected Attributes</h2></td></tr>
 <li>std::runtime_error, if the parameter was found and an integer could not be scanned from its value string. </li>
 </ul>
 
-<p>Definition at line <a class="el" href="amimodel_8cpp_source.html#l00067">67</a> of file <a class="el" href="amimodel_8cpp_source.html">amimodel.cpp</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8cpp_source.html#l00080">80</a> of file <a class="el" href="amimodel_8cpp_source.html">amimodel.cpp</a>.</p>
 
 </div>
 </div>
@@ -396,10 +445,11 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Initialize the model. </p>
+<p>(See <a class="el" href="ibisami__api_8cpp.html#a2518d31187e06bed6023ec23657faab9" title="IBIS-AMI model initialization and impulse response processing. (Required) ">AMI_Init()</a> for parameter descriptions.) </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="ibisami__api_8cpp.html#a2518d31187e06bed6023ec23657faab9" title="IBIS-AMI model initialization and impulse response processing. (Required) ">AMI_Init()</a> </dd></dl>
 
-<p>Reimplemented in <a class="el" href="class_my_rx.html#a3e517d6be1e6a475bd97ae75b2bd0afc">MyRx</a>, and <a class="el" href="class_my_tx.html#a4166bdab63c2366409998b2e606f55d2">MyTx</a>.</p>
+<p>Reimplemented in <a class="el" href="class_my_rx.html#a3e517d6be1e6a475bd97ae75b2bd0afc">MyRx</a>, <a class="el" href="class_ami_rx.html#afb9c0d0efb4722c09529a05e3fb2b263">AmiRx</a>, and <a class="el" href="class_my_tx.html#a4166bdab63c2366409998b2e606f55d2">MyTx</a>.</p>
 
-<p>Definition at line <a class="el" href="amimodel_8cpp_source.html#l00016">16</a> of file <a class="el" href="amimodel_8cpp_source.html">amimodel.cpp</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8cpp_source.html#l00020">20</a> of file <a class="el" href="amimodel_8cpp_source.html">amimodel.cpp</a>.</p>
 
 </div>
 </div>
@@ -425,7 +475,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00134">134</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00168">168</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
 
 </div>
 </div>
@@ -452,7 +502,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Retrieve the model message. </p>
 
-<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00126">126</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00159">159</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
 
 </div>
 </div>
@@ -479,7 +529,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Retrieve the model parameter string. </p>
 
-<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00127">127</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00160">160</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
 
 </div>
 </div>
@@ -507,7 +557,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Parse the incoming AMI parameter string. </p>
 
-<p>Definition at line <a class="el" href="amimodel_8cpp_source.html#l00033">33</a> of file <a class="el" href="amimodel_8cpp_source.html">amimodel.cpp</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8cpp_source.html#l00046">46</a> of file <a class="el" href="amimodel_8cpp_source.html">amimodel.cpp</a>.</p>
 
 </div>
 </div>
@@ -532,9 +582,65 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Process the incoming impulse response. </p>
+<p>Process an incoming impulse response. </p>
+<p>This function takes no arguments and returns nothing. It processes the array of doubles sent into <a class="el" href="class_a_m_i_model.html#a8f45652e216686d0efa8db7e9dc0e915" title="Initialize the model. ">init()</a>, in place. The model already contains everything it needs to do this, via the <a class="el" href="class_a_m_i_model.html#a8f45652e216686d0efa8db7e9dc0e915" title="Initialize the model. ">init()</a> call. The only reason this function isn't absorped into <a class="el" href="class_a_m_i_model.html#a8f45652e216686d0efa8db7e9dc0e915" title="Initialize the model. ">init()</a> is to allow derived classes to add to the <a class="el" href="class_a_m_i_model.html#a8f45652e216686d0efa8db7e9dc0e915" title="Initialize the model. ">init()</a> functionality, before the impulse response is processed. </p>
 
 <p>Implemented in <a class="el" href="class_ami_rx.html#a74a1a6c1ac9a46634cb0d0ab56b83c4e">AmiRx</a>, and <a class="el" href="class_ami_tx.html#a94649674c8e8442c1d5434d509165594">AmiTx</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abb1d05835230a1b0e8f6b98002d8f4ef"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool AMIModel::proc_sig </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>sig</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>clock_times</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Process a signal. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sig</td><td>A pointer to the array of doubles to be processed. </td></tr>
+    <tr><td class="paramname">len</td><td>The number of samples to process. </td></tr>
+    <tr><td class="paramname">clock_times</td><td>A pointer to the array of doubles used for storing the clock times. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A Boolean flag, which is true if the model reached steady state, regarding any adaptation.</dd></dl>
+<p>As per the IBIS standard, the user is allowed to presume that there has been enough storage allocated for clock_times, given the value of sig_len, sample_interval, and bit_time.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_a_m_i_model.html#a8f45652e216686d0efa8db7e9dc0e915" title="Initialize the model. ">init()</a> </dd></dl>
+
+<p>Implemented in <a class="el" href="class_ami_rx.html#aac00499d02f5e4a3f2ddce49c5b1599f">AmiRx</a>, and <a class="el" href="class_ami_tx.html#a8f326f6dfa875c00800491ff2104f248">AmiTx</a>.</p>
 
 </div>
 </div>
@@ -557,7 +663,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00138">138</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00172">172</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
 
 </div>
 </div>
@@ -579,7 +685,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00137">137</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00171">171</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
 
 </div>
 </div>
@@ -601,7 +707,51 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00140">140</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00175">175</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad8680b8371b9c476d046ff87d843fbe9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long AMIModel::gen_data_cnt_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00173">173</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa9cacd5650a194a6f08552f2748bab7a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double AMIModel::gen_data_last_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00171">171</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
 
 </div>
 </div>
@@ -623,7 +773,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00137">137</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00171">171</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
 
 </div>
 </div>
@@ -645,7 +795,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00141">141</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00176">176</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
 
 </div>
 </div>
@@ -667,7 +817,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00136">136</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00170">170</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
 
 </div>
 </div>
@@ -689,7 +839,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00136">136</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00170">170</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
 
 </div>
 </div>
@@ -711,7 +861,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00138">138</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00172">172</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
 
 </div>
 </div>
@@ -733,7 +883,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00136">136</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00170">170</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
 
 </div>
 </div>
@@ -755,7 +905,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00139">139</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00174">174</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
 
 </div>
 </div>
@@ -777,7 +927,51 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00137">137</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00171">171</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac664a9c24d4fdc43ab15df7023ab04bc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long AMIModel::samples_per_bit_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00172">172</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a68e4cdd12afbc4eb60dbefa4cce82a61"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AMIModel::shift_reg_[<a class="el" href="amimodel_8h.html#ab851168a21246c759c23a126c192360f">PRBS_LEN</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="amimodel_8h_source.html#l00177">177</a> of file <a class="el" href="amimodel_8h_source.html">amimodel.h</a>.</p>
 
 </div>
 </div>
@@ -788,7 +982,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 25 2015 15:10:30 for ibisami by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 1 2015 06:38:06 for ibisami by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

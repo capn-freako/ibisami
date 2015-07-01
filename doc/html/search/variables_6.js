@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['have_5fctle_5f',['have_ctle_',['../class_ami_rx.html#ae2840175da78615711e175b9f5019087',1,'AmiRx']]],
-  ['have_5fpreemph_5f',['have_preemph_',['../class_ami_tx.html#a8e07817524a3626aaa432bcbe7cad30f',1,'AmiTx']]]
+  ['gdllname',['gDLLName',['../namespacetest.html#a80f837d5da2fad005c3ba8151a77ff62',1,'test']]],
+  ['gen_5fdata_5fcnt_5f',['gen_data_cnt_',['../class_a_m_i_model.html#ad8680b8371b9c476d046ff87d843fbe9',1,'AMIModel']]],
+  ['gen_5fdata_5flast_5f',['gen_data_last_',['../class_a_m_i_model.html#aa9cacd5650a194a6f08552f2748bab7a',1,'AMIModel']]]
 ];

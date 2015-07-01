@@ -21,7 +21,9 @@ Inheritance diagram for Ami\+Tx\+:\begin{figure}[H]
 virtual \hyperlink{class_ami_tx_a0a30ee85116e1f2ba7c4a8876c0b7b8e}{$\sim$\+Ami\+Tx} ()
 \item 
 void \hyperlink{class_ami_tx_a94649674c8e8442c1d5434d509165594}{proc\+\_\+imp} () override
-\begin{DoxyCompactList}\small\item\em Process the channel impulse response. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Process the channel impulse response. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ami_tx_a8f326f6dfa875c00800491ff2104f248}{proc\+\_\+sig} (double $\ast$sig, long len, double $\ast$clock\+\_\+times) override
+\begin{DoxyCompactList}\small\item\em Process a signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -79,6 +81,44 @@ Implements \hyperlink{class_a_m_i_model_a52d1f23607e7f12fa1ab61d809231c11}{A\+M\
 
 Definition at line 14 of file ami\+\_\+tx.\+cpp.
 
+\hypertarget{class_ami_tx_a8f326f6dfa875c00800491ff2104f248}{}\index{Ami\+Tx@{Ami\+Tx}!proc\+\_\+sig@{proc\+\_\+sig}}
+\index{proc\+\_\+sig@{proc\+\_\+sig}!Ami\+Tx@{Ami\+Tx}}
+\subsubsection[{proc\+\_\+sig}]{\setlength{\rightskip}{0pt plus 5cm}bool Ami\+Tx\+::proc\+\_\+sig (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{sig, }
+\item[{long}]{len, }
+\item[{double $\ast$}]{clock\+\_\+times}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\label{class_ami_tx_a8f326f6dfa875c00800491ff2104f248}
+
+
+Process a signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sig} & A pointer to the array of doubles to be processed. \\
+\hline
+{\em len} & The number of samples to process. \\
+\hline
+{\em clock\+\_\+times} & A pointer to the array of doubles used for storing the clock times. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Boolean flag, which is true if the model reached steady state, regarding any adaptation.
+\end{DoxyReturn}
+As per the I\+B\+I\+S standard, the user is allowed to presume that there has been enough storage allocated for clock\+\_\+times, given the value of sig\+\_\+len, sample\+\_\+interval, and bit\+\_\+time.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_a_m_i_model_a8f45652e216686d0efa8db7e9dc0e915}{init()} 
+\end{DoxySeeAlso}
+
+
+Implements \hyperlink{class_a_m_i_model_abb1d05835230a1b0e8f6b98002d8f4ef}{A\+M\+I\+Model}.
+
+
+
+Definition at line 30 of file ami\+\_\+tx.\+cpp.
+
 
 
 \subsection{Member Data Documentation}
@@ -91,7 +131,7 @@ Used for pre-\/emphasis.
 
 
 
-Definition at line 30 of file ami\+\_\+tx.\+h.
+Definition at line 31 of file ami\+\_\+tx.\+h.
 
 \hypertarget{class_ami_tx_a8e07817524a3626aaa432bcbe7cad30f}{}\index{Ami\+Tx@{Ami\+Tx}!have\+\_\+preemph\+\_\+@{have\+\_\+preemph\+\_\+}}
 \index{have\+\_\+preemph\+\_\+@{have\+\_\+preemph\+\_\+}!Ami\+Tx@{Ami\+Tx}}
@@ -102,7 +142,7 @@ True, if I have a pre-\/emphasis filter.
 
 
 
-Definition at line 31 of file ami\+\_\+tx.\+h.
+Definition at line 32 of file ami\+\_\+tx.\+h.
 
 \hypertarget{class_ami_tx_a166891685483a94632bbcd4e2afebf88}{}\index{Ami\+Tx@{Ami\+Tx}!num\+\_\+taps\+\_\+@{num\+\_\+taps\+\_\+}}
 \index{num\+\_\+taps\+\_\+@{num\+\_\+taps\+\_\+}!Ami\+Tx@{Ami\+Tx}}
@@ -113,7 +153,7 @@ Number of taps in my pre-\/emphasis filter.
 
 
 
-Definition at line 32 of file ami\+\_\+tx.\+h.
+Definition at line 33 of file ami\+\_\+tx.\+h.
 
 \hypertarget{class_ami_tx_ab4878fcf087a793ca120ab1e30cabed5}{}\index{Ami\+Tx@{Ami\+Tx}!tap\+\_\+weights\+\_\+@{tap\+\_\+weights\+\_\+}}
 \index{tap\+\_\+weights\+\_\+@{tap\+\_\+weights\+\_\+}!Ami\+Tx@{Ami\+Tx}}
@@ -124,7 +164,7 @@ Tap weights for pre-\/emphasis filter.
 
 
 
-Definition at line 33 of file ami\+\_\+tx.\+h.
+Definition at line 34 of file ami\+\_\+tx.\+h.
 
 
 

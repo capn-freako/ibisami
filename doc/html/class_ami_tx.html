@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">ibisami
-   &#160;<span id="projectnumber">0.7</span>
+   &#160;<span id="projectnumber">0.8</span>
    </div>
    <div id="projectbrief">Public domain IBIS-AMI model creation infrastructure.</div>
   </td>
@@ -117,6 +117,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a94649674c8e8442c1d5434d509165594"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ami_tx.html#a94649674c8e8442c1d5434d509165594">proc_imp</a> () override</td></tr>
 <tr class="memdesc:a94649674c8e8442c1d5434d509165594"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process the channel impulse response.  <a href="#a94649674c8e8442c1d5434d509165594">More...</a><br /></td></tr>
 <tr class="separator:a94649674c8e8442c1d5434d509165594"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f326f6dfa875c00800491ff2104f248"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ami_tx.html#a8f326f6dfa875c00800491ff2104f248">proc_sig</a> (double *sig, long len, double *clock_times) override</td></tr>
+<tr class="memdesc:a8f326f6dfa875c00800491ff2104f248"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process a signal.  <a href="#a8f326f6dfa875c00800491ff2104f248">More...</a><br /></td></tr>
+<tr class="separator:a8f326f6dfa875c00800491ff2104f248"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_a_m_i_model"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_a_m_i_model')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_a_m_i_model.html">AMIModel</a></td></tr>
 <tr class="memitem:a6c266bc8306cef0ed802c49c8847e8fc inherit pub_methods_class_a_m_i_model"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#a6c266bc8306cef0ed802c49c8847e8fc">~AMIModel</a> ()</td></tr>
 <tr class="separator:a6c266bc8306cef0ed802c49c8847e8fc inherit pub_methods_class_a_m_i_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,16 +160,24 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:ad0b6751b3b3a69fb8951fde0fcdf4f27 inherit pro_attribs_class_a_m_i_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26c35bff12c048655bdbd8663a2f0f58 inherit pro_attribs_class_a_m_i_model"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#a26c35bff12c048655bdbd8663a2f0f58">impulse_matrix_</a></td></tr>
 <tr class="separator:a26c35bff12c048655bdbd8663a2f0f58 inherit pro_attribs_class_a_m_i_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9cacd5650a194a6f08552f2748bab7a inherit pro_attribs_class_a_m_i_model"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#aa9cacd5650a194a6f08552f2748bab7a">gen_data_last_</a></td></tr>
+<tr class="separator:aa9cacd5650a194a6f08552f2748bab7a inherit pro_attribs_class_a_m_i_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaaf94b76a519e60318e1874bb190e9a8 inherit pro_attribs_class_a_m_i_model"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#aaaf94b76a519e60318e1874bb190e9a8">number_of_rows_</a></td></tr>
 <tr class="separator:aaaf94b76a519e60318e1874bb190e9a8 inherit pro_attribs_class_a_m_i_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab3a042b2459b4b838cb61bf92a50d03 inherit pro_attribs_class_a_m_i_model"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#aab3a042b2459b4b838cb61bf92a50d03">aggressors_</a></td></tr>
 <tr class="separator:aab3a042b2459b4b838cb61bf92a50d03 inherit pro_attribs_class_a_m_i_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac664a9c24d4fdc43ab15df7023ab04bc inherit pro_attribs_class_a_m_i_model"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#ac664a9c24d4fdc43ab15df7023ab04bc">samples_per_bit_</a></td></tr>
+<tr class="separator:ac664a9c24d4fdc43ab15df7023ab04bc inherit pro_attribs_class_a_m_i_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8680b8371b9c476d046ff87d843fbe9 inherit pro_attribs_class_a_m_i_model"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#ad8680b8371b9c476d046ff87d843fbe9">gen_data_cnt_</a></td></tr>
+<tr class="separator:ad8680b8371b9c476d046ff87d843fbe9 inherit pro_attribs_class_a_m_i_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4da53456e13a1224f2bb47396ab0ecbd inherit pro_attribs_class_a_m_i_model"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structibisami_1_1_param_tree.html">ibisami::ParamTree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#a4da53456e13a1224f2bb47396ab0ecbd">param_tree_</a></td></tr>
 <tr class="separator:a4da53456e13a1224f2bb47396ab0ecbd inherit pro_attribs_class_a_m_i_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b1c44767e4e81c4dfcff9bc23907b6c inherit pro_attribs_class_a_m_i_model"><td class="memItemLeft" align="right" valign="top">std::ofstream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#a9b1c44767e4e81c4dfcff9bc23907b6c">clog_</a></td></tr>
 <tr class="separator:a9b1c44767e4e81c4dfcff9bc23907b6c inherit pro_attribs_class_a_m_i_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae701c08f6c4b0d962df4a2f2dcb6196b inherit pro_attribs_class_a_m_i_model"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#ae701c08f6c4b0d962df4a2f2dcb6196b">log_</a></td></tr>
 <tr class="separator:ae701c08f6c4b0d962df4a2f2dcb6196b inherit pro_attribs_class_a_m_i_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68e4cdd12afbc4eb60dbefa4cce82a61 inherit pro_attribs_class_a_m_i_model"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#a68e4cdd12afbc4eb60dbefa4cce82a61">shift_reg_</a> [<a class="el" href="amimodel_8h.html#ab851168a21246c759c23a126c192360f">PRBS_LEN</a>]</td></tr>
+<tr class="separator:a68e4cdd12afbc4eb60dbefa4cce82a61 inherit pro_attribs_class_a_m_i_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -183,6 +194,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a2c2413b8658ec23c211cb993dc680fae inherit pro_methods_class_a_m_i_model"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#a2c2413b8658ec23c211cb993dc680fae">get_param_float</a> (const std::vector&lt; std::string &gt; &amp;node_names, double default_val) const </td></tr>
 <tr class="memdesc:a2c2413b8658ec23c211cb993dc680fae inherit pro_methods_class_a_m_i_model"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the value of a floating point parameter.  <a href="#a2c2413b8658ec23c211cb993dc680fae">More...</a><br /></td></tr>
 <tr class="separator:a2c2413b8658ec23c211cb993dc680fae inherit pro_methods_class_a_m_i_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a12d71ed89870b9d6d07fc1370b3c85 inherit pro_methods_class_a_m_i_model"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#a1a12d71ed89870b9d6d07fc1370b3c85">gen_data</a> (double *res_vec)</td></tr>
+<tr class="memdesc:a1a12d71ed89870b9d6d07fc1370b3c85 inherit pro_methods_class_a_m_i_model"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate random binary oversampled data.  <a href="#a1a12d71ed89870b9d6d07fc1370b3c85">More...</a><br /></td></tr>
+<tr class="separator:a1a12d71ed89870b9d6d07fc1370b3c85 inherit pro_methods_class_a_m_i_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e8cbd58a09b712dcf76a12f439bce30 inherit pro_methods_class_a_m_i_model"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_m_i_model.html#a1e8cbd58a09b712dcf76a12f439bce30">log</a> (std::string <a class="el" href="class_a_m_i_model.html#ae65d47400fd3736682c229dab31392ad">msg</a>)</td></tr>
 <tr class="separator:a1e8cbd58a09b712dcf76a12f439bce30 inherit pro_methods_class_a_m_i_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -247,6 +261,63 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a8f326f6dfa875c00800491ff2104f248"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AmiTx::proc_sig </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>sig</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>clock_times</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Process a signal. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sig</td><td>A pointer to the array of doubles to be processed. </td></tr>
+    <tr><td class="paramname">len</td><td>The number of samples to process. </td></tr>
+    <tr><td class="paramname">clock_times</td><td>A pointer to the array of doubles used for storing the clock times. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A Boolean flag, which is true if the model reached steady state, regarding any adaptation.</dd></dl>
+<p>As per the IBIS standard, the user is allowed to presume that there has been enough storage allocated for clock_times, given the value of sig_len, sample_interval, and bit_time.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_a_m_i_model.html#a8f45652e216686d0efa8db7e9dc0e915" title="Initialize the model. ">init()</a> </dd></dl>
+
+<p>Implements <a class="el" href="class_a_m_i_model.html#abb1d05835230a1b0e8f6b98002d8f4ef">AMIModel</a>.</p>
+
+<p>Definition at line <a class="el" href="ami__tx_8cpp_source.html#l00030">30</a> of file <a class="el" href="ami__tx_8cpp_source.html">ami_tx.cpp</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="a1eb407f2a0aa1010c5d381c172f8425d"></a>
 <div class="memitem">
@@ -268,7 +339,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Used for pre-emphasis. </p>
 
-<p>Definition at line <a class="el" href="ami__tx_8h_source.html#l00030">30</a> of file <a class="el" href="ami__tx_8h_source.html">ami_tx.h</a>.</p>
+<p>Definition at line <a class="el" href="ami__tx_8h_source.html#l00031">31</a> of file <a class="el" href="ami__tx_8h_source.html">ami_tx.h</a>.</p>
 
 </div>
 </div>
@@ -292,7 +363,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>True, if I have a pre-emphasis filter. </p>
 
-<p>Definition at line <a class="el" href="ami__tx_8h_source.html#l00031">31</a> of file <a class="el" href="ami__tx_8h_source.html">ami_tx.h</a>.</p>
+<p>Definition at line <a class="el" href="ami__tx_8h_source.html#l00032">32</a> of file <a class="el" href="ami__tx_8h_source.html">ami_tx.h</a>.</p>
 
 </div>
 </div>
@@ -316,7 +387,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Number of taps in my pre-emphasis filter. </p>
 
-<p>Definition at line <a class="el" href="ami__tx_8h_source.html#l00032">32</a> of file <a class="el" href="ami__tx_8h_source.html">ami_tx.h</a>.</p>
+<p>Definition at line <a class="el" href="ami__tx_8h_source.html#l00033">33</a> of file <a class="el" href="ami__tx_8h_source.html">ami_tx.h</a>.</p>
 
 </div>
 </div>
@@ -340,7 +411,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Tap weights for pre-emphasis filter. </p>
 
-<p>Definition at line <a class="el" href="ami__tx_8h_source.html#l00033">33</a> of file <a class="el" href="ami__tx_8h_source.html">ami_tx.h</a>.</p>
+<p>Definition at line <a class="el" href="ami__tx_8h_source.html#l00034">34</a> of file <a class="el" href="ami__tx_8h_source.html">ami_tx.h</a>.</p>
 
 </div>
 </div>
@@ -351,7 +422,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 25 2015 15:10:30 for ibisami by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 1 2015 06:38:06 for ibisami by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

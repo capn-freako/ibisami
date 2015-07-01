@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">ibisami
-   &#160;<span id="projectnumber">0.7</span>
+   &#160;<span id="projectnumber">0.8</span>
    </div>
    <div id="projectbrief">Public domain IBIS-AMI model creation infrastructure.</div>
   </td>
@@ -109,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_ami_pointers.html">AmiPointers</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds the pointers, which we pass back to the <a class="el" href="ibisami__api_8cpp.html#a2518d31187e06bed6023ec23657faab9">AMI_Init()</a> caller.  <a href="struct_ami_pointers.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds the pointers, which we pass back to the <a class="el" href="ibisami__api_8cpp.html#a2518d31187e06bed6023ec23657faab9" title="IBIS-AMI model initialization and impulse response processing. (Required) ">AMI_Init()</a> caller.  <a href="struct_ami_pointers.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -120,8 +120,10 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a2518d31187e06bed6023ec23657faab9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ibisami__api_8cpp.html#a1ca888bd091694c05472e1b91df1a97b">DLL_EXPORT</a> long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ibisami__api_8cpp.html#a2518d31187e06bed6023ec23657faab9">AMI_Init</a> (double *impulse_matrix, long number_of_rows, long aggressors, double sample_interval, double bit_time, char *AMI_parameters_in, char **AMI_parameters_out, void **AMI_memory_handle, char **msg)</td></tr>
+<tr class="memdesc:a2518d31187e06bed6023ec23657faab9"><td class="mdescLeft">&#160;</td><td class="mdescRight">IBIS-AMI model initialization and impulse response processing. (Required)  <a href="#a2518d31187e06bed6023ec23657faab9">More...</a><br /></td></tr>
 <tr class="separator:a2518d31187e06bed6023ec23657faab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5290351461f5a1fdf0e8cf061b306b2a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ibisami__api_8cpp.html#a1ca888bd091694c05472e1b91df1a97b">DLL_EXPORT</a> long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ibisami__api_8cpp.html#a5290351461f5a1fdf0e8cf061b306b2a">AMI_Close</a> (void *AMI_memory)</td></tr>
+<tr class="memdesc:a5290351461f5a1fdf0e8cf061b306b2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean-up. (Required)  <a href="#a5290351461f5a1fdf0e8cf061b306b2a">More...</a><br /></td></tr>
 <tr class="separator:a5290351461f5a1fdf0e8cf061b306b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -169,7 +171,16 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="ibisami__api_8cpp_source.html#l00117">117</a> of file <a class="el" href="ibisami__api_8cpp_source.html">ibisami_api.cpp</a>.</p>
+<p>Clean-up. (Required) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">AMI_memory</td><td>A pointer to the model memory structure. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>'1' </dd></dl>
+
+<p>Definition at line <a class="el" href="ibisami__api_8cpp_source.html#l00133">133</a> of file <a class="el" href="ibisami__api_8cpp_source.html">ibisami_api.cpp</a>.</p>
 
 </div>
 </div>
@@ -239,7 +250,24 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="ibisami__api_8cpp_source.html#l00041">41</a> of file <a class="el" href="ibisami__api_8cpp_source.html">ibisami_api.cpp</a>.</p>
+<p>IBIS-AMI model initialization and impulse response processing. (Required) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">impulse_matrix</td><td>A matrix of doubles containing, at least, the impulse response to be processed (i.e. - the victim), in place. </td></tr>
+    <tr><td class="paramname">number_of_rows</td><td>The length of all impulse responses provided (victim and aggressors). </td></tr>
+    <tr><td class="paramname">aggressors</td><td>The number of aggressors included in impulse_matrix. </td></tr>
+    <tr><td class="paramname">sample_interval</td><td>The time interval between adjacent elements of the vectors contained in impulse_matrix. </td></tr>
+    <tr><td class="paramname">bit_time</td><td>The unit interval. </td></tr>
+    <tr><td class="paramname">AMI_parameters_in</td><td>A pointer to a char array containing the input AMI parameter string. </td></tr>
+    <tr><td class="paramname">AMI_parameters_out</td><td>A handle to be updated with the pointer to the output AMI parameter string. </td></tr>
+    <tr><td class="paramname">AMI_memory_handle</td><td>A handle to be updated with the pointer to the model memory structure. </td></tr>
+    <tr><td class="paramname">msg</td><td>A handle to be updated with the pointer to the message being returned by the model. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>'1' for success, '0' for failure. </dd></dl>
+
+<p>Definition at line <a class="el" href="ibisami__api_8cpp_source.html#l00053">53</a> of file <a class="el" href="ibisami__api_8cpp_source.html">ibisami_api.cpp</a>.</p>
 
 </div>
 </div>
@@ -257,14 +285,14 @@ Variables</h2></td></tr>
 <p>Defined in our device-specific source code file. </p>
 <p>Defined in our device-specific source code file. </p>
 
-<p>Definition at line <a class="el" href="example__rx_8cpp_source.html#l00075">75</a> of file <a class="el" href="example__rx_8cpp_source.html">example_rx.cpp</a>.</p>
+<p>Definition at line <a class="el" href="example__rx_8cpp_source.html#l00144">144</a> of file <a class="el" href="example__rx_8cpp_source.html">example_rx.cpp</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 25 2015 15:10:30 for ibisami by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 1 2015 06:38:06 for ibisami by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

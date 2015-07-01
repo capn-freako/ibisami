@@ -1,4 +1,9 @@
 var searchData=
 [
-  ['init',['init',['../class_my_rx.html#a3e517d6be1e6a475bd97ae75b2bd0afc',1,'MyRx::init()'],['../class_my_tx.html#a4166bdab63c2366409998b2e606f55d2',1,'MyTx::init()'],['../class_a_m_i_model.html#a8f45652e216686d0efa8db7e9dc0e915',1,'AMIModel::init()']]]
+  ['gen_5fdata',['gen_data',['../class_a_m_i_model.html#a1a12d71ed89870b9d6d07fc1370b3c85',1,'AMIModel']]],
+  ['get_5fparam',['get_param',['../class_a_m_i_model.html#a62437e97ce61c76f4b9af78144385416',1,'AMIModel']]],
+  ['get_5fparam_5ffloat',['get_param_float',['../class_a_m_i_model.html#a2c2413b8658ec23c211cb993dc680fae',1,'AMIModel']]],
+  ['get_5fparam_5fint',['get_param_int',['../class_a_m_i_model.html#a55b68d8a68be34f672d53968484225e1',1,'AMIModel']]],
+  ['get_5fvalues',['get_values',['../class_f_i_r_filter.html#ab3e87fa9bb550d3eb109227b8345a4ee',1,'FIRFilter']]],
+  ['get_5fweights',['get_weights',['../class_d_f_e.html#a07107eb59a0da47d0f18f9b8d27e8063',1,'DFE::get_weights()'],['../class_f_i_r_filter.html#ab15b9d936df370fbb4d3d3e84f08c27d',1,'FIRFilter::get_weights()']]]
 ];
