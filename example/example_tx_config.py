@@ -23,12 +23,21 @@ class ParamType(Enum):
 ami_params = {
     # These will go in the [Reserved] section of the *.AMI file.
     'reserved' : {
+        'ami_ver' : '5.1',
     },
 
     # These are used by the template to configure a generic model,
     # in order to represent a specific device.
+    # They may generate entries in the Model_Specific section of the
+    # *.AMI file.
+    # Change numerical values, as needed, to configure the model to
+    # your device, but DON'T CHANGE ANY NAMES, or you will break the
+    # flow!
     'model' : {
-        num_tx_taps : 5,
+        'tx_tap_weights' : [[0., 0.05, 0.10, 0.15, 0.20, 0.25],
+                            [],
+                            [],
+                           ],
     },
 
     # These will go in the [Model Specific] section of the *.AMI file.

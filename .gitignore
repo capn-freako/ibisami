@@ -38,3 +38,10 @@
 # Visual Studio files
 *.idb
 
+# Temporary files
+.*
+
+# Image files
+*.png
+*.gif
+
