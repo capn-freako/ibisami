@@ -3,6 +3,7 @@
  *
  * Original author: David Banas <br>
  * Original date:   May 8, 2015
+ * Initial conversion to EmPy template format: Feb 25, 2016
  *
  * Copyright (c) 2015 David Banas; all rights reserved World wide.
  */
@@ -30,28 +31,37 @@ class MyTx : public AmiTx {
 
         // Grab our parameters and configure things accordingly.
         std::vector<std::string> node_names; node_names.clear();
-        int taps[4], tap_units;
-        node_names.push_back("tx_tap_units");
-        tap_units = get_param_int(node_names, 27);
-        node_names.pop_back();
-        node_names.push_back("tx_tap_np1");  // pre-tap
-        taps[0] = get_param_int(node_names, 0);
-        node_names.pop_back();
-        node_names.push_back("tx_tap_nm1");  // post-tap1
-        taps[2] = get_param_int(node_names, 0);
-        node_names.pop_back();
-        node_names.push_back("tx_tap_nm2");  // post-tap2
-        taps[3] = get_param_int(node_names, 0);
-        taps[1] = tap_units - 2 * (taps[0] + taps[2] + taps[3]);
+        std::ostringstream msg;
+
+        msg = "Initializing Tx...\n";
+
+@{
+max_tap_pos = -1
+for pname in ami_params['user'].keys():
+    param = ami_params['user'][pname]
+    ptype = param['type']
+    print "       ", c_type_names[ptype], pname, ";"
+    print "       ", 'node_names.push_back("%s");' % pname
+    print "       ", '%s = %s(node_names,' % (pname, getter_names[ptype]), param['default'], ');' 
+    tap_pos = param['tap_pos']
+    if (tap_pos > -1):
+        print "       ", 'taps[%d] = %s' % (tap_pos, pname)
+        if(tap_pos > max_tap_pos):
+            max_tap_pos = tap_pos
+    print "       ", 'node_names.pop_back();'
+}  # Will the Python template compiler remember the value of 'max_tap_pos'?
+        taps[1] = tx_tap_units - 2 * (taps[0] + taps[2] + taps[3]);
+        if (taps[1] < 0)
+            msg << "WARNING: Illegal Tx pre-emphasis tap configuration!\n";
 
         // Fill in params_.
         std::ostringstream params;
         params << "(example_tx";
-        params << " (tap_units " << tap_units << ")";
-        params << " (taps[0] " << taps[0] << ")";
-        params << " (taps[1] " << taps[1] << ")";
-        params << " (taps[2] " << taps[2] << ")";
-        params << " (taps[3] " << taps[3] << ")";
+        params << " (tx_tap_units " << tx_tap_units << ")";
+@{
+for tap_num in range(max_tap_pos + 1):
+    print "       ", 'params << " (taps[%d] " << taps[%d] << ")";' % (tap_num, tap_num)
+}
         tap_weights_.clear();
         int samples_per_bit = int(bit_time / sample_interval);
         int tap_signs[] = {-1, 1, -1, -1};
@@ -63,7 +73,7 @@ class MyTx : public AmiTx {
                 tap_weights_.push_back(0.0);
         }
         param_str_ = params.str() + "\n";
-        msg_ = "Hello, World!";
+        msg_ = msg.str() + "\n";
     }
 } my_tx;
 

@@ -116,6 +116,11 @@ WIN_CMD = $(RUN_CMD) $(CXX) $(CPPFLAGS) $(CXXFLAGS) $< /Fo$@
 %_$(SUFFIX).obj : $(SRCDIR)/%.c
 	$(RUN_CMD) $(CC) $(CPPFLAGS) $(CFLAGS) $< /Fo$@
 
+# Support Python model configurator.
+%.cpp : %.cpp.em %_config.py
+	# python -m ami_config $@
+	python ami_config.py $@ $<
+
 # Establish object file dependency on include files.
 $(OBJS): $(INCS:%=$(INCDIR)/%)
 

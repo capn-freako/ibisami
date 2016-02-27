@@ -20,6 +20,13 @@ kFileBaseName = 'example_tx'
 class ParamType(Enum):
     INT, FLOAT, BOOL, STRING = range(4)
 
+c_type_names = [  # The order has to match the enumeration, above.
+    'int',
+    'float',
+    'bool',
+    'char *',
+    ]
+
 ami_params = {
     # These will go in the [Reserved] section of the *.AMI file.
     'reserved' : {
@@ -48,7 +55,29 @@ ami_params = {
             'min'     : 6,  # Check this.
             'max'     : 27,
             'default' : 27,
-        }
+            'tap_pos' : -1,  # Pre-emph. FIR tap position; '-1' means "n/a".
+        },
+        'tx_tap_np1' : {
+            'type'    : ParamType.INT,
+            'min'     : 6,
+            'max'     : 27,
+            'default' : 27,
+            'tap_pos' : 0,
+        },
+        'tx_tap_nm1' : {
+            'type'    : ParamType.INT,
+            'min'     : 6,
+            'max'     : 27,
+            'default' : 27,
+            'tap_pos' : 2,
+        },
+        'tx_tap_nm2' : {
+            'type'    : ParamType.INT,
+            'min'     : 6,
+            'max'     : 27,
+            'default' : 27,
+            'tap_pos' : 3,
+        },
     },
 }
 
