@@ -33,23 +33,30 @@ class MyTx : public AmiTx {
         std::vector<std::string> node_names; node_names.clear();
         std::ostringstream msg;
 
-        msg = "Initializing Tx...\n";
+        msg << "Initializing Tx...\n";
 
 @{
 max_tap_pos = -1
-for pname in ami_params['user'].keys():
-    param = ami_params['user'][pname]
+
+for pname in ami_params['model'].keys():
+    param = ami_params['model'][pname]
+    tap_pos = param['tap_pos']
+    if(tap_pos > max_tap_pos):
+        max_tap_pos = tap_pos
+
+print "        int taps[%d];" % (max_tap_pos + 1)
+
+for pname in ami_params['model'].keys():
+    param = ami_params['model'][pname]
     ptype = param['type']
-    print "       ", c_type_names[ptype], pname, ";"
+    print "       ", param_types[ptype]['c_type'], pname, ";"
     print "       ", 'node_names.push_back("%s");' % pname
-    print "       ", '%s = %s(node_names,' % (pname, getter_names[ptype]), param['default'], ');' 
+    print "       ", '%s = %s(node_names,' % (pname, param_types[ptype]['getter']), param['default'], ');' 
     tap_pos = param['tap_pos']
     if (tap_pos > -1):
-        print "       ", 'taps[%d] = %s' % (tap_pos, pname)
-        if(tap_pos > max_tap_pos):
-            max_tap_pos = tap_pos
+        print "       ", 'taps[%d] = %s;' % (tap_pos, pname)
     print "       ", 'node_names.pop_back();'
-}  # Will the Python template compiler remember the value of 'max_tap_pos'?
+}
         taps[1] = tx_tap_units - 2 * (taps[0] + taps[2] + taps[3]);
         if (taps[1] < 0)
             msg << "WARNING: Illegal Tx pre-emphasis tap configuration!\n";
@@ -66,7 +73,7 @@ for tap_num in range(max_tap_pos + 1):
         int samples_per_bit = int(bit_time / sample_interval);
         int tap_signs[] = {-1, 1, -1, -1};
         have_preemph_ = true;
-        for (auto i = 0; i < 4; i++) {
+        for (auto i = 0; i <= @(max_tap_pos); i++) {
             tap_weights_.push_back(taps[i] * TAP_SCALE * tap_signs[i]);
             params << " (tap_weights_[" << i << "] " << tap_weights_.back() << ")";
             for (auto j = 1; j < samples_per_bit; j++)

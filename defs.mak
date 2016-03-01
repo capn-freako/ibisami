@@ -17,6 +17,13 @@ rebuild:
 	@$(MAKE) clean
 	@$(MAKE) all
 
+# Prevent implicit rule searching for makefiles.
+$(MAKEFILE_LIST): ;
+
+# Infrastructure tools
+AMI_CONFIG := python -m pyibisami.ami_config
+RUN_TESTS  := python -m pyibisami.run_tests
+
 # Machine dependent definitions
 MACHINE ?= X86
 ifeq ($(MACHINE), X86)
@@ -118,8 +125,10 @@ WIN_CMD = $(RUN_CMD) $(CXX) $(CPPFLAGS) $(CXXFLAGS) $< /Fo$@
 
 # Support Python model configurator.
 %.cpp : %.cpp.em %_config.py
-	# python -m ami_config $@
-	python ami_config.py $@ $<
+	$(AMI_CONFIG) $@ $^
+
+%.ami : %.ami.em %_config.py
+	$(AMI_CONFIG) $@ $^
 
 # Establish object file dependency on include files.
 $(OBJS): $(INCS:%=$(INCDIR)/%)
