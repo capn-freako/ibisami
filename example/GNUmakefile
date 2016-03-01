@@ -58,12 +58,15 @@ test_tx:
 	MACHINE=AMD64 MODS=$(TX_NAME) $(MAKE) test
 
 test_rx:
-	@echo "Testing 64-bit Rx model..."
-	MACHINE=AMD64 MODS=$(RX_NAME) $(MAKE) test
+	@echo "Rx model testing not yet implemented."
+	# @echo "Testing 64-bit Rx model..."
+	# MACHINE=AMD64 MODS=$(RX_NAME) $(MAKE) test
 
 txami: $(TX_NAME).ami
 
-rxami: $(RX_NAME).ami
+# rxami: $(RX_NAME).ami
+rxami:
+	@echo "Rx model AMI file building not yet implemented."
 
 targs: $(TARGS)
 
