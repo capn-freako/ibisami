@@ -124,11 +124,11 @@ WIN_CMD = $(RUN_CMD) $(CXX) $(CPPFLAGS) $(CXXFLAGS) $< /Fo$@
 	$(RUN_CMD) $(CC) $(CPPFLAGS) $(CFLAGS) $< /Fo$@
 
 # Support Python model configurator.
-%.cpp : %.cpp.em %_config.py
-	$(AMI_CONFIG) $@ $^
+%.cpp %.ami %.ibs : %.cpp.em %.ami.em %.ibs.em %.py
+	$(AMI_CONFIG) $*.py
 
-%.ami : %.ami.em %_config.py
-	$(AMI_CONFIG) $@ $^
+# %.ami : %.ami.em %_config.py
+# 	$(AMI_CONFIG) $@ $^
 
 # Establish object file dependency on include files.
 $(OBJS): $(INCS:%=$(INCDIR)/%)
