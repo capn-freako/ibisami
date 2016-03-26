@@ -29,28 +29,28 @@
 
     (Model_Specific
         (tx_tap_nm2
-            (Usage Info)
+            (Usage INPUT )
             (Type Integer )
             (Default 0 )
             (Description "Second post-tap.")
         )
 
         (tx_tap_np1
-            (Usage Info)
+            (Usage INPUT )
             (Type Integer )
             (Default 0 )
             (Description "First (and only) pre-tap.")
         )
 
         (tx_tap_units
-            (Usage Info)
+            (Usage INPUT )
             (Type Integer )
             (Default 27 )
             (Description "Total current available to FIR filter.")
         )
 
         (tx_tap_nm1
-            (Usage Info)
+            (Usage INPUT )
             (Type Integer )
             (Default 0 )
             (Description "First post-tap.")

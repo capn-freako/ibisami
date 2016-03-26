@@ -67,6 +67,7 @@ ami_params = {
     'model' : {
         'tx_tap_units' : {
             'type'    : 'INT',
+            'usage'   : 'INPUT',
             'min'     : 6,  # Check this.
             'max'     : 27,
             'default' : 27,
@@ -75,6 +76,7 @@ ami_params = {
         },
         'tx_tap_np1' : {
             'type'    : 'INT',
+            'usage'   : 'INPUT',
             'min'     : 6,
             'max'     : 27,
             'default' : 0,
@@ -83,6 +85,7 @@ ami_params = {
         },
         'tx_tap_nm1' : {
             'type'    : 'INT',
+            'usage'   : 'INPUT',
             'min'     : 6,
             'max'     : 27,
             'default' : 0,
@@ -91,6 +94,7 @@ ami_params = {
         },
         'tx_tap_nm2' : {
             'type'    : 'INT',
+            'usage'   : 'INPUT',
             'min'     : 6,
             'max'     : 27,
             'default' : 0,

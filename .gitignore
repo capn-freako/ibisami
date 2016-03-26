@@ -45,3 +45,9 @@
 *.png
 *.gif
 
+# Python pre-compiled files
+*.pyc
+
+# Testing results
+test_results.xml
+

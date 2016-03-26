@@ -21,7 +21,7 @@ for param_name in ami_params['reserved'].keys():
 for param_name in ami_params['model'].keys():
     param = ami_params['model'][param_name]
     print "        (%s" % param_name
-    print "            (Usage Info)"
+    print "            (Usage", param['usage'], ")"
     print "            (Type", param_types[param['type']]['ami_type'], ")"
     print "            (Default", param['default'], ")"
     print '            (Description "%s")' % (param['description'],)
