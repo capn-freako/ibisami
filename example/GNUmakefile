@@ -31,10 +31,10 @@ else
 endif
 
 # Targets
-.PHONY: all all_tx all_rx tx32 tx64 rx32 rx64 targs txami rxami test_tx test_rx test_all test
+.PHONY: all all_tx all_rx tx32 tx64 rx32 rx64 targs txami rxami txibs rxibs test_tx test_rx test_all test
 all: all_tx all_rx test_all
-all_tx: tx32 tx64 txami
-all_rx: rx32 rx64 rxami
+all_tx: tx32 tx64 txami txibs
+all_rx: rx32 rx64 rxami rxibs
 test_all: test_tx test_rx
 
 tx32:
@@ -63,10 +63,10 @@ test_rx:
 	# MACHINE=AMD64 MODS=$(RX_NAME) $(MAKE) test
 
 txami: $(TX_NAME).ami
+txibs: $(TX_NAME).ibs
 
-# rxami: $(RX_NAME).ami
-rxami:
-	@echo "Rx model AMI file building not yet implemented."
+rxami: $(RX_NAME).ami
+rxibs: $(RX_NAME).ibs
 
 targs: $(TARGS)
 

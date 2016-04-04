@@ -4,59 +4,49 @@
 
     (Reserved_Parameters
         (AMI_Version
-            (Usage Info)
+            (Usage Info )
             (Type String )
-            (Default 5.1 )
-            (Description "Version of IBIS standard we comply with.")
+            (Value "5.1" )
+            (Description "Version of IBIS standard we comply with." )
         )
-
         (GetWave_Exists
-            (Usage Info)
+            (Usage Info )
             (Type Boolean )
-            (Default False )
-            (Description "This model is, currently, Init()-only.")
+            (Value False )
+            (Description "This model is, currently, Init-only." )
         )
-
         (Init_Returns_Impulse
-            (Usage Info)
+            (Usage Info )
             (Type Boolean )
-            (Default True )
-            (Description "In fact, this model is, currently, Init()-only.")
+            (Value True )
+            (Description "In fact, this model is, currently, Init-only." )
         )
-
-
     )
-
     (Model_Specific
         (tx_tap_nm2
-            (Usage INPUT )
+            (Usage In )
             (Type Integer )
-            (Default 0 )
-            (Description "Second post-tap.")
+            (Range 0 0 10 )
+            (Description "Second post-tap." )
         )
-
         (tx_tap_np1
-            (Usage INPUT )
+            (Usage In )
             (Type Integer )
-            (Default 0 )
-            (Description "First (and only) pre-tap.")
+            (Range 0 0 10 )
+            (Description "First (and only) pre-tap." )
         )
-
         (tx_tap_units
-            (Usage INPUT )
+            (Usage In )
             (Type Integer )
-            (Default 27 )
-            (Description "Total current available to FIR filter.")
+            (Range 27 6 27 )
+            (Description "Total current available to FIR filter." )
         )
-
         (tx_tap_nm1
-            (Usage INPUT )
+            (Usage In )
             (Type Integer )
-            (Default 0 )
-            (Description "First post-tap.")
+            (Range 0 0 10 )
+            (Description "First post-tap." )
         )
-
-
     )
 
 )

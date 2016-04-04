@@ -5,7 +5,7 @@
 [File Name]  example_tx.ibs
 [File Rev]   v0.1
 
-[Date]       2016-03-25
+[Date]       2016-04-04
 
 [Source]     ibisami, a public domain IBIS-AMI model creation infrastructure
 
@@ -78,18 +78,15 @@ Executable Windows_VisualStudio_64    example_tx_amd64.dll  example_tx.ami
 0.00     0.000e+00     0.000e+00     0.000e+00 
 1.80     3.600e-02     4.000e-02     3.273e-02 
 3.60     1.000e+01     1.000e+01     1.000e+01 
-
-
 [Pullup]
 -1.80    1.000e+01     1.000e+01     1.000e+01 
 0.00     -0.000e+00    -0.000e+00    -0.000e+00
 1.80     -3.600e-02    -4.000e-02    -3.273e-02
 3.60     -1.000e+01    -1.000e+01    -1.000e+01
-
-
 [Ramp]
 dV/dt_r    0.540/108.00p    0.512/511.58p    0.566/56.57p
 dV/dt_f    0.540/108.00p    0.512/511.58p    0.566/56.57p
+
 
 
 [END]

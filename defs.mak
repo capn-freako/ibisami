@@ -30,7 +30,7 @@ ifeq ($(MACHINE), X86)
     SUFFIX := x86
 else
     ifeq ($(MACHINE), AMD64)
-        SUFFIX := x86_amd64
+        SUFFIX := amd64
     else
         $(error Unrecognized machine type: $(MACHINE))
     endif
@@ -124,11 +124,8 @@ WIN_CMD = $(RUN_CMD) $(CXX) $(CPPFLAGS) $(CXXFLAGS) $< /Fo$@
 	$(RUN_CMD) $(CC) $(CPPFLAGS) $(CFLAGS) $< /Fo$@
 
 # Support Python model configurator.
-%.cpp %.ami %.ibs : %.cpp.em %.ami.em %.ibs.em %.py
+%.cpp %.ami %.ibs :: %.cpp.em %.py
 	$(AMI_CONFIG) $*.py
-
-# %.ami : %.ami.em %_config.py
-# 	$(AMI_CONFIG) $@ $^
 
 # Establish object file dependency on include files.
 $(OBJS): $(INCS:%=$(INCDIR)/%)

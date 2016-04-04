@@ -14,7 +14,6 @@
 #define PI 3.14159
 #define RX_BW 30.0e9
 #define CTLE_DC_GAIN 1.0
-#define NUM_DFE_TAPS 5
 #define DFE_DUMP_FILE "example_rx_dfe_dump.csv"
 #define DFE_INPUT_FILE "example_rx_dfe_input.csv"
 
@@ -75,9 +74,12 @@ class MyRx : public AmiRx {
         node_names.push_back("dfe_mode");
         int dfe_mode = get_param_int(node_names, 0);
         node_names.pop_back();
+        node_names.push_back("dfe_ntaps");
+        int dfe_ntaps = get_param_int(node_names, 0);
+        node_names.pop_back();
         char tmp_str[32];
-        double dfe_taps[NUM_DFE_TAPS];
-        for (auto i = 0; i < NUM_DFE_TAPS; i++) {
+        double dfe_taps[dfe_ntaps];
+        for (auto i = 0; i < dfe_ntaps; i++) {
             sprintf(tmp_str, "dfe_tap%d", i + 1);
             node_names.push_back(tmp_str);
             dfe_taps[i] = get_param_float(node_names, 0);
@@ -91,7 +93,7 @@ class MyRx : public AmiRx {
         node_names.pop_back();
         if (dfe_mode) {
             std::vector<double> tap_weights; tap_weights.clear();
-            for (auto i = 0; i < NUM_DFE_TAPS; i++)
+            for (auto i = 0; i < dfe_ntaps; i++)
                 tap_weights.push_back(dfe_taps[i]);
             dfe_ = new DFE(dfe_vout, dfe_gain, dfe_mode, sample_interval, bit_time, tap_weights);
             if (!dfe_)
@@ -132,7 +134,7 @@ class MyRx : public AmiRx {
         if (dfe_mode) {
             msg << "\tDFE: mode: " << dfe_mode << "  vout: " << dfe_vout << "  gain: " << dfe_gain << "\n";
             std::vector<double> tmp_weights = dfe_->get_weights();
-            for (auto i = 0; i < NUM_DFE_TAPS; i++)
+            for (auto i = 0; i < dfe_ntaps; i++)
                 msg << "\t\ttap" << i + 1 << ": " << tmp_weights[i] << "\n";
         }
         else

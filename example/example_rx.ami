@@ -1,0 +1,7 @@
+(example_rx
+
+    (Description "Example Rx model from ibisami package.")
+
+    (Reserved_Parameters
+        (AMI_Version
+            (Usage
