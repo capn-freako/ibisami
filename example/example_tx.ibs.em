@@ -12,6 +12,7 @@ r_pkg             = ibis_params['r_pkg']
 l_pkg             = ibis_params['l_pkg']
 c_pkg             = ibis_params['c_pkg']
 model_name        = ibis_params['model_name']
+model_type        = ibis_params['model_type']
 c_comp            = ibis_params['c_comp']
 c_ref             = ibis_params['c_ref']
 v_ref             = ibis_params['v_ref']
@@ -75,7 +76,7 @@ print "C_pkg    %5.2fp   %5.2fp   %5.2fp" % (c_pkg[0] * 1.e12, c_pkg[1] * 1.e12,
 3p           3n     0.1V     NA         NA         NA
 
 [Model]   @(model_name)
-Model_type   Output
+Model_type   @(model_type)
 
 @{
 print "C_comp    %5.2fp   %5.2fp   %5.2fp" % (c_comp[0] * 1.e12, c_comp[1] * 1.e12, c_comp[2] * 1.e12)
@@ -97,30 +98,40 @@ print "[Temperature_Range]    %5.1f    %5.1f    %5.1f" % (temperature_range[0], 
 print "[Voltage_Range]        %5.2f    %5.2f    %5.2f" % (voltage_range[0],     voltage_range[1],     voltage_range[2])
 }
 
-[Pulldown]
 @{
-print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (-1. * voltage_range[0], -10., -10., -10.)
-for v in [k * voltage_range[0] for k in range(2)]:
-    i = v / array(impedance)
-    print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (v, i[0], i[1], i[2])
-print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (2. * voltage_range[0], 10., 10., 10.)
-}
+if(model_type == 'Output'):
+    print "[Pulldown]"
+    print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (-1. * voltage_range[0], -10., -10., -10.)
+    for v in [k * voltage_range[0] for k in range(2)]:
+        i = v / array(impedance)
+        print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (v, i[0], i[1], i[2])
+    print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (2. * voltage_range[0], 10., 10., 10.)
 
-[Pullup]
-@{
-print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (-1. * voltage_range[0], 10., 10., 10.)
-for v in [k * voltage_range[0] for k in range(2)]:
-    i = -1. * v / array(impedance)
-    print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (v, i[0], i[1], i[2])
-print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (2. * voltage_range[0], -10., -10., -10.)
-}
+    print "[Pullup]"
+    print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (-1. * voltage_range[0], 10., 10., 10.)
+    for v in [k * voltage_range[0] for k in range(2)]:
+        i = -1. * v / array(impedance)
+        print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (v, i[0], i[1], i[2])
+    print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (2. * voltage_range[0], -10., -10., -10.)
 
-[Ramp]
-@{
-dv = 0.6 * array([v * 50. / (50. + z) for (v, z) in zip(voltage_range, impedance)])
-dt = 1.e12 * dv / array(slew_rate)
-print "dV/dt_r    %5.3f/%5.2fp    %5.3f/%5.2fp    %5.3f/%5.2fp" % (dv[0], dt[0], dv[1], dt[1], dv[2], dt[2])
-print "dV/dt_f    %5.3f/%5.2fp    %5.3f/%5.2fp    %5.3f/%5.2fp" % (dv[0], dt[0], dv[1], dt[1], dv[2], dt[2])
+    print "[Ramp]"
+    dv = 0.6 * array([v * 50. / (50. + z) for (v, z) in zip(voltage_range, impedance)])
+    dt = 1.e12 * dv / array(slew_rate)
+    print "dV/dt_r    %5.3f/%5.2fp    %5.3f/%5.2fp    %5.3f/%5.2fp" % (dv[0], dt[0], dv[1], dt[1], dv[2], dt[2])
+    print "dV/dt_f    %5.3f/%5.2fp    %5.3f/%5.2fp    %5.3f/%5.2fp" % (dv[0], dt[0], dv[1], dt[1], dv[2], dt[2])
+    print
+else:
+    print "[GND Clamp]"
+    print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (-1. * voltage_range[0], -10., -10., -10.)
+    for v in [k * voltage_range[0] for k in range(3)]:
+        i = v / array(impedance)
+        print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (v, i[0], i[1], i[2])
+    print
+    print "[Power Clamp]"
+    print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (-1. * voltage_range[0], 10., 10., 10.)
+    print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (0., 0., 0., 0.)
+    print "%-5.2f    %-10.3e    %-10.3e    %-10.3e" % (2. * voltage_range[0], 0., 0., 0.)
+    print
 }
 
 [END]
