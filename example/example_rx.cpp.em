@@ -36,21 +36,19 @@ class MyRx : public AmiRx {
         inherited::init(impulse_matrix, number_of_rows, aggressors,
             sample_interval, bit_time, AMI_parameters_in);
 
-        std::ostringstream msg;
-
         // Grab our parameters and configure things accordingly.
         std::vector<std::string> node_names; node_names.clear();
+        std::ostringstream msg;
 
-        // - CTLE
-        node_names.push_back("ctle_mode");
-        int ctle_mode = get_param_int(node_names, 0);
-        node_names.pop_back();
-        node_names.push_back("ctle_freq");
-        double ctle_freq = get_param_float(node_names, 1.0 / (2.0 * bit_time_));  // Use fNyquist as default.
-        node_names.pop_back();
-        node_names.push_back("ctle_mag");
-        int ctle_mag = get_param_int(node_names, 0);
-        node_names.pop_back();
+        msg << "Initializing Rx...\n";
+
+@{
+from pyibisami import ami_config as ac
+
+for pname in ami_params['model']:
+    ac.print_code(pname, ami_params['model'][pname])
+}
+
         if (ctle_mode) {
             // Calculate the zero and poles needed to meet the response spec.
             double p2 = -2. * PI * RX_BW;
@@ -70,31 +68,13 @@ class MyRx : public AmiRx {
                 throw std::runtime_error("ERROR: MyRx::init() could not allocate a DigitalFilter for its CTLE!");
         }
 
-        // - DFE
-        node_names.push_back("dfe_mode");
-        int dfe_mode = get_param_int(node_names, 0);
-        node_names.pop_back();
-        node_names.push_back("dfe_ntaps");
-        int dfe_ntaps = get_param_int(node_names, 0);
-        node_names.pop_back();
-        char tmp_str[32];
-        double dfe_taps[dfe_ntaps];
-        for (auto i = 0; i < dfe_ntaps; i++) {
-            sprintf(tmp_str, "dfe_tap%d", i + 1);
-            node_names.push_back(tmp_str);
-            dfe_taps[i] = get_param_float(node_names, 0);
-            node_names.pop_back();
-        }
-        node_names.push_back("dfe_vout");
-        double dfe_vout = get_param_float(node_names, 0);
-        node_names.pop_back();
-        node_names.push_back("dfe_gain");
-        double dfe_gain = get_param_float(node_names, 0);
-        node_names.pop_back();
         if (dfe_mode) {
             std::vector<double> tap_weights; tap_weights.clear();
-            for (auto i = 0; i < dfe_ntaps; i++)
-                tap_weights.push_back(dfe_taps[i]);
+            tap_weights.push_back(dfe_tap1);
+            tap_weights.push_back(dfe_tap2);
+            tap_weights.push_back(dfe_tap3);
+            tap_weights.push_back(dfe_tap4);
+            tap_weights.push_back(dfe_tap5);
             dfe_ = new DFE(dfe_vout, dfe_gain, dfe_mode, sample_interval, bit_time, tap_weights);
             if (!dfe_)
                 throw std::runtime_error("ERROR: MyRx::init() could not allocate a DFE!");
@@ -104,18 +84,6 @@ class MyRx : public AmiRx {
             dfe_->set_min_weights(min_weights);
         }
 
-        // - Debug
-        node_names.push_back("debug");
-        node_names.push_back("enable");
-        int dbg_enable = get_param_int(node_names, 0);
-        node_names.pop_back();
-        node_names.push_back("dump_dfe_adaptation");
-        dump_dfe_adaptation_ = get_param_int(node_names, 0);
-        node_names.pop_back();
-        node_names.push_back("dump_adaptation_input");
-        dump_adaptation_input_ = get_param_int(node_names, 0);
-        node_names.pop_back();
-        node_names.pop_back();
         if (dbg_enable) {
             if (dump_dfe_adaptation_) {
                 dfe_dump_file_ = DFE_DUMP_FILE;

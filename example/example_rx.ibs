@@ -2,7 +2,7 @@
 
 
 
-[File Name]  example_tx.ibs
+[File Name]  example_rx.ibs
 [File Rev]   v0.1
 
 [Date]       2016-04-05
@@ -29,7 +29,7 @@ creation infrastructure. To learn more, visit:
 https://github.com/capn-freako/ibisami/wiki
 
 [Copyright]    Copyright (c) 2016 David Banas; all rights reserved World wide.
-[Component]    Example_Tx
+[Component]    Example_Rx
 [Manufacturer] (n/a)
 
 [Package]
@@ -40,52 +40,47 @@ C_pkg     1.00p    0.01p    5.00p
 
 
 [Pin]  signal_name        model_name            R_pin  L_pin  C_pin
-1p     Tx_1_P             example_tx
-1n     Tx_1_N             example_tx
-2p     Tx_2_P             example_tx
-2n     Tx_2_N             example_tx
-3p     Tx_3_P             example_tx
-3n     Tx_3_N             example_tx
+1p     Tx_1_P             example_rx
+1n     Tx_1_N             example_rx
+2p     Tx_2_P             example_rx
+2n     Tx_2_N             example_rx
+3p     Tx_3_P             example_rx
+3n     Tx_3_N             example_rx
 
 [Diff_Pin] inv_pin vdiff tdelay_typ tdelay_min tdelay_max
 1p           1n     0.1V     NA         NA         NA
 2p           2n     0.1V     NA         NA         NA
 3p           3n     0.1V     NA         NA         NA
 
-[Model]   example_tx
-Model_type   Output
+[Model]   example_rx
+Model_type   Input
 
 C_comp     1.00p    0.01p    5.00p
-Cref  = 0
-Vref  = 0.5
-Vmeas = 0.5
-Rref  = 50
+Vinl = 0.875
+Vinh = 0.925
 
 
 [Algorithmic Model]
-Executable linux_gcc4.1.2_32          example_tx_x86.so     example_tx.ami
-Executable linux_gcc4.1.2_64          example_tx_amd64.so   example_tx.ami
-Executable Windows_VisualStudio_32    example_tx_x86.dll    example_tx.ami
-Executable Windows_VisualStudio_64    example_tx_amd64.dll  example_tx.ami
+Executable linux_gcc4.1.2_32          example_rx_x86.so     example_rx.ami
+Executable linux_gcc4.1.2_64          example_rx_amd64.so   example_rx.ami
+Executable Windows_VisualStudio_32    example_rx_x86.dll    example_rx.ami
+Executable Windows_VisualStudio_64    example_rx_amd64.dll  example_rx.ami
 [End Algorithmic Model]
 
 [Temperature_Range]     25.0      0.0    100.0
 [Voltage_Range]         1.80     1.62     1.98
 
 
-[Pulldown]
+[GND Clamp]
 -1.80    -1.000e+01    -1.000e+01    -1.000e+01
 0.00     0.000e+00     0.000e+00     0.000e+00 
 1.80     3.600e-02     4.000e-02     3.273e-02 
-3.60     1.000e+01     1.000e+01     1.000e+01 
-[Pullup]
+3.60     7.200e-02     8.000e-02     6.545e-02 
+
+[Power Clamp]
 -1.80    1.000e+01     1.000e+01     1.000e+01 
-0.00     -0.000e+00    -0.000e+00    -0.000e+00
-1.80     -3.600e-02    -4.000e-02    -3.273e-02
-3.60     -1.000e+01    -1.000e+01    -1.000e+01
-[Ramp]
-dV/dt_r    0.540/108.00p    0.512/511.58p    0.566/56.57p
-dV/dt_f    0.540/108.00p    0.512/511.58p    0.566/56.57p
+0.00     0.000e+00     0.000e+00     0.000e+00 
+3.60     0.000e+00     0.000e+00     0.000e+00 
 
 
 

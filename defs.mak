@@ -124,6 +124,7 @@ WIN_CMD = $(RUN_CMD) $(CXX) $(CPPFLAGS) $(CXXFLAGS) $< /Fo$@
 	$(RUN_CMD) $(CC) $(CPPFLAGS) $(CFLAGS) $< /Fo$@
 
 # Support Python model configurator.
+.PRECIOUS: %.cpp  # Otherwise, *.CPP files get deleted, after being compiled.
 %.cpp %.ami %.ibs :: %.cpp.em %.py
 	$(AMI_CONFIG) $*.py
 

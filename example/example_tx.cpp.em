@@ -48,14 +48,15 @@ print "        int taps[%d];" % (max_tap_pos + 1)
 
 for pname in ami_params['model'].keys():
     param = ami_params['model'][pname]
-    ptype = param['type']
-    print "       ", param_types[ptype]['c_type'], pname, ";"
-    print "       ", 'node_names.push_back("%s");' % pname
-    print "       ", '%s = %s(node_names,' % (pname, param_types[ptype]['getter']), param['default'], ');' 
-    tap_pos = param['tap_pos']
-    if (tap_pos > -1):
-        print "       ", 'taps[%d] = %s;' % (tap_pos, pname)
-    print "       ", 'node_names.pop_back();'
+    if(param['usage'] == 'In' or param['usage'] == 'InOut'):
+        ptype = param['type']
+        print "       ", param_types[ptype]['c_type'], pname, ";"
+        print "       ", 'node_names.push_back("%s");' % pname
+        print "       ", '%s = %s(node_names,' % (pname, param_types[ptype]['getter']), param['default'], ');' 
+        tap_pos = param['tap_pos']
+        if (tap_pos > -1):
+            print "       ", 'taps[%d] = %s;' % (tap_pos, pname)
+        print "       ", 'node_names.pop_back();'
 }
         taps[1] = tx_tap_units - 2 * (taps[0] + taps[2] + taps[3]);
         if (taps[1] < 0)

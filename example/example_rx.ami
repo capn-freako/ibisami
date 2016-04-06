@@ -3,5 +3,122 @@
     (Description "Example Rx model from ibisami package.")
 
     (Reserved_Parameters
-        (AMI_Version
-            (Usage
+         (AMI_Version
+             (Usage Info )
+             (Type String )
+             (Value "5.1" )
+             (Description "Version of IBIS standard we comply with." )
+         )
+         (GetWave_Exists
+             (Usage Info )
+             (Type Boolean )
+             (Value False )
+             (Description "This model is, currently, Init()-only." )
+         )
+         (Init_Returns_Impulse
+             (Usage Info )
+             (Type Boolean )
+             (Value True )
+             (Description "In fact, this model is, currently, Init()-only." )
+         )
+    )
+    (Model_Specific
+         (ctle_mode
+             (Usage In )
+             (Type Integer )
+             (List 0 1 )
+             (List_Tip "Off" "Manual" )
+             (Description "CTLE operating mode." )
+         )
+         (ctle_freq
+             (Usage In )
+             (Type Float )
+             (Range 5000000000.0 1000000000.0 5000000000.0 )
+             (Description "CTLE peaking frequency." )
+         )
+         (dfe_mode
+             (Usage In )
+             (Type Integer )
+             (List 0 1 2 )
+             (List_Tip "Off" "Manual" "Adaptive" )
+             (Description "DFE operating mode." )
+         )
+         (dfe_tap3
+             (Usage In )
+             (Type Integer )
+             (Value 0 )
+             (Description "DFE tap 3 initial value." )
+         )
+         (dfe_tap2
+             (Usage In )
+             (Type Integer )
+             (Value 0 )
+             (Description "DFE tap 2 initial value." )
+         )
+         (dfe_tap1
+             (Usage In )
+             (Type Integer )
+             (Value 0 )
+             (Description "DFE tap 1 initial value." )
+         )
+         (dfe_ntaps
+             (Usage In )
+             (Type Integer )
+             (Value 5 )
+             (Description "Number of DFE taps." )
+         )
+         (dfe_tap5
+             (Usage In )
+             (Type Integer )
+             (Value 0 )
+             (Description "DFE tap 5 initial value." )
+         )
+         (dfe_tap4
+             (Usage In )
+             (Type Integer )
+             (Value 0 )
+             (Description "DFE tap 4 initial value." )
+         )
+         (dfe_vout
+             (Usage In )
+             (Type Float )
+             (Range 1.0 0.0 1.0 )
+             (Description "DFE slicer output voltage magnitude." )
+         )
+         (ctle_mag
+             (Usage In )
+             (Type Float )
+             (Range 0.0 0.0 12.0 )
+             (Description "CTLE peaking frequency." )
+         )
+         (dfe_gain
+             (Usage In )
+             (Type Float )
+             (Range 0.1 0.0 1.0 )
+             (Description "DFE error feedback gain." )
+         )
+         (debug
+             (dump_adaptation_input
+                 (Usage In )
+                 (Type Boolean )
+                 (Value False )
+                 (Description "Dump the DFE summing node input." )
+             )
+             (dump_dfe_adaptation
+                 (Usage In )
+                 (Type Boolean )
+                 (Value False )
+                 (Description "Dump the DFE adaptation results." )
+             )
+             (dbg_enable
+                 (Usage In )
+                 (Type Boolean )
+                 (Value False )
+                 (Description "Master debug enable." )
+             )
+             (Description "Debugging options.")
+         )
+    )
+
+)
+

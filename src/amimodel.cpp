@@ -137,6 +137,45 @@ double AMIModel::get_param_float(const std::vector<std::string>& node_names,
     }
 }
 
+/// Returns the Boolean value of a particular Bool parameter.
+/**
+* Inputs:
+*  - node_names: A vector of strings containing the AMI parameter tree node
+*                names required to traverse our way to the parameter of
+*                interest. The root name should not be included.
+*
+*  - default_val: The value to return, if the parameter is not found in the tree.
+*
+* Returns:
+*  - the requested parameter's Boolean value, if the parameter was found and
+*    a Boolean was able to be scanned from its value string.
+*  - 'default_val', if the parameter was not found in the tree.
+*
+* Throws:
+*  - std::runtime_error, if the parameter was found and a Boolean could not
+*    be scanned from its value string.
+*/
+bool AMIModel::get_param_bool(const std::vector<std::string>& node_names,
+                             bool default_val) const {
+    std::string param_val_str = get_param(node_names);
+    if (param_val_str == "")
+        return default_val;
+    if (param_val_str == "True")
+        return true;
+    else if (param_val_str == "False")
+        return false;
+    else {
+        std::ostringstream err;
+        err << "AMIModel::get_param_bool() could not scan a Boolean from '"
+        << param_val_str << "', while fetching parameter: ";
+        std::string err_str = err.str();
+        for (std::string node_name : node_names)
+            err_str += node_name + ".";
+        err_str += "\n";
+        throw std::runtime_error(err_str);
+    }
+}
+
 /// Returns the string value of a particular AMI parameter.
 /**
 * Inputs:
