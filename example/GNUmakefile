@@ -10,7 +10,6 @@ INCDIR   := ../include
 LIB_MODS := ibisami_api amimodel ami_tx ami_rx digital_filter fir_filter dfe util
 TX_NAME  := example_tx
 RX_NAME  := example_rx
-TEST_RUNS := test_runs
 
 # Check for proper IBISAMI_ROOT definition.
 IBISAMI_ROOT ?= ""
@@ -55,12 +54,11 @@ rx64:
 
 test_tx:
 	@echo "Testing 64-bit Tx model..."
-	MACHINE=AMD64 MODS=$(TX_NAME) $(MAKE) test
+	MACHINE=AMD64 MODS=$(TX_NAME) TEST_RUNS=test_runs/tx TEST_OUT=test_results/tx/ $(MAKE) test
 
 test_rx:
-	@echo "Rx model testing not yet implemented."
-	# @echo "Testing 64-bit Rx model..."
-	# MACHINE=AMD64 MODS=$(RX_NAME) $(MAKE) test
+	@echo "Testing 64-bit Rx model..."
+	MACHINE=AMD64 MODS=$(RX_NAME) TEST_RUNS=test_runs/rx TEST_OUT=test_results/rx/ $(MAKE) test
 
 txami: $(TX_NAME).ami
 txibs: $(TX_NAME).ibs
@@ -75,5 +73,5 @@ $(TARGS): $(OBJS) $(LIB_DEPS)
 	$(RUN_CMD) $(LD) $(LDFLAGS) $(OBJS) $(LIB_OBJS)
 
 test:
-	$(RUN_TESTS) -m $(TARGS) -p $(TEST_RUNS)
+	$(RUN_TESTS) -m $(TARGS) -p $(TEST_RUNS) -o $(TEST_OUT)
 

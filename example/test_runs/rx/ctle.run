@@ -1,0 +1,57 @@
+Sweep of Rx CTLE filter values.
+
+('CTLE Mag. = 0 dB', \
+  ({'root_name'       : 'example_rx', \
+    'ctle_mode'       : 1, \
+    'ctle_mag'        : 0, \
+   }, \
+   {'channel_response' : [2.0e11] + [0.]*127, \
+    'sample_interval'  : 5.0e-12, \
+   } \
+  ) \
+)
+
+('CTLE Mag. = 3 dB', \
+  ({'root_name'       : 'example_rx', \
+    'ctle_mode'       : 1, \
+    'ctle_mag'        : 3, \
+   }, \
+   {'channel_response' : [2.0e11] + [0.]*127, \
+    'sample_interval'  : 5.0e-12, \
+   } \
+  ) \
+)
+
+('CTLE Mag. = 6 dB', \
+  ({'root_name'       : 'example_rx', \
+    'ctle_mode'       : 1, \
+    'ctle_mag'        : 6, \
+   }, \
+   {'channel_response' : [2.0e11] + [0.]*127, \
+    'sample_interval'  : 5.0e-12, \
+   } \
+  ) \
+)
+
+('CTLE Mag. = 9 dB', \
+  ({'root_name'       : 'example_rx', \
+    'ctle_mode'       : 1, \
+    'ctle_mag'        : 9, \
+   }, \
+   {'channel_response' : [2.0e11] + [0.]*127, \
+    'sample_interval'  : 5.0e-12, \
+   } \
+  ) \
+)
+
+('CTLE Mag. = 12 dB', \
+  ({'root_name'       : 'example_rx', \
+    'ctle_mode'       : 1, \
+    'ctle_mag'        : 12, \
+   }, \
+   {'channel_response' : [2.0e11] + [0.]*127, \
+    'sample_interval'  : 5.0e-12, \
+   } \
+  ) \
+)
+
