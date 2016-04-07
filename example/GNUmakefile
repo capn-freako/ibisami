@@ -53,12 +53,22 @@ rx64:
 	MACHINE=AMD64 MODS=$(RX_NAME) INCS='amimodel.h ami_rx.h digital_filter.h fir_filter.h dfe.h' $(MAKE) targs
 
 test_tx:
+ifeq '$(shell python -c "import platform; print platform.architecture()[0]")' '32bit'
+	@echo "Testing 32-bit Tx model..."
+	MACHINE=X86 MODS=$(TX_NAME) TEST_RUNS=test_runs/tx TEST_OUT=test_results/tx/ $(MAKE) test
+else
 	@echo "Testing 64-bit Tx model..."
 	MACHINE=AMD64 MODS=$(TX_NAME) TEST_RUNS=test_runs/tx TEST_OUT=test_results/tx/ $(MAKE) test
+endif
 
 test_rx:
+ifeq '$(shell python -c "import platform; print platform.architecture()[0]")' '32bit'
+	@echo "Testing 32-bit Rx model..."
+	MACHINE=X86 MODS=$(RX_NAME) TEST_RUNS=test_runs/rx TEST_OUT=test_results/rx/ $(MAKE) test
+else
 	@echo "Testing 64-bit Rx model..."
 	MACHINE=AMD64 MODS=$(RX_NAME) TEST_RUNS=test_runs/rx TEST_OUT=test_results/rx/ $(MAKE) test
+endif
 
 txami: $(TX_NAME).ami
 txibs: $(TX_NAME).ibs
