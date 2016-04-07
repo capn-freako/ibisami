@@ -25,12 +25,13 @@ AMI_CONFIG := python -m pyibisami.ami_config
 RUN_TESTS  := python -m pyibisami.run_tests
 
 # Machine dependent definitions
+# Note: The "x86_amd64" is NOT an error! It is required, by MSVC v12.0.
 MACHINE ?= X86
 ifeq ($(MACHINE), X86)
     SUFFIX := x86
 else
     ifeq ($(MACHINE), AMD64)
-        SUFFIX := amd64
+        SUFFIX := x86_amd64
     else
         $(error Unrecognized machine type: $(MACHINE))
     endif
