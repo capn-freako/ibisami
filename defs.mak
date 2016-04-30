@@ -40,6 +40,9 @@ endif
 # Handle Windows vs. Linux differences.
 OS ?= Linux
 ifeq ($(OS), Windows_NT)
+    ifndef MSVC_BASE_DOS
+    $(error "Your Microsoft Visual C++ installation is missing or incomplete. Please, see the Getting Started instructions, on the Wiki: https://github.com/capn-freako/ibisami/wiki")
+    endif
     OBJS := $(MODS:%=%_$(SUFFIX).obj)
     ENV_SETTER := $(MSVC_BASE_DOS)\vcvarsall.bat
     RUN_CMD := cmd /C "$(ENV_SETTER)" $(SUFFIX) '&&' 
