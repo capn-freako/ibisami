@@ -41,7 +41,7 @@ for cfg in data:
     color_ref = "#%02X%02X%02X" % (rgb_ref[0] * 0xFF, rgb_ref[1] * 0xFF, rgb_ref[2] * 0xFF)
     semilogx(f / 1.e9, 20. * log10(abs(H[:len(H)/2])), label=cfg_name, color=color_main)
     """if(reference):
-        r = ami.getImpulse(reference, T)
+        r = ami.interpFile(reference, T)
         plot(f, r, label=cfg_name+'_ref', color=color_ref)"""
 title('Model Frequency Response')
 xlabel('Frequency (GHz)')

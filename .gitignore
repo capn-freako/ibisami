@@ -51,3 +51,6 @@
 # Testing results
 test_results.xml
 
+# Documentation
+doc/*
+

@@ -1,1 +1,7 @@
+- Create a Python model configurator, which:
+    1. Automatically creates a *.AMI file, which is consistent with the model.
+    2. Allow for GUI setting of model parameterization:
+        a. Tx tap weights
+        b. Rx CTLE options
+        b. Rx DFE options
 

@@ -8,8 +8,9 @@ Sweep of Tx pre-emphasis filter posttap1 values.
    }, \
    {'channel_response' : [2.0e11] + [0.]*127, \
     'sample_interval'  : 5.0e-12, \
-   } \
-  ) \
+   }, \
+  ), \
+  'example_tx_x86_amd64.so' \
 )
 
 ('Posttap1 = 2', \
@@ -21,7 +22,8 @@ Sweep of Tx pre-emphasis filter posttap1 values.
    {'channel_response' : [2.0e11] + [0.]*127, \
     'sample_interval'  : 5.0e-12, \
    } \
-  ) \
+  ), \
+  'example_tx_x86_amd64.so' \
 )
 
 ('Posttap1 = 4', \

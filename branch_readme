@@ -1,8 +1,0 @@
-Branch 'configurator' goals:
-
-1. Automatically create a *.AMI file, which is consistent with the model.
-2. Allow for GUI setting of model parameterization:
-   a. Tx tap weights
-   b. Rx CTLE options
-   b. Rx DFE options
-

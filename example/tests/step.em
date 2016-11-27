@@ -43,7 +43,13 @@ for cfg in data:
     color_ref = "#%02X%02X%02X" % (rgb_ref[0] * 0xFF, rgb_ref[1] * 0xFF, rgb_ref[2] * 0xFF)
     plot(t, s, label=cfg_name, color=color_main)
     if(reference):
-        r = ami.getImpulse(reference, T)
+        try:
+            ref = ami.AMIModel(reference)
+            ref.initialize(initializer)
+            href = ref.initOut
+            r = cumsum(href) * T * 0.95  # The '0.95' is temporary, for development purposes.
+        except:
+            r = ami.interpFile(reference, T)
         plot(t, r, label=cfg_name+'_ref', color=color_ref)
 title('Step Response (V)')
 xlabel('Time (sec.)')
