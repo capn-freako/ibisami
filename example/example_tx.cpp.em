@@ -8,7 +8,7 @@
  * Copyright (c) 2015 David Banas; all rights reserved World wide.
  */
 
-#define TAP_SCALE 0.047
+#define TAP_SCALE 0.0407
 
 #include <string>
 #include <vector>
@@ -58,8 +58,8 @@ for pname in ami_params['model'].keys():
             print "       ", 'taps[%d] = %s;' % (tap_pos, pname)
         print "       ", 'node_names.pop_back();'
 }
-        taps[1] = tx_tap_units - 2 * (taps[0] + taps[2] + taps[3]);
-        if (taps[1] < 0)
+        taps[1] = tx_tap_units - (taps[0] + taps[2] + taps[3]);
+        if ( (tx_tap_units - 2 * (taps[0] + taps[2] + taps[3])) < 6 )
             msg << "WARNING: Illegal Tx pre-emphasis tap configuration!\n";
 
         // Fill in params_.

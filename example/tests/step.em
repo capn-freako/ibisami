@@ -47,7 +47,7 @@ for cfg in data:
             ref = ami.AMIModel(reference)
             ref.initialize(initializer)
             href = ref.initOut
-            r = cumsum(href) * T * 0.95  # The '0.95' is temporary, for development purposes.
+            r = cumsum(href) * T
         except:
             r = ami.interpFile(reference, T)
         plot(t, r, label=cfg_name+'_ref', color=color_ref)
