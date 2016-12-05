@@ -13,45 +13,81 @@
 @{
 from pylab import *
 import pyibisami.amimodel as ami
+figure(1)
 cla()
+figure(2)
+cla()
+ref = None
 for cfg in data:
     cfg_name = cfg[0]
     params = cfg[1]
     if(len(cfg) > 2):
-        reference = cfg[2]
+        reference = ref_dir + '/' + name.split()[0] + '/' + cfg[2]
     else:
         reference = None
     initializer = ami.AMIModelInitializer(params[0])
     items = params[1].items()
-    items.sort(reverse=True)
+    items.sort(reverse=True)  # Note: This step is MANDATORY!
     for item in items:
         exec ('initializer.' + item[0] + ' = ' + repr(item[1]))
     model.initialize(initializer)
     print '        <block name="Model Initialization (' + cfg_name + ')" type="text">'
+    print "MUT:"
     print model.msg
     print model.ami_params_out
-    print '        </block>'
     h = model.initOut
-    H = fft(h)
-    H /= abs(H[0])  # Normalize to d.c. = 1.
     T = model.sample_interval
+    t = array([i * T for i in range(len(h))])
+    s = cumsum(h) * T  # Step response.
+    H = fft(h)
+    H *= s[-1] / abs(H[0])  # Normalize for proper d.c.
     f = array([i * 1.0 / (T * len(h)) for i in range(len(h) / 2)])
     rgb_main, rgb_ref = plot_colors.next()
     color_main = "#%02X%02X%02X" % (rgb_main[0] * 0xFF, rgb_main[1] * 0xFF, rgb_main[2] * 0xFF)
     color_ref = "#%02X%02X%02X" % (rgb_ref[0] * 0xFF, rgb_ref[1] * 0xFF, rgb_ref[2] * 0xFF)
-    semilogx(f / 1.e9, 20. * log10(abs(H[:len(H)/2])), label=cfg_name, color=color_main)
-    """if(reference):
-        r = ami.interpFile(reference, T)
-        plot(f, r, label=cfg_name+'_ref', color=color_ref)"""
+    figure(1)
+    plot(t * 1.e9, s, '.', label=cfg_name, color=color_main)
+    figure(2)
+    semilogx(f / 1.e9, 20. * log10(abs(H[:len(H)/2])), '.', label=cfg_name, color=color_main)
+    if(reference):
+        try:
+            if(ref is None):
+                ref = ami.AMIModel(reference)
+            initializer.root_name = 'easic_rx'
+            ref.initialize(initializer)
+            print "Reference:"
+            print ref.msg
+            print ref.ami_params_out
+            href = ref.initOut
+            sref = cumsum(href) * T
+            Href = fft(href)
+            Href *= sref[-1] / abs(Href[0])  # Normalize for proper d.c.
+            r = Href
+        except:
+            r = ami.interpFile(reference, T)
+        figure(1)
+        plot(t * 1.e9, sref, label=cfg_name+'_ref', color=color_ref)
+        figure(2)
+        semilogx(f / 1.e9, 20. * log10(abs(r[:len(r)/2])), label=cfg_name+'_ref', color=color_ref)
+    print '        </block>'
+figure(1)
+title('Step Response (V)')
+xlabel('Time (nsec.)')
+axis(xmax=0.4)
+legend()
+filename1 = plot_names.next()
+savefig(filename1)
+figure(2)
 title('Model Frequency Response')
 xlabel('Frequency (GHz)')
 ylabel('|H(f)| (dB)')
-axis(xmax=40)
-legend()
-filename = plot_names.next()
-savefig(filename)
+axis(xmax=40, ymin=-40)
+legend(loc='lower left')
+filename2 = plot_names.next()
+savefig(filename2)
 }
-        <block name="Model Frequency Response" type="image">@(filename)</block>
+        <block name="Model Step Response" type="image">@(filename1)</block>
+        <block name="Model Frequency Response" type="image">@(filename2)</block>
     </output>
 </test>
 

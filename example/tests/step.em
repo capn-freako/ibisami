@@ -31,28 +31,34 @@ for cfg in data:
         exec ('initializer.' + item[0] + ' = ' + repr(item[1]))
     model.initialize(initializer)
     print '        <block name="Model Initialization (' + cfg_name + ')" type="text">'
+    print "MUT:"
     print model.msg
     print model.ami_params_out
-    print '        </block>'
     h = model.initOut
     T = model.sample_interval
     s = cumsum(h) * T
-    t = [i * T for i in range(len(h))]
+    t = array([i * T for i in range(len(h))])
     rgb_main, rgb_ref = plot_colors.next()
     color_main = "#%02X%02X%02X" % (rgb_main[0] * 0xFF, rgb_main[1] * 0xFF, rgb_main[2] * 0xFF)
     color_ref = "#%02X%02X%02X" % (rgb_ref[0] * 0xFF, rgb_ref[1] * 0xFF, rgb_ref[2] * 0xFF)
-    plot(t, s, label=cfg_name, color=color_main)
+    plot(t * 1.e9, s, label=cfg_name, color=color_main)
     if(reference):
         try:
             ref = ami.AMIModel(reference)
+            initializer.root_name = 'easic_rx'
             ref.initialize(initializer)
+            print "Reference:"
+            print ref.msg
+            print ref.ami_params_out
             href = ref.initOut
             r = cumsum(href) * T
         except:
             r = ami.interpFile(reference, T)
-        plot(t, r, label=cfg_name+'_ref', color=color_ref)
+        plot(t * 1.e9, r, label=cfg_name+'_ref', color=color_ref)
+    print '        </block>'
 title('Step Response (V)')
-xlabel('Time (sec.)')
+xlabel('Time (nsec.)')
+axis(xmax=0.4)
 legend()
 filename = plot_names.next()
 savefig(filename)

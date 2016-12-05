@@ -51,7 +51,7 @@ for pname in ami_params['model']:
 
         if (ctle_mode) {
             // Calculate the zero and poles needed to meet the response spec.
-            double p2 = -2. * PI * RX_BW;
+            double p2 = -2. * PI * ctle_bandwidth;
             double p1 = -2. * PI * ctle_freq;
             double z  = p1 / pow(10., ctle_mag / 20.);
 
@@ -61,7 +61,7 @@ for pname in ami_params['model']:
             p2 = exp(p2 * sample_interval);
             std::vector<double> num = {1.0, -z, 0.0};
             for (auto i = 0; i < num.size(); i++)
-                num[i] *= (1 - p1) * (1 - p2) * CTLE_DC_GAIN / (1 - z);
+                num[i] *= (1 - p1) * (1 - p2) * pow(10., ctle_dcgain / 20.) / (1 - z);
             std::vector<double> den = {1.0, -(p1 + p2), p1 * p2};
             ctle_ = new DigitalFilter(num, den);
             if (!ctle_)

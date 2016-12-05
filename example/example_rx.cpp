@@ -46,6 +46,10 @@ class MyRx : public AmiRx {
         int ctle_mode;
         ctle_mode = get_param_int(node_names, 0);
         node_names.pop_back();
+        node_names.push_back("ctle_bandwidth");
+        float ctle_bandwidth;
+        ctle_bandwidth = get_param_float(node_names, 12000000000.0);
+        node_names.pop_back();
         node_names.push_back("ctle_freq");
         float ctle_freq;
         ctle_freq = get_param_float(node_names, 5000000000.0);
@@ -104,11 +108,15 @@ class MyRx : public AmiRx {
         dbg_enable = get_param_bool(node_names, false);
         node_names.pop_back();
         node_names.pop_back();
+        node_names.push_back("ctle_dcgain");
+        float ctle_dcgain;
+        ctle_dcgain = get_param_float(node_names, 0.0);
+        node_names.pop_back();
 
 
         if (ctle_mode) {
             // Calculate the zero and poles needed to meet the response spec.
-            double p2 = -2. * PI * RX_BW;
+            double p2 = -2. * PI * ctle_bandwidth;
             double p1 = -2. * PI * ctle_freq;
             double z  = p1 / pow(10., ctle_mag / 20.);
 
@@ -118,7 +126,7 @@ class MyRx : public AmiRx {
             p2 = exp(p2 * sample_interval);
             std::vector<double> num = {1.0, -z, 0.0};
             for (auto i = 0; i < num.size(); i++)
-                num[i] *= (1 - p1) * (1 - p2) * CTLE_DC_GAIN / (1 - z);
+                num[i] *= (1 - p1) * (1 - p2) * pow(10., ctle_dcgain / 20.) / (1 - z);
             std::vector<double> den = {1.0, -(p1 + p2), p1 * p2};
             ctle_ = new DigitalFilter(num, den);
             if (!ctle_)
