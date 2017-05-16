@@ -3,6 +3,8 @@ var searchData=
   ['main_2edox',['main.dox',['../main_8dox.html',1,'']]],
   ['max_5finit_5fadapt_5fbits',['MAX_INIT_ADAPT_BITS',['../ami__rx_8cpp.html#ae71bb1d376faff4ef65ff271f2a1bc90',1,'ami_rx.cpp']]],
   ['max_5fweights_5f',['max_weights_',['../class_d_f_e.html#a469a8b4a5abe34c8fc769676a9c9ffbf',1,'DFE']]],
+  ['mem_5ftest',['mem_test',['../namespacemem__test.html',1,'']]],
+  ['mem_5ftest_2epy',['mem_test.py',['../mem__test_8py.html',1,'']]],
   ['min_5fweights_5f',['min_weights_',['../class_d_f_e.html#a9ccbe12d16eb4fb19dc69235fddd89c3',1,'DFE']]],
   ['mode',['mode',['../class_d_f_e.html#a0202ee4a4e6bc6ad385e7885383691c6',1,'DFE']]],
   ['model',['model',['../struct_ami_pointers.html#a382ab778612377867999da1da37eb970',1,'AmiPointers']]],

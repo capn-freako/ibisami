@@ -120,7 +120,7 @@ typedef std::pair<bool, std::string> ParseRes;
 /// Abstract class providing the base functionality required by all IBIS-AMI models.
 class AMIModel {
  public:
-    virtual ~AMIModel() {}
+    virtual ~AMIModel() {delete impulse_norm_; delete last_sig_tail_;}
 
     /// Initialize the model.
     /**
@@ -141,6 +141,15 @@ class AMIModel {
      */
     virtual void proc_imp() = 0;
 
+    /// Save the processed impulse response, for use in default GetWave() implementation.
+    /**
+     * This function takes no arguments and returns nothing.
+     * It just saves the processed impulse response, for later use.
+     * It should be called after the input impulse response has been
+     * processed, but before returning from AMI_Init().
+     */
+    virtual void save_imp();
+
     /// Process a signal.
     /**
      * \param sig A pointer to the array of doubles to be processed.
@@ -152,12 +161,16 @@ class AMIModel {
      * been enough storage allocated for clock_times, given the value of
      * sig_len, sample_interval, and bit_time.
      *
+     * The default implementation just convolves the incoming signal
+     * with the impulse response stored during model initialization.
+     *
      * \sa init()
      */
-    virtual bool proc_sig(double *sig, long len, double *clock_times) = 0;
+    virtual bool proc_sig(double *sig, long len, double *clock_times);
 
     std::string& msg() {return msg_;}  ///< Retrieve the model message.
     std::string& param_str() {return param_str_;}  ///< Retrieve the model parameter string.
+    std::string& name() {return param_tree_.name;}  ///< Retrieve the model name.
 
  protected:
     ParseRes parse_params(const std::string& AMI_parameters_in);  ///< Parse the incoming AMI parameter string.
@@ -169,7 +182,7 @@ class AMIModel {
     void log(std::string msg) {if(log_ && clog_) {clog_ << msg << "\n";
         flush(clog_);}}
     std::string msg_, param_str_, name_;
-    double sample_interval_, bit_time_, *impulse_matrix_, gen_data_last_;
+    double sample_interval_, bit_time_, *impulse_matrix_, gen_data_last_, *last_sig_tail_, *impulse_norm_;
     long number_of_rows_, aggressors_, samples_per_bit_;
     unsigned long gen_data_cnt_;
     ibisami::ParamTree param_tree_;

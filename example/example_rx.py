@@ -65,8 +65,8 @@ ami_params = {
             'type'    : 'BOOL',
             'usage'   : 'Info',
             'format'  : 'Value',
-            'default' : 'False',
-            'description' : '"This model is, currently, Init()-only."',
+            'default' : 'True',
+            'description' : '"This model is dual-mode, with GetWave() mimicking Init()."',
         },
     },
 

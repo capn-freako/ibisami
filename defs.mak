@@ -76,7 +76,7 @@ else
     CXX := g++
     LIB := $(CXX)
     LD := $(CXX)
-    CFLAGS := -c -fPIC -std=gnu++11 -I. -I"$(IBISAMI_ROOT)" -I"$(BOOST_ROOT)"
+    CFLAGS := -c -fPIC -I. -I"$(IBISAMI_ROOT)" -I"$(BOOST_ROOT)"
     LDFLAGS = -o $@ -shared
     ifeq ($(MACHINE), X86)
         LDFLAGS += -m32
@@ -101,6 +101,7 @@ else
         endif
     endif
     CXXFLAGS := $(CFLAGS)
+    CXXFLAGS += -std=gnu++11
     IBISAMI_LIB := libibisami_$(SUFFIX).a
 endif
 

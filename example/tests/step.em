@@ -14,7 +14,7 @@
     <output>
 @{
 from pylab import *
-from numpy import cumsum
+from numpy import cumsum, concatenate
 import pyibisami.amimodel as ami
 cla()
 for cfg in data:
@@ -37,11 +37,14 @@ for cfg in data:
     h = model.initOut
     T = model.sample_interval
     s = cumsum(h) * T
+    # In the GetWave case, make 4 calls, to test for proper "stitching".
+    s2 = model.getWave(array([0.0, 1.0] + [1.0] * (len(h) - 2)), row_size=len(h))
     t = array([i * T for i in range(len(h))])
     rgb_main, rgb_ref = plot_colors.next()
     color_main = "#%02X%02X%02X" % (rgb_main[0] * 0xFF, rgb_main[1] * 0xFF, rgb_main[2] * 0xFF)
     color_ref = "#%02X%02X%02X" % (rgb_ref[0] * 0xFF, rgb_ref[1] * 0xFF, rgb_ref[2] * 0xFF)
-    plot(t * 1.e9, s, label=cfg_name, color=color_main)
+    plot(t * 1.e9, s, label=cfg_name+'_Init', color=color_main)
+    plot(t * 1.e9, s2, '.', label=cfg_name+'_GetWave', color=color_main)
     if(reference):
         try:
             ref = ami.AMIModel(reference)
@@ -58,7 +61,7 @@ for cfg in data:
     print '        </block>'
 title('Step Response (V)')
 xlabel('Time (nsec.)')
-axis(xmax=0.4)
+axis(xmax=10e9*model.bit_time)
 legend()
 filename = plot_names.next()
 savefig(filename)

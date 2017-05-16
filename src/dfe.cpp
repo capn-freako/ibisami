@@ -7,6 +7,7 @@
  * Copyright (c) 2015 David Banas; all rights reserved World wide.
  */
 
+#include <cmath>
 #include <vector>
 #include <string>
 #include <sstream>
@@ -97,8 +98,8 @@ bool DFE::apply(double *sig, const long len, double *clock_times) {
         int slope_meas_interval = weights_.size() / 10;
         double first_slope, last_slope;
         for (auto i = 0; i < weights_[0].size(); i++) {
-            first_slope = abs(weights_[slope_meas_interval][i] - weights_[0][i]);
-            last_slope = abs(weights_.back()[i] - weights_[weights_.size() - slope_meas_interval][i]);
+            first_slope = std::abs(weights_[slope_meas_interval][i] - weights_[0][i]);
+            last_slope = std::abs(weights_.back()[i] - weights_[weights_.size() - slope_meas_interval][i]);
             if (last_slope > 0.1 * first_slope)
                 return false;  // We've not, yet, converged.
         }

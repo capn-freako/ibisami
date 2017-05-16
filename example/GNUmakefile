@@ -7,7 +7,7 @@
 
 SRCDIR   := .
 INCDIR   := ../include
-LIB_MODS := ibisami_api amimodel ami_tx ami_rx digital_filter fir_filter dfe util
+LIB_MODS := ibisami_api amimodel ami_tx ami_rx digital_filter fir_filter dfe util default_getwave
 TX_NAME  := example_tx
 RX_NAME  := example_rx
 

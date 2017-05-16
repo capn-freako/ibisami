@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['dfe_5fdump_5ffile',['DFE_DUMP_FILE',['../example__rx_8cpp.html#abe3b32bc1a5be479cd2c61677f2a28d9',1,'example_rx.cpp']]],
-  ['dfe_5finput_5ffile',['DFE_INPUT_FILE',['../example__rx_8cpp.html#aec9402fd6f9901dab8080ffb55214677',1,'example_rx.cpp']]],
-  ['dll_5fexport',['DLL_EXPORT',['../ibisami__api_8cpp.html#a1ca888bd091694c05472e1b91df1a97b',1,'ibisami_api.cpp']]]
+  ['clks_5fper_5fadaptation',['CLKS_PER_ADAPTATION',['../dfe_8cpp.html#ae31ec868389f1446158cbd9770069d46',1,'dfe.cpp']]],
+  ['ctle_5fdc_5fgain',['CTLE_DC_GAIN',['../example__rx_8cpp.html#ae0557c1c5ba957bba97d29da820ea782',1,'example_rx.cpp']]]
 ];

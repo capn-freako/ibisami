@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">ibisami
-   &#160;<span id="projectnumber">0.8</span>
+   &#160;<span id="projectnumber">1.3</span>
    </div>
    <div id="projectbrief">Public domain IBIS-AMI model creation infrastructure.</div>
   </td>
@@ -112,7 +112,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;              <span class="keyword">const</span> <span class="keywordtype">long</span> aggressors, <span class="keyword">const</span> <span class="keywordtype">double</span> sample_interval,</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;              <span class="keyword">const</span> <span class="keywordtype">double</span> bit_time, <span class="keyword">const</span> std::string&amp; AMI_parameters_in) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_ami_rx.html#a74a1a6c1ac9a46634cb0d0ab56b83c4e">proc_imp</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_ami_rx.html#aac00499d02f5e4a3f2ddce49c5b1599f">proc_sig</a>(<span class="keywordtype">double</span> *sig, <span class="keywordtype">long</span> len, <span class="keywordtype">double</span> *clock_times) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">// bool proc_sig(double *sig, long len, double *clock_times) override;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; <span class="keyword">protected</span>:</div>
 <div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_ami_rx.html#a64fc9d9aac458b2f6b398c2f7d9f7fb2">   36</a></span>&#160;    <a class="code" href="class_digital_filter.html">DigitalFilter</a> *<a class="code" href="class_ami_rx.html#a64fc9d9aac458b2f6b398c2f7d9f7fb2">ctle_</a>;</div>
@@ -130,14 +130,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="amimodel_8h_html"><div class="ttname"><a href="amimodel_8h.html">amimodel.h</a></div><div class="ttdoc">Interface to AMIModel class. </div></div>
 <div class="ttc" id="class_ami_rx_html_afb9c0d0efb4722c09529a05e3fb2b263"><div class="ttname"><a href="class_ami_rx.html#afb9c0d0efb4722c09529a05e3fb2b263">AmiRx::init</a></div><div class="ttdeci">void init(double *impulse_matrix, const long number_of_rows, const long aggressors, const double sample_interval, const double bit_time, const std::string &amp;AMI_parameters_in) override</div><div class="ttdoc">Initializer. </div><div class="ttdef"><b>Definition:</b> <a href="ami__rx_8cpp_source.html#l00022">ami_rx.cpp:22</a></div></div>
 <div class="ttc" id="class_digital_filter_html"><div class="ttname"><a href="class_digital_filter.html">DigitalFilter</a></div><div class="ttdoc">A generic digital filter implementation, using "Direct Form 2" processing. </div><div class="ttdef"><b>Definition:</b> <a href="digital__filter_8h_source.html#l00018">digital_filter.h:18</a></div></div>
-<div class="ttc" id="class_ami_rx_html_aac00499d02f5e4a3f2ddce49c5b1599f"><div class="ttname"><a href="class_ami_rx.html#aac00499d02f5e4a3f2ddce49c5b1599f">AmiRx::proc_sig</a></div><div class="ttdeci">bool proc_sig(double *sig, long len, double *clock_times) override</div><div class="ttdoc">Override of AMIModel::proc_sig() specific to Rx models. </div><div class="ttdef"><b>Definition:</b> <a href="ami__rx_8cpp_source.html#l00064">ami_rx.cpp:64</a></div></div>
 <div class="ttc" id="class_ami_rx_html_a93343b91ac17149bce7ef0a971512507"><div class="ttname"><a href="class_ami_rx.html#a93343b91ac17149bce7ef0a971512507">AmiRx::sig_tap_</a></div><div class="ttdeci">int sig_tap_</div><div class="ttdef"><b>Definition:</b> <a href="ami__rx_8h_source.html#l00041">ami_rx.h:41</a></div></div>
 <div class="ttc" id="class_d_f_e_html"><div class="ttname"><a href="class_d_f_e.html">DFE</a></div><div class="ttdoc">A generic DFE implementation. </div><div class="ttdef"><b>Definition:</b> <a href="dfe_8h_source.html#l00020">dfe.h:20</a></div></div>
 <div class="ttc" id="class_ami_rx_html_a025faccfe2a5c56888da32370050b46e"><div class="ttname"><a href="class_ami_rx.html#a025faccfe2a5c56888da32370050b46e">AmiRx::AmiRx</a></div><div class="ttdeci">AmiRx()</div><div class="ttdef"><b>Definition:</b> <a href="ami__rx_8h_source.html#l00027">ami_rx.h:27</a></div></div>
 <div class="ttc" id="class_ami_rx_html_a4032ef1f57bf4b5aef5cb481ea65622c"><div class="ttname"><a href="class_ami_rx.html#a4032ef1f57bf4b5aef5cb481ea65622c">AmiRx::dfe_input_stream_</a></div><div class="ttdeci">std::ofstream dfe_input_stream_</div><div class="ttdef"><b>Definition:</b> <a href="ami__rx_8h_source.html#l00038">ami_rx.h:38</a></div></div>
 <div class="ttc" id="class_ami_rx_html_a20d036e33d3690b8274fb5e338ce4d53"><div class="ttname"><a href="class_ami_rx.html#a20d036e33d3690b8274fb5e338ce4d53">AmiRx::init_adapt_tap_</a></div><div class="ttdeci">int init_adapt_tap_</div><div class="ttdef"><b>Definition:</b> <a href="ami__rx_8h_source.html#l00041">ami_rx.h:41</a></div></div>
 <div class="ttc" id="digital__filter_8h_html"><div class="ttname"><a href="digital__filter_8h.html">digital_filter.h</a></div><div class="ttdoc">Interface to DigitalFilter class. </div></div>
-<div class="ttc" id="class_ami_rx_html_a74a1a6c1ac9a46634cb0d0ab56b83c4e"><div class="ttname"><a href="class_ami_rx.html#a74a1a6c1ac9a46634cb0d0ab56b83c4e">AmiRx::proc_imp</a></div><div class="ttdeci">void proc_imp() override</div><div class="ttdoc">Override of AMIModel::proc_imp() specific to Rx models. </div><div class="ttdef"><b>Definition:</b> <a href="ami__rx_8cpp_source.html#l00076">ami_rx.cpp:76</a></div></div>
+<div class="ttc" id="class_ami_rx_html_a74a1a6c1ac9a46634cb0d0ab56b83c4e"><div class="ttname"><a href="class_ami_rx.html#a74a1a6c1ac9a46634cb0d0ab56b83c4e">AmiRx::proc_imp</a></div><div class="ttdeci">void proc_imp() override</div><div class="ttdoc">Override of AMIModel::proc_sig() specific to Rx models. </div><div class="ttdef"><b>Definition:</b> <a href="ami__rx_8cpp_source.html#l00076">ami_rx.cpp:76</a></div></div>
 <div class="ttc" id="dfe_8h_html"><div class="ttname"><a href="dfe_8h.html">dfe.h</a></div><div class="ttdoc">Interface to DFE class. </div></div>
 <div class="ttc" id="class_ami_rx_html_a93d8a169660a911021566682e02da75f"><div class="ttname"><a href="class_ami_rx.html#a93d8a169660a911021566682e02da75f">AmiRx::~AmiRx</a></div><div class="ttdeci">virtual ~AmiRx()</div><div class="ttdef"><b>Definition:</b> <a href="ami__rx_8h_source.html#l00028">ami_rx.h:28</a></div></div>
 <div class="ttc" id="class_ami_rx_html_a57786bfc4be423b3cfccc03081b6bb50"><div class="ttname"><a href="class_ami_rx.html#a57786bfc4be423b3cfccc03081b6bb50">AmiRx::dfe_input_file_</a></div><div class="ttdeci">std::string dfe_input_file_</div><div class="ttdef"><b>Definition:</b> <a href="ami__rx_8h_source.html#l00040">ami_rx.h:40</a></div></div>
@@ -150,7 +149,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 26 2016 11:18:10 for ibisami by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 15 2017 19:00:58 for ibisami by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

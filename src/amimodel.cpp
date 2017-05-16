@@ -11,6 +11,7 @@
 #include <utility>
 #include <vector>
 #include "include/amimodel.h"
+#include "include/default_getwave.h"
 
 #define EPS_REL 0.0001
 
@@ -18,28 +19,48 @@ std::ostringstream debug_stream;
 
 //! Initialize the model.
 void AMIModel::init(double *impulse_matrix, const long number_of_rows,
-    const long aggressors, const double sample_interval,
-    const double bit_time, const std::string& AMI_parameters_in) {
+        const long aggressors, const double sample_interval,
+        const double bit_time, const std::string& AMI_parameters_in) {
     debug_stream.str("");
     impulse_matrix_ = impulse_matrix;
     number_of_rows_ = number_of_rows;
     aggressors_ = aggressors;
+    last_sig_tail_ = new double[number_of_rows_]();
+    impulse_norm_ = new double[number_of_rows_]();
+    if (!last_sig_tail_ || !impulse_norm_)
+        throw std::runtime_error("Couldn't allocate memory for signal tail, or normalized impulse response!");
+
     sample_interval_ = sample_interval;
     bit_time_ = bit_time;
     samples_per_bit_ = long(bit_time / sample_interval + 0.5);
     msg_ = "Input parameter string: " + AMI_parameters_in + "\n";
-    if (abs(samples_per_bit_ * sample_interval - bit_time) > (bit_time * EPS_REL))
+    if (std::abs(samples_per_bit_ * sample_interval - bit_time) > (bit_time * EPS_REL))
         msg_ += "WARN: Non-integral number of samples per bit detected!\n";
+
     gen_data_cnt_ = 0;
     shift_reg_[0] = 1;
     for (auto i = 1; i < PRBS_LEN; i++)
         shift_reg_[i] = 0;
     gen_data_last_ = -1.0;
+
     param_tree_.name = "";
     param_tree_.children.clear();
     ParseRes res = parse_params(AMI_parameters_in);
     if (!res.first)
         throw std::runtime_error(res.second);
+}
+
+//! Save the processed impulse response, for later use.
+void AMIModel::save_imp() {
+    for (auto i=0; i < number_of_rows_; i++)
+        // Prescaling the stored impulse response saves work in default_getwave().
+        impulse_norm_[i] = impulse_matrix_[i] * sample_interval_;
+}
+
+//! Implement default GetWave() functionality.
+bool AMIModel::proc_sig(double *sig, const long len, double *clock_times) {
+    clock_times[0] = -1;  // Flags the tool that we've not filled in the 'clock_times' vector.
+    return default_getwave(sig, len, impulse_norm_, number_of_rows_, last_sig_tail_);
 }
 
 //! Parse the incoming AMI parameter string.

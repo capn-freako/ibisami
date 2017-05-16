@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">ibisami
-   &#160;<span id="projectnumber">0.8</span>
+   &#160;<span id="projectnumber">1.3</span>
    </div>
    <div id="projectbrief">Public domain IBIS-AMI model creation infrastructure.</div>
   </td>
@@ -114,15 +114,19 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a460aa0b0b308f06fa7dd343eb4a06339"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ibisami__api_8cpp.html#a460aa0b0b308f06fa7dd343eb4a06339">AMI_GETWAVE</a></td></tr>
+<tr class="separator:a460aa0b0b308f06fa7dd343eb4a06339"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ca888bd091694c05472e1b91df1a97b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ibisami__api_8cpp.html#a1ca888bd091694c05472e1b91df1a97b">DLL_EXPORT</a></td></tr>
 <tr class="separator:a1ca888bd091694c05472e1b91df1a97b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2518d31187e06bed6023ec23657faab9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ibisami__api_8cpp.html#a1ca888bd091694c05472e1b91df1a97b">DLL_EXPORT</a> long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ibisami__api_8cpp.html#a2518d31187e06bed6023ec23657faab9">AMI_Init</a> (double *impulse_matrix, long number_of_rows, long aggressors, double sample_interval, double bit_time, char *AMI_parameters_in, char **AMI_parameters_out, void **AMI_memory_handle, char **msg)</td></tr>
+<tr class="memitem:a2518d31187e06bed6023ec23657faab9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="init__example_8c.html#a1ca888bd091694c05472e1b91df1a97b">DLL_EXPORT</a> long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ibisami__api_8cpp.html#a2518d31187e06bed6023ec23657faab9">AMI_Init</a> (double *impulse_matrix, long number_of_rows, long aggressors, double sample_interval, double bit_time, char *AMI_parameters_in, char **AMI_parameters_out, void **AMI_memory_handle, char **msg)</td></tr>
 <tr class="memdesc:a2518d31187e06bed6023ec23657faab9"><td class="mdescLeft">&#160;</td><td class="mdescRight">IBIS-AMI model initialization and impulse response processing. (Required)  <a href="#a2518d31187e06bed6023ec23657faab9">More...</a><br /></td></tr>
 <tr class="separator:a2518d31187e06bed6023ec23657faab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5290351461f5a1fdf0e8cf061b306b2a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ibisami__api_8cpp.html#a1ca888bd091694c05472e1b91df1a97b">DLL_EXPORT</a> long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ibisami__api_8cpp.html#a5290351461f5a1fdf0e8cf061b306b2a">AMI_Close</a> (void *AMI_memory)</td></tr>
+<tr class="memitem:a39a6d9c3207599ea4f6959386d6a795f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="init__example_8c.html#a1ca888bd091694c05472e1b91df1a97b">DLL_EXPORT</a> long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ibisami__api_8cpp.html#a39a6d9c3207599ea4f6959386d6a795f">AMI_GetWave</a> (double *wave, long wave_size, double *clock_times, char **AMI_parameters_out, void *AMI_memory)</td></tr>
+<tr class="separator:a39a6d9c3207599ea4f6959386d6a795f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5290351461f5a1fdf0e8cf061b306b2a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="init__example_8c.html#a1ca888bd091694c05472e1b91df1a97b">DLL_EXPORT</a> long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ibisami__api_8cpp.html#a5290351461f5a1fdf0e8cf061b306b2a">AMI_Close</a> (void *AMI_memory)</td></tr>
 <tr class="memdesc:a5290351461f5a1fdf0e8cf061b306b2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean-up. (Required)  <a href="#a5290351461f5a1fdf0e8cf061b306b2a">More...</a><br /></td></tr>
 <tr class="separator:a5290351461f5a1fdf0e8cf061b306b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -142,6 +146,20 @@ Variables</h2></td></tr>
 
 <p>Definition in file <a class="el" href="ibisami__api_8cpp_source.html">ibisami_api.cpp</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a460aa0b0b308f06fa7dd343eb4a06339"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AMI_GETWAVE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="ibisami__api_8cpp_source.html#l00020">20</a> of file <a class="el" href="ibisami__api_8cpp_source.html">ibisami_api.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a1ca888bd091694c05472e1b91df1a97b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -152,7 +170,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="ibisami__api_8cpp_source.html#l00037">37</a> of file <a class="el" href="ibisami__api_8cpp_source.html">ibisami_api.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ibisami__api_8cpp_source.html#l00041">41</a> of file <a class="el" href="ibisami__api_8cpp_source.html">ibisami_api.cpp</a>.</p>
 
 </div>
 </div>
@@ -162,7 +180,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ibisami__api_8cpp.html#a1ca888bd091694c05472e1b91df1a97b">DLL_EXPORT</a> long AMI_Close </td>
+          <td class="memname"><a class="el" href="init__example_8c.html#a1ca888bd091694c05472e1b91df1a97b">DLL_EXPORT</a> long AMI_Close </td>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>AMI_memory</em></td><td>)</td>
@@ -180,7 +198,53 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>'1' </dd></dl>
 
-<p>Definition at line <a class="el" href="ibisami__api_8cpp_source.html#l00133">133</a> of file <a class="el" href="ibisami__api_8cpp_source.html">ibisami_api.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ibisami__api_8cpp_source.html#l00165">165</a> of file <a class="el" href="ibisami__api_8cpp_source.html">ibisami_api.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a39a6d9c3207599ea4f6959386d6a795f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="init__example_8c.html#a1ca888bd091694c05472e1b91df1a97b">DLL_EXPORT</a> long AMI_GetWave </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>wave</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>wave_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>clock_times</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>AMI_parameters_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>AMI_memory</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="ibisami__api_8cpp_source.html#l00123">123</a> of file <a class="el" href="ibisami__api_8cpp_source.html">ibisami_api.cpp</a>.</p>
 
 </div>
 </div>
@@ -189,7 +253,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ibisami__api_8cpp.html#a1ca888bd091694c05472e1b91df1a97b">DLL_EXPORT</a> long AMI_Init </td>
+          <td class="memname"><a class="el" href="init__example_8c.html#a1ca888bd091694c05472e1b91df1a97b">DLL_EXPORT</a> long AMI_Init </td>
           <td>(</td>
           <td class="paramtype">double *&#160;</td>
           <td class="paramname"><em>impulse_matrix</em>, </td>
@@ -267,7 +331,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>'1' for success, '0' for failure. </dd></dl>
 
-<p>Definition at line <a class="el" href="ibisami__api_8cpp_source.html#l00053">53</a> of file <a class="el" href="ibisami__api_8cpp_source.html">ibisami_api.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ibisami__api_8cpp_source.html#l00057">57</a> of file <a class="el" href="ibisami__api_8cpp_source.html">ibisami_api.cpp</a>.</p>
 
 </div>
 </div>
@@ -285,14 +349,14 @@ Variables</h2></td></tr>
 <p>Defined in our device-specific source code file. </p>
 <p>Defined in our device-specific source code file. </p>
 
-<p>Definition at line <a class="el" href="example__rx_8cpp_source.html#l00171">171</a> of file <a class="el" href="example__rx_8cpp_source.html">example_rx.cpp</a>.</p>
+<p>Definition at line <a class="el" href="example__rx_8cpp_source.html#l00179">179</a> of file <a class="el" href="example__rx_8cpp_source.html">example_rx.cpp</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 26 2016 11:18:10 for ibisami by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 15 2017 19:00:58 for ibisami by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

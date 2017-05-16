@@ -11,5 +11,5 @@ var searchData=
   ['pi',['PI',['../example__rx_8cpp.html#a598a3330b3c21701223ee0ca14316eca',1,'example_rx.cpp']]],
   ['prbs_5flen',['PRBS_LEN',['../amimodel_8h.html#ab851168a21246c759c23a126c192360f',1,'amimodel.h']]],
   ['proc_5fimp',['proc_imp',['../class_ami_rx.html#a74a1a6c1ac9a46634cb0d0ab56b83c4e',1,'AmiRx::proc_imp()'],['../class_ami_tx.html#a94649674c8e8442c1d5434d509165594',1,'AmiTx::proc_imp()'],['../class_a_m_i_model.html#a52d1f23607e7f12fa1ab61d809231c11',1,'AMIModel::proc_imp()']]],
-  ['proc_5fsig',['proc_sig',['../class_ami_rx.html#aac00499d02f5e4a3f2ddce49c5b1599f',1,'AmiRx::proc_sig()'],['../class_ami_tx.html#a8f326f6dfa875c00800491ff2104f248',1,'AmiTx::proc_sig()'],['../class_a_m_i_model.html#abb1d05835230a1b0e8f6b98002d8f4ef',1,'AMIModel::proc_sig()']]]
+  ['proc_5fsig',['proc_sig',['../class_a_m_i_model.html#ac2e0c85f86db422774ba17f10360461b',1,'AMIModel']]]
 ];

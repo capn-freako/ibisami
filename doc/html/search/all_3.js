@@ -1,6 +1,9 @@
 var searchData=
 [
   ['debug_5fstream',['debug_stream',['../ami__rx_8cpp.html#adaacc26a963cc85987b4b356b24c707c',1,'debug_stream():&#160;amimodel.cpp'],['../amimodel_8cpp.html#adaacc26a963cc85987b4b356b24c707c',1,'debug_stream():&#160;amimodel.cpp'],['../dfe_8cpp.html#adaacc26a963cc85987b4b356b24c707c',1,'debug_stream():&#160;amimodel.cpp']]],
+  ['default_5fgetwave',['default_getwave',['../default__getwave_8h.html#a95df9c326a7fa7178d52115429274983',1,'default_getwave(double *signal, long sig_len, double *impulse_resp, long imp_res_len, double *residual):&#160;default_getwave.c'],['../default__getwave_8c.html#a95df9c326a7fa7178d52115429274983',1,'default_getwave(double *signal, long sig_len, double *impulse_resp, long imp_res_len, double *residual):&#160;default_getwave.c']]],
+  ['default_5fgetwave_2ec',['default_getwave.c',['../default__getwave_8c.html',1,'']]],
+  ['default_5fgetwave_2eh',['default_getwave.h',['../default__getwave_8h.html',1,'']]],
   ['delay_5fchain_5f',['delay_chain_',['../class_f_i_r_filter.html#ab3084e783d752a4595dc580b555c04e1',1,'FIRFilter']]],
   ['den_5f',['den_',['../class_digital_filter.html#aff805e69237ae6c450221f0d4c253bf9',1,'DigitalFilter']]],
   ['dfe',['DFE',['../class_d_f_e.html',1,'DFE'],['../class_d_f_e.html#a805ef1fae96f5e865c13948c9fb53cb3',1,'DFE::DFE()']]],
@@ -16,7 +19,7 @@ var searchData=
   ['digital_5ffilter_2ecpp',['digital_filter.cpp',['../digital__filter_8cpp.html',1,'']]],
   ['digital_5ffilter_2eh',['digital_filter.h',['../digital__filter_8h.html',1,'']]],
   ['digitalfilter',['DigitalFilter',['../class_digital_filter.html',1,'DigitalFilter'],['../class_digital_filter.html#aa3d504c14a3dd71c0a8384e03fb9a3b8',1,'DigitalFilter::DigitalFilter()']]],
-  ['dll_5fexport',['DLL_EXPORT',['../ibisami__api_8cpp.html#a1ca888bd091694c05472e1b91df1a97b',1,'ibisami_api.cpp']]],
+  ['dll_5fexport',['DLL_EXPORT',['../ibisami__api_8cpp.html#a1ca888bd091694c05472e1b91df1a97b',1,'DLL_EXPORT():&#160;ibisami_api.cpp'],['../init__example_8c.html#a1ca888bd091694c05472e1b91df1a97b',1,'DLL_EXPORT():&#160;init_example.c']]],
   ['dump_5fadaptation_5finput_5f',['dump_adaptation_input_',['../class_ami_rx.html#a2bda560b4aa1312dcd9654294b1d7e76',1,'AmiRx']]],
   ['dump_5fdfe_5fadaptation_5f',['dump_dfe_adaptation_',['../class_ami_rx.html#a985a6dc41e2c65429ad773a6c04a356b',1,'AmiRx']]],
   ['developer_20documentation_20for_20the_20_2aibisami_2a_20project',['Developer Documentation for the *ibisami* Project',['../index.html',1,'']]]

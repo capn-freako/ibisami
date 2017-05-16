@@ -5,7 +5,7 @@
 [File Name]  example_tx.ibs
 [File Rev]   v0.1
 
-[Date]       2016-11-30
+[Date]       2017-05-14
 
 [Source]     ibisami, a public domain IBIS-AMI model creation infrastructure
 
@@ -63,10 +63,10 @@ Rref  = 50
 
 
 [Algorithmic Model]
-Executable linux_gcc4.1.2_32          example_tx_x86.so     example_tx.ami
-Executable linux_gcc4.1.2_64          example_tx_amd64.so   example_tx.ami
-Executable Windows_VisualStudio_32    example_tx_x86.dll    example_tx.ami
-Executable Windows_VisualStudio_64    example_tx_amd64.dll  example_tx.ami
+Executable linux_gcc4.1.2_32          example_tx_x86.so         example_tx.ami
+Executable linux_gcc4.1.2_64          example_tx_x86_amd64.so   example_tx.ami
+Executable Windows_VisualStudio_32    example_tx_x86.dll        example_tx.ami
+Executable Windows_VisualStudio_64    example_tx_x86_amd64.dll  example_tx.ami
 [End Algorithmic Model]
 
 [Temperature_Range]     25.0      0.0    100.0

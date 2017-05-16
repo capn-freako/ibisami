@@ -30,7 +30,7 @@ class AmiRx : public AMIModel {
               const long aggressors, const double sample_interval,
               const double bit_time, const std::string& AMI_parameters_in) override;
     void proc_imp() override;
-    bool proc_sig(double *sig, long len, double *clock_times) override;
+    // bool proc_sig(double *sig, long len, double *clock_times) override;
 
  protected:
     DigitalFilter *ctle_;

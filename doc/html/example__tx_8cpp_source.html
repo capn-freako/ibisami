@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">ibisami
-   &#160;<span id="projectnumber">0.8</span>
+   &#160;<span id="projectnumber">1.3</span>
    </div>
    <div id="projectbrief">Public domain IBIS-AMI model creation infrastructure.</div>
   </td>
@@ -93,7 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="example__tx_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="example__tx_8cpp.html#af1850df0d59f876e56124608d292faad">   11</a></span>&#160;<span class="preprocessor">#define TAP_SCALE 0.047</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="example__tx_8cpp.html#af1850df0d59f876e56124608d292faad">   11</a></span>&#160;<span class="preprocessor">#define TAP_SCALE 0.0407</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
@@ -140,8 +140,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        taps[2] = tx_tap_nm1;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        node_names.pop_back();</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        taps[1] = tx_tap_units - 2 * (taps[0] + taps[2] + taps[3]);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span> (taps[1] &lt; 0)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        taps[1] = tx_tap_units - (taps[0] + taps[2] + taps[3]);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span> ( (tx_tap_units - 2 * (taps[0] + taps[2] + taps[3])) &lt; 6 )</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            msg &lt;&lt; <span class="stringliteral">&quot;WARNING: Illegal Tx pre-emphasis tap configuration!\n&quot;</span>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="comment">// Fill in params_.</span></div>
@@ -172,25 +172,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
 <div class="ttc" id="class_ami_tx_html"><div class="ttname"><a href="class_ami_tx.html">AmiTx</a></div><div class="ttdoc">A generic IBIS-AMI Tx model implementation. </div><div class="ttdef"><b>Definition:</b> <a href="ami__tx_8h_source.html#l00023">ami_tx.h:23</a></div></div>
 <div class="ttc" id="example__tx_8cpp_html_af1850df0d59f876e56124608d292faad"><div class="ttname"><a href="example__tx_8cpp.html#af1850df0d59f876e56124608d292faad">TAP_SCALE</a></div><div class="ttdeci">#define TAP_SCALE</div><div class="ttdef"><b>Definition:</b> <a href="example__tx_8cpp_source.html#l00011">example_tx.cpp:11</a></div></div>
-<div class="ttc" id="class_a_m_i_model_html_ae65d47400fd3736682c229dab31392ad"><div class="ttname"><a href="class_a_m_i_model.html#ae65d47400fd3736682c229dab31392ad">AMIModel::msg</a></div><div class="ttdeci">std::string &amp; msg()</div><div class="ttdoc">Retrieve the model message. </div><div class="ttdef"><b>Definition:</b> <a href="amimodel_8h_source.html#l00159">amimodel.h:159</a></div></div>
+<div class="ttc" id="class_a_m_i_model_html_ae65d47400fd3736682c229dab31392ad"><div class="ttname"><a href="class_a_m_i_model.html#ae65d47400fd3736682c229dab31392ad">AMIModel::msg</a></div><div class="ttdeci">std::string &amp; msg()</div><div class="ttdoc">Retrieve the model message. </div><div class="ttdef"><b>Definition:</b> <a href="amimodel_8h_source.html#l00171">amimodel.h:171</a></div></div>
 <div class="ttc" id="ami__tx_8h_html"><div class="ttname"><a href="ami__tx_8h.html">ami_tx.h</a></div><div class="ttdoc">Interface to AmiTx class. </div></div>
-<div class="ttc" id="class_a_m_i_model_html_a55b68d8a68be34f672d53968484225e1"><div class="ttname"><a href="class_a_m_i_model.html#a55b68d8a68be34f672d53968484225e1">AMIModel::get_param_int</a></div><div class="ttdeci">long get_param_int(const std::vector&lt; std::string &gt; &amp;node_names, long default_val) const </div><div class="ttdoc">Get the value of an integer parameter. </div><div class="ttdef"><b>Definition:</b> <a href="amimodel_8cpp_source.html#l00080">amimodel.cpp:80</a></div></div>
+<div class="ttc" id="class_a_m_i_model_html_a55b68d8a68be34f672d53968484225e1"><div class="ttname"><a href="class_a_m_i_model.html#a55b68d8a68be34f672d53968484225e1">AMIModel::get_param_int</a></div><div class="ttdeci">long get_param_int(const std::vector&lt; std::string &gt; &amp;node_names, long default_val) const </div><div class="ttdoc">Get the value of an integer parameter. </div><div class="ttdef"><b>Definition:</b> <a href="amimodel_8cpp_source.html#l00101">amimodel.cpp:101</a></div></div>
 <div class="ttc" id="class_my_tx_html_a1fe85e2eeacfdc9fb6b1bf77702243be"><div class="ttname"><a href="class_my_tx.html#a1fe85e2eeacfdc9fb6b1bf77702243be">MyTx::MyTx</a></div><div class="ttdeci">MyTx()</div><div class="ttdef"><b>Definition:</b> <a href="example__tx_8cpp_source.html#l00022">example_tx.cpp:22</a></div></div>
 <div class="ttc" id="class_ami_tx_html_ab4878fcf087a793ca120ab1e30cabed5"><div class="ttname"><a href="class_ami_tx.html#ab4878fcf087a793ca120ab1e30cabed5">AmiTx::tap_weights_</a></div><div class="ttdeci">std::vector&lt; double &gt; tap_weights_</div><div class="ttdoc">Tap weights for pre-emphasis filter. </div><div class="ttdef"><b>Definition:</b> <a href="ami__tx_8h_source.html#l00034">ami_tx.h:34</a></div></div>
 <div class="ttc" id="class_my_tx_html_ab7d79dd462919d22f1ec7e33e448e0ff"><div class="ttname"><a href="class_my_tx.html#ab7d79dd462919d22f1ec7e33e448e0ff">MyTx::~MyTx</a></div><div class="ttdeci">~MyTx()</div><div class="ttdef"><b>Definition:</b> <a href="example__tx_8cpp_source.html#l00023">example_tx.cpp:23</a></div></div>
 <div class="ttc" id="class_my_tx_html"><div class="ttname"><a href="class_my_tx.html">MyTx</a></div><div class="ttdoc">An example device specific Tx model implementation. </div><div class="ttdef"><b>Definition:</b> <a href="example__tx_8cpp_source.html#l00018">example_tx.cpp:18</a></div></div>
 <div class="ttc" id="example__tx_8cpp_html_aa0c4a4f61a9cc689992be1759eb7041a"><div class="ttname"><a href="example__tx_8cpp.html#aa0c4a4f61a9cc689992be1759eb7041a">ami_model</a></div><div class="ttdeci">AMIModel * ami_model</div><div class="ttdoc">The pointer required by the API implementation. </div><div class="ttdef"><b>Definition:</b> <a href="example__tx_8cpp_source.html#l00087">example_tx.cpp:87</a></div></div>
-<div class="ttc" id="class_a_m_i_model_html_acc9d4703088b0a69f649c84a1e134cfd"><div class="ttname"><a href="class_a_m_i_model.html#acc9d4703088b0a69f649c84a1e134cfd">AMIModel::msg_</a></div><div class="ttdeci">std::string msg_</div><div class="ttdef"><b>Definition:</b> <a href="amimodel_8h_source.html#l00171">amimodel.h:171</a></div></div>
-<div class="ttc" id="class_a_m_i_model_html_a8f45652e216686d0efa8db7e9dc0e915"><div class="ttname"><a href="class_a_m_i_model.html#a8f45652e216686d0efa8db7e9dc0e915">AMIModel::init</a></div><div class="ttdeci">virtual void init(double *impulse_matrix, const long number_of_rows, const long aggressors, const double sample_interval, const double bit_time, const std::string &amp;AMI_parameters_in)</div><div class="ttdoc">Initialize the model. </div><div class="ttdef"><b>Definition:</b> <a href="amimodel_8cpp_source.html#l00020">amimodel.cpp:20</a></div></div>
+<div class="ttc" id="class_a_m_i_model_html_acc9d4703088b0a69f649c84a1e134cfd"><div class="ttname"><a href="class_a_m_i_model.html#acc9d4703088b0a69f649c84a1e134cfd">AMIModel::msg_</a></div><div class="ttdeci">std::string msg_</div><div class="ttdef"><b>Definition:</b> <a href="amimodel_8h_source.html#l00184">amimodel.h:184</a></div></div>
+<div class="ttc" id="class_a_m_i_model_html_a8f45652e216686d0efa8db7e9dc0e915"><div class="ttname"><a href="class_a_m_i_model.html#a8f45652e216686d0efa8db7e9dc0e915">AMIModel::init</a></div><div class="ttdeci">virtual void init(double *impulse_matrix, const long number_of_rows, const long aggressors, const double sample_interval, const double bit_time, const std::string &amp;AMI_parameters_in)</div><div class="ttdoc">Initialize the model. </div><div class="ttdef"><b>Definition:</b> <a href="amimodel_8cpp_source.html#l00021">amimodel.cpp:21</a></div></div>
 <div class="ttc" id="example__tx_8cpp_html_a7477fa3c6e307f34f7d51829b16bb839"><div class="ttname"><a href="example__tx_8cpp.html#a7477fa3c6e307f34f7d51829b16bb839">my_tx</a></div><div class="ttdeci">MyTx my_tx</div></div>
 <div class="ttc" id="class_my_tx_html_a4166bdab63c2366409998b2e606f55d2"><div class="ttname"><a href="class_my_tx.html#a4166bdab63c2366409998b2e606f55d2">MyTx::init</a></div><div class="ttdeci">void init(double *impulse_matrix, const long number_of_rows, const long aggressors, const double sample_interval, const double bit_time, const std::string &amp;AMI_parameters_in) override</div><div class="ttdoc">Initialize the model. </div><div class="ttdef"><b>Definition:</b> <a href="example__tx_8cpp_source.html#l00024">example_tx.cpp:24</a></div></div>
 <div class="ttc" id="class_ami_tx_html_a8e07817524a3626aaa432bcbe7cad30f"><div class="ttname"><a href="class_ami_tx.html#a8e07817524a3626aaa432bcbe7cad30f">AmiTx::have_preemph_</a></div><div class="ttdeci">bool have_preemph_</div><div class="ttdoc">True, if I have a pre-emphasis filter. </div><div class="ttdef"><b>Definition:</b> <a href="ami__tx_8h_source.html#l00032">ami_tx.h:32</a></div></div>
 <div class="ttc" id="class_a_m_i_model_html"><div class="ttname"><a href="class_a_m_i_model.html">AMIModel</a></div><div class="ttdoc">Abstract class providing the base functionality required by all IBIS-AMI models. </div><div class="ttdef"><b>Definition:</b> <a href="amimodel_8h_source.html#l00121">amimodel.h:121</a></div></div>
-<div class="ttc" id="class_a_m_i_model_html_ab7aeef08245acc654271341cdf0139f9"><div class="ttname"><a href="class_a_m_i_model.html#ab7aeef08245acc654271341cdf0139f9">AMIModel::param_str_</a></div><div class="ttdeci">std::string param_str_</div><div class="ttdef"><b>Definition:</b> <a href="amimodel_8h_source.html#l00171">amimodel.h:171</a></div></div>
+<div class="ttc" id="class_a_m_i_model_html_ab7aeef08245acc654271341cdf0139f9"><div class="ttname"><a href="class_a_m_i_model.html#ab7aeef08245acc654271341cdf0139f9">AMIModel::param_str_</a></div><div class="ttdeci">std::string param_str_</div><div class="ttdef"><b>Definition:</b> <a href="amimodel_8h_source.html#l00184">amimodel.h:184</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 26 2016 11:18:10 for ibisami by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 15 2017 19:00:58 for ibisami by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

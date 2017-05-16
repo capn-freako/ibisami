@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['max_5finit_5fadapt_5fbits',['MAX_INIT_ADAPT_BITS',['../ami__rx_8cpp.html#ae71bb1d376faff4ef65ff271f2a1bc90',1,'ami_rx.cpp']]]
+  ['eps_5frel',['EPS_REL',['../amimodel_8cpp.html#a62c40728b469a0a6e1f696793569835a',1,'amimodel.cpp']]]
 ];

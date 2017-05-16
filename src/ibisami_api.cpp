@@ -17,6 +17,8 @@
 #include <string>
 #include "include/amimodel.h"
 
+#define AMI_GETWAVE
+
 extern AMIModel *ami_model;  ///< Defined in our device-specific source code file.
 
 /// Holds the pointers, which we pass back to the AMI_Init() caller.
@@ -27,6 +29,8 @@ struct AmiPointers {
 };
 
 static char panic_msg[] = "ERROR: Failed to initialize!";
+static char panic_msg2[] = "ERROR: GetWave() received a null pointer, in 'AMI_memory'!";
+static char panic_msg3[] = "ERROR: GetWave() received a null pointer, in 'wave'!";
 
 extern "C" {
 // The following is to accomodate Windows and make this file OS agnostic.
@@ -79,6 +83,7 @@ DLL_EXPORT long AMI_Init(
         ami_model->init(impulse_matrix, number_of_rows, aggressors,
             sample_interval, bit_time, AMI_parameters_in);
         ami_model->proc_imp();
+        ami_model->save_imp();
     } catch(std::runtime_error err) {
         std::string tmp_str = err.what();
         self->msg = new char[tmp_str.length() + 1];
@@ -121,7 +126,34 @@ DLL_EXPORT long AMI_GetWave(
         double * clock_times,
         char  ** AMI_parameters_out,
         void   * AMI_memory
-     ) {
+    ) {
+
+    AmiPointers *self = (AmiPointers *)AMI_memory;
+    if (self == nullptr) {
+        *AMI_parameters_out = panic_msg2;
+        return 0;
+    }
+    if (wave == nullptr) {
+        *AMI_parameters_out = panic_msg3;
+        return 0;
+    }
+
+    try {
+        self->model->proc_sig(wave, wave_size, clock_times);
+    } catch(std::runtime_error err) {
+        std::string param_str = "(" + self->model->name() + " (ERROR \"" + err.what() + "\"))";
+        delete self->msg;
+        self->msg = new char[param_str.length() + 1];
+        if (!self->msg) {
+            *AMI_parameters_out = panic_msg;
+            return 0;
+        }
+        strcpy(self->msg, param_str.c_str());
+        *AMI_parameters_out = self->msg;
+        return 0;
+    }
+
+    return 1;
 }
 #endif
 

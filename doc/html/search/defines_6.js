@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tap_5fscale',['TAP_SCALE',['../example__tx_8cpp.html#af1850df0d59f876e56124608d292faad',1,'example_tx.cpp']]]
+  ['rx_5fbw',['RX_BW',['../example__rx_8cpp.html#a4a4e7a01439b700bd3a6becd6dd122e0',1,'example_rx.cpp']]]
 ];

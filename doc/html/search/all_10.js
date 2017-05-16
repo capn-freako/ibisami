@@ -2,6 +2,7 @@ var searchData=
 [
   ['sample_5finterval_5f',['sample_interval_',['../class_a_m_i_model.html#a4d4c286b04668c22f2e3f315715a6d5b',1,'AMIModel::sample_interval_()'],['../class_d_f_e.html#ae99b54abc902423f71f31f7d37e86b78',1,'DFE::sample_interval_()']]],
   ['samples_5fper_5fbit_5f',['samples_per_bit_',['../class_a_m_i_model.html#ac664a9c24d4fdc43ab15df7023ab04bc',1,'AMIModel']]],
+  ['save_5fimp',['save_imp',['../class_a_m_i_model.html#a6a947d5613516fd6f5d51d0ec24161be',1,'AMIModel']]],
   ['set_5fmax_5fweights',['set_max_weights',['../class_d_f_e.html#acc351ad844da9fc180f27f71eae0dcb7',1,'DFE']]],
   ['set_5fmin_5fweights',['set_min_weights',['../class_d_f_e.html#af44c7fec6b03d7786ca0dc2006bd2f08',1,'DFE']]],
   ['set_5fweights',['set_weights',['../class_f_i_r_filter.html#afa7d746246050f6af4e8958d46763a9f',1,'FIRFilter']]],

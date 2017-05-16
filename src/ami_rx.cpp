@@ -61,16 +61,16 @@ void AmiRx::init(double *impulse_matrix, const long number_of_rows,
 }
 
 /// Override of AMIModel::proc_sig() specific to Rx models.
-bool AmiRx::proc_sig(double *sig, long len, double *clock_times) {
-    if (ctle_) {
-        ctle_->apply(sig, len);
-    }
-    if (dfe_) {
-        return dfe_->apply(sig, len, clock_times);
-    } else {
-        return true;
-    }
-}
+// bool AmiRx::proc_sig(double *sig, long len, double *clock_times) {
+//     if (ctle_) {
+//         ctle_->apply(sig, len);
+//     }
+//     if (dfe_) {
+//         return dfe_->apply(sig, len, clock_times);
+//     } else {
+//         return true;
+//     }
+// }
 
 /// Override of AMIModel::proc_imp() specific to Rx models.
 void AmiRx::proc_imp() {

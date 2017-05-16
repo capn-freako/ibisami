@@ -7,8 +7,8 @@
 
 SRCDIR := src
 INCDIR := include
-INCS := ami_tx.h ami_rx.h amimodel.h digital_filter.h dfe.h fir_filter.h util.h
-MODS := ibisami_api amimodel ami_tx ami_rx digital_filter dfe fir_filter util
+INCS := ami_tx.h ami_rx.h amimodel.h digital_filter.h dfe.h fir_filter.h util.h default_getwave.h
+MODS := ibisami_api amimodel ami_tx ami_rx digital_filter dfe fir_filter util default_getwave init_example
 
 # Check for proper IBISAMI_ROOT definition.
 IBISAMI_ROOT ?= ""
