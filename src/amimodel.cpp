@@ -28,7 +28,7 @@ void AMIModel::init(double *impulse_matrix, const long number_of_rows,
     bit_time_ = bit_time;
     samples_per_bit_ = long(bit_time / sample_interval + 0.5);
     msg_ = "Input parameter string: " + AMI_parameters_in + "\n";
-    if (abs(samples_per_bit_ * sample_interval - bit_time) > (bit_time * EPS_REL))
+    if (std::abs(samples_per_bit_ * sample_interval - bit_time) > (bit_time * EPS_REL))
         msg_ += "WARN: Non-integral number of samples per bit detected!\n";
     gen_data_cnt_ = 0;
     shift_reg_[0] = 1;
