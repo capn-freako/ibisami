@@ -68,6 +68,7 @@ bool AmiRx::proc_sig(double *sig, long len, double *clock_times) {
     if (dfe_) {
         return dfe_->apply(sig, len, clock_times);
     } else {
+        clock_times[0] = -1;  // Flags tool that we haven't populated 'clock_times'.
         return true;
     }
 }

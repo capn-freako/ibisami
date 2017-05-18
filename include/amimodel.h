@@ -158,6 +158,8 @@ class AMIModel {
 
     std::string& msg() {return msg_;}  ///< Retrieve the model message.
     std::string& param_str() {return param_str_;}  ///< Retrieve the model parameter string.
+    std::string& name() {return param_tree_.name;}  ///< Retrieve the model name.
+    
 
  protected:
     ParseRes parse_params(const std::string& AMI_parameters_in);  ///< Parse the incoming AMI parameter string.

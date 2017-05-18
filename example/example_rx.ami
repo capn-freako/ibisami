@@ -12,8 +12,8 @@
          (GetWave_Exists
              (Usage Info )
              (Type Boolean )
-             (Value False )
-             (Description "This model is, currently, Init()-only." )
+             (Value True )
+             (Description "This model is dual-mode, with GetWave() mimicking Init()." )
          )
          (Init_Returns_Impulse
              (Usage Info )
