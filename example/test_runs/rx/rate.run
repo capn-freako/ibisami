@@ -1,0 +1,44 @@
+Sweep of bit rate values.
+
+('Bit rate = 10 Gbps', \
+  ({'root_name'       : 'example_rx', \
+    'ctle_mode'       : 1, \
+    'ctle_mag'        : 12, \
+    'rx_agc_lf'       : 7, \
+    'rx_agc_hf'       : 16, \
+   }, \
+   {'channel_response' : [1. / 3.125e-12] + [0.]*1023, \
+    'sample_interval'  : 3.125e-12, \
+    'bit_time'         : 100.0e-12, \
+   } \
+  ), \
+)
+
+('Bit rate = 6.25 Gbps', \
+  ({'root_name'       : 'example_rx', \
+    'ctle_mode'       : 1, \
+    'ctle_mag'        : 12, \
+    'rx_agc_lf'       : 7, \
+    'rx_agc_hf'       : 16, \
+   }, \
+   {'channel_response' : [1. / 5.e-12] + [0.]*1023, \
+    'sample_interval'  : 5.0e-12, \
+    'bit_time'         : 160.0e-12, \
+   } \
+  ), \
+)
+
+('Bit rate = 3.125 Gbps', \
+  ({'root_name'       : 'example_rx', \
+    'ctle_mode'       : 1, \
+    'ctle_mag'        : 12, \
+    'rx_agc_lf'       : 7, \
+    'rx_agc_hf'       : 16, \
+   }, \
+   {'channel_response' : [1. / 10.e-12] + [0.]*1023, \
+    'sample_interval'  : 10.0e-12, \
+    'bit_time'         : 320.0e-12, \
+   } \
+  ), \
+)
+
