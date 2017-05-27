@@ -127,6 +127,7 @@ DLL_EXPORT long AMI_GetWave(
         void   * AMI_memory
     ) {
 
+    // Sanity check the input.
     AmiPointers *self = (AmiPointers *)AMI_memory;
     if (self == nullptr) {
         *AMI_parameters_out = panic_msg2;
@@ -137,6 +138,7 @@ DLL_EXPORT long AMI_GetWave(
         return 0;
     }
 
+    // Attempt to process the signal.
     try {
         self->model->proc_sig(wave, wave_size, clock_times);
     } catch(std::runtime_error err) {
@@ -151,6 +153,16 @@ DLL_EXPORT long AMI_GetWave(
         *AMI_parameters_out = self->msg;
         return 0;
     }
+
+    // Attempt to create storage for parameters returned by model maker.
+    delete self->params;
+    self->params = new char[self->model->param_str().length() + 1];
+    if (!self->params) {
+        *AMI_parameters_out = panic_msg;
+        return 0;
+    }
+    strcpy(self->params, self->model->param_str().c_str());
+    *AMI_parameters_out = self->params;
 
     return 1;
 }

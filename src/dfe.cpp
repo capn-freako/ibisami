@@ -93,7 +93,8 @@ bool DFE::apply(double *sig, const long len, double *clock_times) {
     }
 
     // Report on state of adaptation convergence, if appropriate.
-    if (mode > 1) {
+    // if (mode > 1) {
+    if (0) {
         // Divide the captured weights vector into 10 segments, for slope comparisons.
         int slope_meas_interval = weights_.size() / 10;
         double first_slope, last_slope;

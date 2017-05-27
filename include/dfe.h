@@ -26,6 +26,7 @@ class DFE {
     virtual bool apply(double *sig, const long len, double *clock_times);
     int mode;
     std::vector<double> get_weights() {return backward_filter_->get_weights();}
+    void set_weights(std::vector<double> weights) {backward_filter_->set_weights(weights);}
     void set_max_weights(std::vector<double> weights) {max_weights_ = weights;}
     void set_min_weights(std::vector<double> weights) {min_weights_ = weights;}
     double slicer_mag() {return slicer_mag_;}

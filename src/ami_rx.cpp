@@ -61,10 +61,28 @@ void AmiRx::init(double *impulse_matrix, const long number_of_rows,
 }
 
 /// Override of AMIModel::proc_sig() specific to Rx models.
+double maxn (double *sig, long len) {
+    double current_max = 0.0;
+
+    for (auto ix = 0; ix < len; ix++)
+        if (abs(sig[ix]) > current_max)
+            current_max = abs(sig[ix]);
+    return current_max;
+}
+
 bool AmiRx::proc_sig(double *sig, long len, double *clock_times) {
+    std::ostringstream params;
+    params.flush();
+    params << "(example_rx\n";
+
     if (ctle_) {
+        ctle_->clear();
         ctle_->apply(sig, len);
     }
+
+    params << ")\n";
+    param_str_ = params.str();
+
     if (dfe_) {
         return dfe_->apply(sig, len, clock_times);
     } else {
@@ -77,7 +95,7 @@ bool AmiRx::proc_sig(double *sig, long len, double *clock_times) {
 void AmiRx::proc_imp() {
     std::ostringstream params;
     params.flush();
-    params << "(example_rx ";
+    params << "(example_rx\n";
 
     if (sig_tap_ == 1) // Return input unmodified.
         return;
@@ -88,27 +106,44 @@ void AmiRx::proc_imp() {
     if (sig_tap_ == 2) // Return post-CTLE signal.
         return;
     if (dfe_) {
-        unsigned long offset = 0;
-        double max_imp = 0.0;
-        for (unsigned long i = 0; i < number_of_rows_; i++)
-            if (impulse_matrix_[i] > max_imp) {
+        // Assemble the step and pulse responses.
+        double  *step_resp  = new double[number_of_rows_];
+        double  *pulse_resp = new double[number_of_rows_];
+        if (!step_resp || !pulse_resp)
+            throw std::runtime_error("ERROR: AmiRx::proc_imp() could not allocate required working vectors!");
+        step_resp[0] = 0.0;
+        for (auto ix = 0; ix < (number_of_rows_ - 1); ix++)
+            step_resp[ix + 1] = step_resp[ix] + impulse_matrix_[ix] * sample_interval_;
+        for (auto ix = 0; ix < samples_per_bit_; ix++)
+            pulse_resp[ix] = step_resp[ix];
+        for (auto ix = samples_per_bit_; ix < number_of_rows_; ix++)
+            pulse_resp[ix] = step_resp[ix] - step_resp[ix - samples_per_bit_];
+
+        // Locate the main cursor location.
+        unsigned long offset, edge = 0;
+        double max_pulse = 0.0;
+        for (auto i = 0; i < number_of_rows_; i++)
+            if (pulse_resp[i] > max_pulse) {
                 offset = i;
-                max_imp = impulse_matrix_[i];
+                max_pulse = pulse_resp[i];
             }
+        edge = offset - samples_per_bit_ / 2;
+
+        // Approximate DFE effect on impulse response, for statistical analysis.
+        if (dfe_->mode > 1) {  // Emulate adaptation, using pulse response zero forcing.
+            double                  err;
+            std::vector<double>     weights;
+            for (auto weight : dfe_->get_weights()) {
+                offset += samples_per_bit_;  // Move 'offset' to next cursor location.
+                weights.push_back(pulse_resp[offset] / dfe_->slicer_mag());
+            }
+            dfe_->set_weights(weights);
+        }
         int tap_num = 1;
         for (auto weight : dfe_->get_weights()) {
-            offset += samples_per_bit_;
-            double sum = 0;
-            for (unsigned long j = 0; j < offset; j++)
-                sum += impulse_matrix_[j];
-            sum *= sample_interval_;
-            if (dfe_->mode > 1) {  // Emulate adaptation.
-                impulse_matrix_[offset] = -(sum - dfe_->slicer_mag()) / sample_interval_;
-                weight = -impulse_matrix_[offset] * sum / dfe_->slicer_mag() * sample_interval_;
-                params << " (dfe_tap" << tap_num++ << " " << weight << ")";
-            } else {
-                impulse_matrix_[offset] = -(weight * dfe_->slicer_mag() / sum) / sample_interval_;
-            }
+            edge += samples_per_bit_;
+            impulse_matrix_[edge] -= weight * dfe_->slicer_mag() / sample_interval_;
+            params << "\t(tap" << tap_num++ << " " << weight << ")\n";
         }
     }
 

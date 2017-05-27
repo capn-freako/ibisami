@@ -5,8 +5,8 @@ Sweep of Rx CTLE filter values.
     'ctle_mode'       : 1, \
     'ctle_mag'        : 0, \
    }, \
-   {'channel_response' : [1.0e11] + [0.]*4095, \
-    'sample_interval'  : 10.0e-12, \
+   {'channel_response' : [0., 5.0e11] + [0.]*4094, \
+    'sample_interval'  : 2.0e-12, \
    } \
   ) \
 )
@@ -16,8 +16,8 @@ Sweep of Rx CTLE filter values.
     'ctle_mode'       : 1, \
     'ctle_mag'        : 3, \
    }, \
-   {'channel_response' : [1.0e11] + [0.]*4095, \
-    'sample_interval'  : 10.0e-12, \
+   {'channel_response' : [0., 5.0e11] + [0.]*4094, \
+    'sample_interval'  : 2.0e-12, \
    } \
   ) \
 )
@@ -27,8 +27,8 @@ Sweep of Rx CTLE filter values.
     'ctle_mode'       : 1, \
     'ctle_mag'        : 6, \
    }, \
-   {'channel_response' : [1.0e11] + [0.]*4095, \
-    'sample_interval'  : 10.0e-12, \
+   {'channel_response' : [0., 5.0e11] + [0.]*4094, \
+    'sample_interval'  : 2.0e-12, \
    } \
   ) \
 )
@@ -38,8 +38,8 @@ Sweep of Rx CTLE filter values.
     'ctle_mode'       : 1, \
     'ctle_mag'        : 9, \
    }, \
-   {'channel_response' : [1.0e11] + [0.]*4095, \
-    'sample_interval'  : 10.0e-12, \
+   {'channel_response' : [0., 5.0e11] + [0.]*4094, \
+    'sample_interval'  : 2.0e-12, \
    } \
   ) \
 )
@@ -49,8 +49,8 @@ Sweep of Rx CTLE filter values.
     'ctle_mode'       : 1, \
     'ctle_mag'        : 12, \
    }, \
-   {'channel_response' : [1.0e11] + [0.]*4095, \
-    'sample_interval'  : 10.0e-12, \
+   {'channel_response' : [0., 5.0e11] + [0.]*4094, \
+    'sample_interval'  : 2.0e-12, \
    } \
   ) \
 )
