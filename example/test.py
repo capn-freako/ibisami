@@ -14,6 +14,5 @@ the_model = ami.AMIModel(gDLLName)
 init_data = ami.AMIModelInitializer({'root_name': "exampleTx"})
 the_model.initialize(init_data)
 
-print "Model returned message:", the_model.msg
-print "Model returned parameters:", the_model.ami_params_out
-
+print("Model returned message:", the_model.msg)
+print("Model returned parameters:", the_model.ami_params_out)
