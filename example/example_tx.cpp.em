@@ -44,19 +44,19 @@ for pname in ami_params['model'].keys():
     if(tap_pos > max_tap_pos):
         max_tap_pos = tap_pos
 
-print "        int taps[%d];" % (max_tap_pos + 1)
+print(f"        int taps[{max_tap_pos + 1}];")
 
 for pname in ami_params['model'].keys():
     param = ami_params['model'][pname]
     if(param['usage'] == 'In' or param['usage'] == 'InOut'):
         ptype = param['type']
-        print "       ", param_types[ptype]['c_type'], pname, ";"
-        print "       ", 'node_names.push_back("%s");' % pname
-        print "       ", '%s = %s(node_names,' % (pname, param_types[ptype]['getter']), param['default'], ');' 
+        print("       ", param_types[ptype]['c_type'], pname, ";")
+        print("       ", f'node_names.push_back("{pname}");')
+        print(f"       {pname} = {param_types[ptype]['getter']}(node_names, {param['default']});") 
         tap_pos = param['tap_pos']
         if (tap_pos > -1):
-            print "       ", 'taps[%d] = %s;' % (tap_pos, pname)
-        print "       ", 'node_names.pop_back();'
+            print(f"       taps[{tap_pos}] = {pname};")
+        print("       node_names.pop_back();")
 }
         taps[1] = tx_tap_units - (taps[0] + taps[2] + taps[3]);
         if ( (tx_tap_units - 2 * (taps[0] + taps[2] + taps[3])) < 6 )
@@ -68,7 +68,7 @@ for pname in ami_params['model'].keys():
         params << " (tx_tap_units " << tx_tap_units << ")";
 @{
 for tap_num in range(max_tap_pos + 1):
-    print "       ", 'params << " (taps[%d] " << taps[%d] << ")";' % (tap_num, tap_num)
+    print(f'       params << " (taps[{tap_num}] " << taps[{tap_num}] << ")";')
 }
         tap_weights_.clear();
         int samples_per_bit = int(bit_time / sample_interval);

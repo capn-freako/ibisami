@@ -6,7 +6,7 @@
 #
 # Copyright (c) 2015 David Banas; all rights reserved World wide.
 
-import pyibisami.amimodel as ami
+import pyibisami.ami_model as ami
 
 gDLLName = './example_tx_x86_amd64.so'
 

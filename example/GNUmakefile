@@ -31,7 +31,7 @@ endif
 
 # Targets
 .PHONY: all all_tx all_rx tx32 tx64 rx32 rx64 targs txami rxami txibs rxibs test_tx test_rx test_all test
-all: all_tx all_rx test_all
+all: all_tx all_rx
 all_tx: tx32 tx64 txami txibs
 all_rx: rx32 rx64 rxami rxibs
 test_all: test_tx test_rx

@@ -21,6 +21,7 @@
 *.la
 *.a
 *.lib
+*.exp
 
 # Executables
 *.exe
@@ -49,7 +50,7 @@
 *.pyc
 
 # Testing results
-test_results.xml
+*/test_results/*
 
 # Documentation
 doc/*

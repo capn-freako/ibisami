@@ -45,24 +45,24 @@ ifeq ($(OS), Windows_NT)
     endif
     OBJS := $(MODS:%=%_$(SUFFIX).obj)
     ENV_SETTER := $(MSVC_BASE_DOS)\vcvarsall.bat
-    RUN_CMD := cmd /C "$(ENV_SETTER)" $(SUFFIX) '&&' 
+    RUN_CMD := "$(ENV_SETTER)" $(SUFFIX) 10.0.18362.0 '&&' 
     CC := cl.exe
     CXX := cl.exe
     LIB := lib.exe
     LD := link.exe
-    CFLAGS := /EHsc /Gy /W3 /nologo /c /I. /I"$(IBISAMI_ROOT_DOS)" /I"$(BOOST_ROOT)" /D "WIN32"
-    LIBFLAGS = /OUT:$@ /DEF
-    LDFLAGS = /INCREMENTAL:NO /NOLOGO /DLL /SUBSYSTEM:WINDOWS /OUT:$@
+    CFLAGS := //EHsc //Gy //W3 //nologo //c //I. //I"$(IBISAMI_ROOT_DOS)" //I"$(BOOST_ROOT)" //D "WIN32"
+    LIBFLAGS = //OUT:$@ //DEF
+    LDFLAGS = //INCREMENTAL:NO //NOLOGO //DLL //SUBSYSTEM:WINDOWS //OUT:$@
     ifeq ($(MACHINE), X86)
-        LDFLAGS += /MACHINE:X86
+        LDFLAGS += //MACHINE:X86
     else
-        LDFLAGS += /MACHINE:X64
+        LDFLAGS += //MACHINE:X64
     endif
     ifdef DEBUG
-        CFLAGS += /Zi /Od /MTd /D "DEBUG"
-        LDFLAGS += /DEBUG
+        CFLAGS += //Zi //Od //MTd //D "DEBUG"
+        LDFLAGS += //DEBUG
     else
-        CFLAGS += /Oi /MT /O2 /D "NDEBUG"
+        CFLAGS += //Oi //MT //O2 //D "NDEBUG"
     endif
     CXXFLAGS = $(CFLAGS)
     LDLIBS := kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib \
@@ -116,7 +116,7 @@ LIN_CMD = $(RUN_CMD) $(CXX) $(CPPFLAGS) $(CXXFLAGS) $< -o $@
 %_$(SUFFIX).o : $(SRCDIR)/%.c
 	$(RUN_CMD) $(CC) $(CPPFLAGS) $(CFLAGS) $< -o $@
 
-WIN_CMD = $(RUN_CMD) $(CXX) $(CPPFLAGS) $(CXXFLAGS) $< /Fo$@
+WIN_CMD = $(RUN_CMD) $(CXX) $(CPPFLAGS) $(CXXFLAGS) $< //Fo$@
 %_$(SUFFIX).obj : $(SRCDIR)/%.cc
 	$(WIN_CMD)
 %_$(SUFFIX).obj : $(SRCDIR)/%.cpp
