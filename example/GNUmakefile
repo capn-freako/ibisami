@@ -83,5 +83,6 @@ $(TARGS): $(OBJS) $(LIB_DEPS)
 	$(RUN_CMD) $(LD) $(LDFLAGS) $(OBJS) $(LIB_OBJS)
 
 test:
+	@if [ ! -d $(TEST_OUT) ]; then mkdir -p $(TEST_OUT); fi
 	$(RUN_TESTS) -m $(TARGS) -p $(TEST_RUNS) -o $(TEST_OUT)
 
