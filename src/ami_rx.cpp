@@ -7,6 +7,7 @@
  * Copyright (c) 2015 David Banas; all rights reserved World wide.
  */
 
+#include <sstream>
 #include <string>
 #include <vector>
 #include <algorithm>

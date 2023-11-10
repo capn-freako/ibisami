@@ -10,6 +10,7 @@
 
 #define TAP_SCALE 0.0407
 
+#include <sstream>
 #include <string>
 #include <vector>
 #include "include/ami_tx.h"
