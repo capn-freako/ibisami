@@ -61,7 +61,6 @@ void AmiRx::init(double *impulse_matrix, const long number_of_rows,
     msg_ += msg_stream.str();
 }
 
-/// Override of AMIModel::proc_sig() specific to Rx models.
 double maxn (double *sig, long len) {
     double current_max = 0.0;
 
@@ -71,25 +70,29 @@ double maxn (double *sig, long len) {
     return current_max;
 }
 
+/// Override of AMIModel::proc_sig() specific to Rx models.
 bool AmiRx::proc_sig(double *sig, long len, double *clock_times) {
     std::ostringstream params;
     params.flush();
     params << "(example_rx\n";
 
     if (ctle_) {
-        ctle_->clear();
         ctle_->apply(sig, len);
+    }
+
+    bool rslt = true;
+    clock_times[0] = -1;  // Flags tool that we haven't populated 'clock_times'.
+    if (dfe_) {
+        rslt = dfe_->apply(sig, len, clock_times);
+        int k = 1;
+        for (auto &weight: dfe_->get_weights())
+            params << "\t(dfe_tap" << k++ << " " << weight << ")" << std::endl;
     }
 
     params << ")\n";
     param_str_ = params.str();
 
-    if (dfe_) {
-        return dfe_->apply(sig, len, clock_times);
-    } else {
-        clock_times[0] = -1;  // Flags tool that we haven't populated 'clock_times'.
-        return true;
-    }
+    return rslt;
 }
 
 /// Override of AMIModel::proc_imp() specific to Rx models.

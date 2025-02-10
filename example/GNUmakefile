@@ -5,17 +5,18 @@
 #
 # Copyright (c) 2015 David Banas; all rights reserved World wide.
 
+# Check for proper IBISAMI_ROOT definition.
+ifeq ($(IBISAMI_ROOT), "")
+    $(error You must define environment variable: IBISAMI_ROOT, to point to your local sandbox for the `ibisami` repo.)
+endif
+
 SRCDIR   := .
-INCDIR   := ../include
+INCDIR   := $(IBISAMI_ROOT)/include
 LIB_MODS := ibisami_api amimodel ami_tx ami_rx digital_filter fir_filter dfe util
 TX_NAME  := example_tx
 RX_NAME  := example_rx
 
-# Check for proper IBISAMI_ROOT definition.
-IBISAMI_ROOT ?= ""
-ifeq ($(IBISAMI_ROOT), "")
-    $(error You must define environment variable IBISAMI_ROOT.)
-endif
+# Bring in common definitions.
 include $(IBISAMI_ROOT)/defs.mak
 
 # Handle Windows vs. Linux target naming differences.
@@ -30,25 +31,25 @@ else
 endif
 
 # Targets
-.PHONY: all all_tx all_rx tx32 tx64 rx32 rx64 targs txami rxami txibs rxibs test_tx test_rx test_all test
+.PHONY: all all_tx all_rx tx32 tx64 rx32 rx64 targs txami rxami txibs rxibs test_tx test_rx test_all test ibisami
 all: all_tx all_rx
 all_tx: tx32 tx64 txami txibs
 all_rx: rx32 rx64 rxami rxibs
 test_all: test_tx test_rx
 
-tx32:
+tx32: ibisami
 	@echo "Building 32-bit Tx model..."
 	MACHINE=X86 MODS=$(TX_NAME) $(MAKE) targs
 
-tx64:
+tx64: ibisami
 	@echo "Building 64-bit Tx model..."
 	MACHINE=AMD64 MODS=$(TX_NAME) $(MAKE) targs
 
-rx32:
+rx32: ibisami
 	@echo "Building 32-bit Rx model..."
 	MACHINE=X86 MODS=$(RX_NAME) INCS='amimodel.h ami_rx.h digital_filter.h fir_filter.h dfe.h' $(MAKE) targs
 
-rx64:
+rx64: ibisami
 	@echo "Building 64-bit Rx model..."
 	MACHINE=AMD64 MODS=$(RX_NAME) INCS='amimodel.h ami_rx.h digital_filter.h fir_filter.h dfe.h' $(MAKE) targs
 
@@ -86,3 +87,9 @@ test:
 	@if [ ! -d $(TEST_OUT) ]; then mkdir -p $(TEST_OUT); fi
 	$(RUN_TESTS) -m $(TARGS) -p $(TEST_RUNS) -o $(TEST_OUT)
 
+ibisami:
+ifeq '$(shell python -c "import platform; print(platform.architecture()[0])")' '32bit'
+	$(MAKE) -C $(IBISAMI_ROOT) x32
+else
+	$(MAKE) -C $(IBISAMI_ROOT) x64
+endif

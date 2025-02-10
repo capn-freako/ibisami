@@ -1,13 +1,12 @@
-[IBIS Ver]   5.1
 
 
-
+[IBIS Ver]   7.1
 [File Name]  example_rx.ibs
 [File Rev]   v0.1
 
-[Date]       2017-05-20
+[Date]       2024-07-05
 
-[Source]     ibisami, a public domain IBIS-AMI model creation infrastructure
+[Source]     ibisami public domain infrastructure
 
 [Disclaimer]
 THIS MODEL IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -22,11 +21,7 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS MODEL, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 [Notes]
-This IBIS file was generated, using the template file,
-"example_tx.ibs.em", from ibisami, a public domain IBIS-AMI model
-creation infrastructure. To learn more, visit:
-
-https://github.com/capn-freako/ibisami/wiki
+This IBIS file was generated using the template file: "generic.ibs.em".
 
 [Copyright]    Copyright (c) 2016 David Banas; all rights reserved World wide.
 [Component]    Example_Rx
@@ -74,15 +69,15 @@ Executable Windows_VisualStudio_64    example_rx_x86_amd64.dll  example_rx.ami
 [GND Clamp]
 -1.80    -1.000e+01    -1.000e+01    -1.000e+01
 0.00     0.000e+00     0.000e+00     0.000e+00 
-1.80     3.600e-02     4.000e-02     3.273e-02 
-3.60     7.200e-02     8.000e-02     6.545e-02 
+1.80     1.800e-02     2.000e-02     1.636e-02 
+3.60     3.600e-02     4.000e-02     3.273e-02 
 
 [Power Clamp]
 -1.80    1.000e+01     1.000e+01     1.000e+01 
-0.00     0.000e+00     0.000e+00     0.000e+00 
-3.60     0.000e+00     0.000e+00     0.000e+00 
+0.00     -0.000e+00    -0.000e+00    -0.000e+00
+1.80     -1.800e-02    -2.000e-02    -1.636e-02
+3.60     -3.600e-02    -4.000e-02    -3.273e-02
 
 
 
 [END]
-

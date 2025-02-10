@@ -10,14 +10,8 @@ INCDIR := include
 INCS := ami_tx.h ami_rx.h amimodel.h digital_filter.h dfe.h fir_filter.h util.h
 MODS := ibisami_api amimodel ami_tx ami_rx digital_filter dfe fir_filter util
 
-# Check for proper IBISAMI_ROOT definition.
-IBISAMI_ROOT ?= ""
-ifeq ($(IBISAMI_ROOT), "")
-    $(error You must define environment variable IBISAMI_ROOT.)
-endif
-
 # Bring in common definitions.
-include $(IBISAMI_ROOT)/defs.mak
+include ./defs.mak
 
 # Targets
 .PHONY: all x32 x64 targs
@@ -34,7 +28,4 @@ x64:
 targs: $(IBISAMI_LIB)
 
 $(IBISAMI_LIB): $(OBJS)
-	@echo "Built $(OBJS)."
-#	@echo "Building $@..."
-#	$(RUN_CMD) $(LIB) $(LIBFLAGS) $^
-
+	@echo "Built: $(OBJS)."

@@ -51,7 +51,13 @@
 
 # Testing results
 */test_results/*
+*.html
 
 # Documentation
 doc/*
 
+# Sublime Text
+*.sublime-workspace
+
+# PyBERT
+pybert_cfg.yaml

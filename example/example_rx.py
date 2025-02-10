@@ -22,11 +22,13 @@ kDescription  = 'Example Rx model from ibisami package.'
 # (The singular exception is 'c_comp', which should contain 3 values,
 # in NUMERICAL typ, min, max order.)
 ibis_params = {
+    'version'            : "7.1",
     'file_name'          : kFileBaseName + '.ibs',
     'file_rev'           : 'v0.1',
     'copyright'          : "Copyright (c) 2016 David Banas; all rights reserved World wide.",
     'component'          : "Example_Rx",
     'manufacturer'       : "(n/a)",
+    'source'             : "ibisami public domain infrastructure",
     'r_pkg'              : [0.1,    0.001,    0.5],
     'l_pkg'              : [10.e-9, 0.1e-9,   50.e-9],
     'c_pkg'              : [1.e-12, 0.01e-12, 5.e-12],
@@ -60,6 +62,13 @@ ami_params = {
             'format'  : 'Value',
             'default' : 'True',
             'description' : '"Model provides DFE adaptation approximation, in its AMI_Init() function."',
+        },
+        'GetWave_Exists' : {
+            'type'    : 'BOOL',
+            'usage'   : 'Info',
+            'format'  : 'Value',
+            'default' : 'True',
+            'description' : '"This model is dual-mode, with true DFE adaptation in GetWave()."',
         },
         'GetWave_Exists' : {
             'type'    : 'BOOL',

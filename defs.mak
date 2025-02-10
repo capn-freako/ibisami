@@ -21,8 +21,8 @@ rebuild:
 $(MAKEFILE_LIST): ;
 
 # Infrastructure tools
-AMI_CONFIG := python -m pyibisami.ami_config
-RUN_TESTS  := python -m pyibisami.run_tests
+AMI_CONFIG := python -m pyibisami.ami.config
+RUN_TESTS  := python -m pyibisami.tools.run_tests
 
 # Machine dependent definitions
 # Note: The "x86_amd64" is NOT an error! It is required, by MSVC v12.0.

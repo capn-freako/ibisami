@@ -58,9 +58,9 @@ bool DFE::apply(double *sig, const long len, double *clock_times) {
         }
         // Test if we're at a clock instant, and act accordingly.
         if (sim_time_ >= next_clock_) {
-            *clock_times++ = next_clock_;
+            *clock_times++ = next_clock_ - clock_per_ / 2.0;  // IBIS-AMI clocks are edge-aligned.
             double clk_sample = interp(last_summer_output_, summer_output, next_clock_, sim_time_, sample_interval_);
-            //clock_per_ = cdr_.adjust(last_clk_sample_, edge_sample_, clk_sample);
+            // clock_per_ = cdr_.adjust(last_clk_sample_, edge_sample_, clk_sample);
             clock_pers_.push_back(clock_per_);
             next_ui_edge_ = next_clock_ + clock_per_ / 2.0;
             next_clock_ += clock_per_;

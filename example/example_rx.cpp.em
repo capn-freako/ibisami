@@ -7,8 +7,9 @@
  * Copyright (c) 2015 David Banas; all rights reserved World wide.
  */
 
-#include <string>
-#include <vector>
+// #include <string>
+// #include <vector>
+#include <sstream>
 #include "include/ami_rx.h"
 
 #define PI 3.14159
@@ -43,7 +44,7 @@ class MyRx : public AmiRx {
         msg << "Initializing Rx...\n";
 
 @{
-from pyibisami import ami_config as ac
+from pyibisami.ami import config as ac
 
 for pname in ami_params['model']:
     ac.print_code(pname, ami_params['model'][pname])
@@ -59,13 +60,15 @@ for pname in ami_params['model']:
             z = exp(z * sample_interval);
             p1 = exp(p1 * sample_interval);
             p2 = exp(p2 * sample_interval);
-            std::vector<double> num = {1.0, -z, 0.0};
+            // std::vector<double> num = {1.0, -z, 0.0};
+            std::vector<double> num = {0.0, 1.0, -z};
             for (auto i = 0; i < num.size(); i++)
                 num[i] *= (1 - p1) * (1 - p2) * pow(10., ctle_dcgain / 20.) / (1 - z);
             std::vector<double> den = {1.0, -(p1 + p2), p1 * p2};
             ctle_ = new DigitalFilter(num, den);
             if (!ctle_)
                 throw std::runtime_error("ERROR: MyRx::init() could not allocate a DigitalFilter for its CTLE!");
+            ctle_->clear();
         }
 
         if (dfe_mode) {

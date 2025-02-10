@@ -7,9 +7,9 @@
  * Copyright (c) 2015 David Banas; all rights reserved World wide.
  */
 
+// #include <string>
+// #include <vector>
 #include <sstream>
-#include <string>
-#include <vector>
 #include "include/ami_rx.h"
 
 #define PI 3.14159
@@ -47,71 +47,71 @@ class MyRx : public AmiRx {
         int ctle_mode;
         ctle_mode = get_param_int(node_names, 0);
         node_names.pop_back();
+        node_names.push_back("ctle_freq");
+        double ctle_freq;
+        ctle_freq = get_param_float(node_names, 5000000000.0);
+        node_names.pop_back();
+        node_names.push_back("ctle_mag");
+        double ctle_mag;
+        ctle_mag = get_param_float(node_names, 0.0);
+        node_names.pop_back();
         node_names.push_back("ctle_bandwidth");
-        float ctle_bandwidth;
+        double ctle_bandwidth;
         ctle_bandwidth = get_param_float(node_names, 12000000000.0);
         node_names.pop_back();
-        node_names.push_back("ctle_freq");
-        float ctle_freq;
-        ctle_freq = get_param_float(node_names, 5000000000.0);
+        node_names.push_back("ctle_dcgain");
+        double ctle_dcgain;
+        ctle_dcgain = get_param_float(node_names, 0.0);
         node_names.pop_back();
         node_names.push_back("dfe_mode");
         int dfe_mode;
         dfe_mode = get_param_int(node_names, 0);
         node_names.pop_back();
-        node_names.push_back("dfe_tap3");
-        float dfe_tap3;
-        dfe_tap3 = get_param_float(node_names, 0);
-        node_names.pop_back();
-        node_names.push_back("dfe_tap2");
-        float dfe_tap2;
-        dfe_tap2 = get_param_float(node_names, 0);
-        node_names.pop_back();
-        node_names.push_back("dfe_tap1");
-        float dfe_tap1;
-        dfe_tap1 = get_param_float(node_names, 0);
-        node_names.pop_back();
         node_names.push_back("dfe_ntaps");
         int dfe_ntaps;
         dfe_ntaps = get_param_int(node_names, 5);
         node_names.pop_back();
-        node_names.push_back("dfe_tap5");
-        float dfe_tap5;
-        dfe_tap5 = get_param_float(node_names, 0);
+        node_names.push_back("dfe_tap1");
+        double dfe_tap1;
+        dfe_tap1 = get_param_float(node_names, 0);
+        node_names.pop_back();
+        node_names.push_back("dfe_tap2");
+        double dfe_tap2;
+        dfe_tap2 = get_param_float(node_names, 0);
+        node_names.pop_back();
+        node_names.push_back("dfe_tap3");
+        double dfe_tap3;
+        dfe_tap3 = get_param_float(node_names, 0);
         node_names.pop_back();
         node_names.push_back("dfe_tap4");
-        float dfe_tap4;
+        double dfe_tap4;
         dfe_tap4 = get_param_float(node_names, 0);
         node_names.pop_back();
+        node_names.push_back("dfe_tap5");
+        double dfe_tap5;
+        dfe_tap5 = get_param_float(node_names, 0);
+        node_names.pop_back();
         node_names.push_back("dfe_vout");
-        float dfe_vout;
+        double dfe_vout;
         dfe_vout = get_param_float(node_names, 1.0);
         node_names.pop_back();
-        node_names.push_back("ctle_mag");
-        float ctle_mag;
-        ctle_mag = get_param_float(node_names, 0.0);
-        node_names.pop_back();
         node_names.push_back("dfe_gain");
-        float dfe_gain;
+        double dfe_gain;
         dfe_gain = get_param_float(node_names, 0.1);
         node_names.pop_back();
         node_names.push_back("debug");
-        node_names.push_back("dump_adaptation_input");
-        bool dump_adaptation_input;
-        dump_adaptation_input = get_param_bool(node_names, false);
+        node_names.push_back("dbg_enable");
+        bool dbg_enable;
+        dbg_enable = get_param_bool(node_names, false);
         node_names.pop_back();
         node_names.push_back("dump_dfe_adaptation");
         bool dump_dfe_adaptation;
         dump_dfe_adaptation = get_param_bool(node_names, false);
         node_names.pop_back();
-        node_names.push_back("dbg_enable");
-        bool dbg_enable;
-        dbg_enable = get_param_bool(node_names, false);
+        node_names.push_back("dump_adaptation_input");
+        bool dump_adaptation_input;
+        dump_adaptation_input = get_param_bool(node_names, false);
         node_names.pop_back();
-        node_names.pop_back();
-        node_names.push_back("ctle_dcgain");
-        float ctle_dcgain;
-        ctle_dcgain = get_param_float(node_names, 0.0);
         node_names.pop_back();
 
 
@@ -125,13 +125,15 @@ class MyRx : public AmiRx {
             z = exp(z * sample_interval);
             p1 = exp(p1 * sample_interval);
             p2 = exp(p2 * sample_interval);
-            std::vector<double> num = {1.0, -z, 0.0};
+            // std::vector<double> num = {1.0, -z, 0.0};
+            std::vector<double> num = {0.0, 1.0, -z};
             for (auto i = 0; i < num.size(); i++)
                 num[i] *= (1 - p1) * (1 - p2) * pow(10., ctle_dcgain / 20.) / (1 - z);
             std::vector<double> den = {1.0, -(p1 + p2), p1 * p2};
             ctle_ = new DigitalFilter(num, den);
             if (!ctle_)
                 throw std::runtime_error("ERROR: MyRx::init() could not allocate a DigitalFilter for its CTLE!");
+            ctle_->clear();
         }
 
         if (dfe_mode) {
